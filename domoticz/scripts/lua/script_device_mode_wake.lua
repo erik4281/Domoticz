@@ -6,11 +6,9 @@ sleepswitch = otherdevices['SleepMode']
 sleepswitchname = 'SleepMode'
 
 if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On' and sleepswitch == 'On') then
-
 	timenumber = tonumber(os.date("%H")..os.date("%M"))
 	wakestart = 0600
 	wakestop = 1200
-
 	if (timenumber >= wakestart and timenumber < wakestop) then
 		c = s:sub(7)
 		scriptfolder = "/home/pi/domoticz/scripts/bash/"
@@ -19,7 +17,6 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On' and sleepswitch ==
 			commandArray[sleepswitchname] = 'Off'
 		end
 	end
-
 end
 
 return commandArray
