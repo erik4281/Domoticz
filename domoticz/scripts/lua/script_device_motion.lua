@@ -13,7 +13,7 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	m = nil
 
 	if (c == 'FrontDoor') then
-		commandArray['Variable:MotionTrigger'] = '0'
+		commandArray['MotionTrigger'] = 'Off'
 	end
 
 	if (c == 'Living') then
@@ -53,7 +53,7 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	end
 
 	if (otherdevices[t] == 'On' or otherdevices[u] == 'On' or otherdevices[v] == 'On') then
-		commandArray['Variable:MotionTrigger']= '1'
+		commandArray['MotionTrigger'] = 'On'
 		if (cbr < cbrt) then
 			if (otherdevices['Switch'..c] == 'Off') then
 				print (s..' saw motion. Now triggering switch Switch'..c)
