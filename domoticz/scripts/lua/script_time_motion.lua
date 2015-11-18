@@ -14,19 +14,15 @@ end
 commandArray = {}
  
 for i, v in pairs(otherdevices) do
-
 	tc = tostring(i)
 	v = i:sub(1,6)
-
 	if (v == 'Motion') then
-
 		c = i:sub(7)
 		d = nil
 		e = nil
 		f = nil
 		l = nil
 		m = nil
-
 		if (c == 'Living') then
 			c = 'Living'
 			d = 'Dining'
@@ -54,16 +50,13 @@ for i, v in pairs(otherdevices) do
 			e = 'Toilet'
 			f = 'Bathroom'
 		end
-
 		motioncheck = 'Off'
-
 		t = 'Motion'..c
 		ctimeon = uservariables['WaitOff'..c]
 		cdifference = timedifference(otherdevices_lastupdate[t])
 		if (otherdevices[t] == 'On') then
 			motioncheck = 'On'
 		end
-
 		if (d) then
 			u = 'Motion'..d
 			dtimeon = uservariables['WaitOff'..d]
@@ -88,7 +81,6 @@ for i, v in pairs(otherdevices) do
 				motioncheck = 'On'
 			end
 		end
-
 		difference = cdifference
 		if (d and (ddifference < difference)) then
 			difference = ddifference
@@ -99,7 +91,6 @@ for i, v in pairs(otherdevices) do
 		if (f and (fdifference < difference)) then
 			difference = fdifference
 		end
-		
 		timeon = ctimeon
 		if (d and (dtimeon > timeon)) then
 			timeon = dtimeon
@@ -110,9 +101,7 @@ for i, v in pairs(otherdevices) do
 		if (f and (ftimeon > timeon)) then
 			timeon = ftimeon
 		end
-
 		timewait = timeon * 60
-
 		if (motioncheck == 'Off' and difference >= timewait and difference < (timewait + 60)) then
 			if (otherdevices['Switch'..c] == 'On') then
 				print (tc..' saw no more motion. Now triggering switch Switch'..c)
@@ -127,9 +116,7 @@ for i, v in pairs(otherdevices) do
 				commandArray['Switch'..m] = 'Off'
 			end
 		end
-
 	end
-
 end
  
 return commandArray
