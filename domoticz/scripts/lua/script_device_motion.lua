@@ -4,20 +4,17 @@ t = next(devicechanged)
 s = tostring(t)
 
 if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
-
 	c = s:sub(7)
 	d = nil
 	e = nil
 	f = nil
 	l = nil
 	m = nil
-
 	if (c == 'FrontDoor') then
 		commandArray['TriggerDoor'] = 'On'
 	elseif (devicechanged[t] == 'On') then
 		commandArray['TriggerDoor'] = 'Off'
 	end
-
 	if (c == 'Living') then
 		c = 'Living'
 		d = 'Dining'
@@ -42,11 +39,9 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 		c = 'Bathroom'
 		d = 'Hallway'
 	end
-
 	t = 'Motion'..c
 	cbr = tonumber(otherdevices_svalues['Brightness'..c])
 	cbrt = tonumber(uservariables['BrightnessTrigger'..c])
-	
 	if (cbr) then
 	else
 		cbr = 1
@@ -55,14 +50,12 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	else
 		cbrt = 250
 	end
-	
 	if (d) then
 		u = 'Motion'..d
 	end
 	if (e) then
 		v = 'Motion'..e
 	end
-
 	if (otherdevices[t] == 'On' or otherdevices[u] == 'On' or otherdevices[v] == 'On') then
 		if (cbr < cbrt) then
 			if (otherdevices['Switch'..c] == 'Off') then
@@ -108,7 +101,6 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 			end
 		end
 	end
-
 end
 
 return commandArray
