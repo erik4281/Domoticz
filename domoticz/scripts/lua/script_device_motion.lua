@@ -12,8 +12,11 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	l = nil
 	m = nil
 
-	if (c == 'FrontDoor') then
+	--if (c == 'FrontDoor') then
+	if (c == 'Kichten') then
 		commandArray['TriggerDoor'] = 'On'
+	elseif (devicechanged[t] == 'On')
+		commandArray['TriggerDoor'] = 'Off'
 	end
 
 	if (c == 'Living') then
@@ -62,7 +65,6 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	end
 
 	if (otherdevices[t] == 'On' or otherdevices[u] == 'On' or otherdevices[v] == 'On') then
-		commandArray['TriggerDoor'] = 'Off'
 		if (cbr < cbrt) then
 			if (otherdevices['Switch'..c] == 'Off') then
 				print (s..' saw motion. Now triggering switch Switch'..c)
