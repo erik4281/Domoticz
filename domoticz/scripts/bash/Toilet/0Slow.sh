@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -s -H "Accept: application/json" -X PUT --data '{"on":true,"bri": 150,"transitiontime":30}' http://10.0.1.102/api/erikvennink/lights/22/state
