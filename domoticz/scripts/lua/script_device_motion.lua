@@ -45,6 +45,15 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	cbr = tonumber(otherdevices_svalues['Brightness'..c])
 	cbrt = tonumber(uservariables['BrightnessTrigger'..c])
 	
+	if (cbr) then
+	else
+		cbr = 1
+	end
+	if (cbrt) then
+	else
+		cbrt = 250
+	end
+	
 	if (d) then
 		u = 'Motion'..d
 	end
