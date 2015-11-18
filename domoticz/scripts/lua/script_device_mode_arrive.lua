@@ -9,13 +9,13 @@ presencewitchname = 'People'
 if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and presenceswitch == 'Off') then
 	print ("Arriving")
 	commandArray[presencewitchname] = 'On'
-	commandArray['MotionTrigger'] = 'On'
+	commandArray['TriggerDoor'] = 'Off'
 	os.execute ('/home/pi/domoticz/scripts/bash/Hallway/1.sh')
 end
 if (s:sub(1,6) == 'Motion' and c == 'Bedroom' and presenceswitch == 'Off') then
 	print ("Movement in Bedroom. Switching to present again!")
 	commandArray[presencewitchname] = 'On'
-	commandArray['MotionTrigger'] = 'On'
+	commandArray['TriggerDoor'] = 'Off'
 	os.execute ('/home/pi/domoticz/scripts/bash/Bedroom/0.sh')
 end
 
