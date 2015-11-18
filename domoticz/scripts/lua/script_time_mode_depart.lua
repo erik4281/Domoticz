@@ -19,24 +19,18 @@ presenceswitch = otherdevices['People']
 presenceswitchname = 'People'
 
 for i, v in pairs(otherdevices) do
-
 	tc = tostring(i)
 	v = i:sub(1,6)
 	c = i:sub(7)
-
 	if (v == 'Motion' and c == 'FrontDoor') then
-
 		timeon = uservariables['DepartTimer']
 		difference = timedifference(otherdevices_lastupdate[tc])
 		timewait = timeon * 60
-
 		if (door == 'Off' and otherdevices['TriggerDoor'] == 'On' and difference >= timewait and difference < (timewait + 600)) then
 			print ("Departing")
 			commandArray[presenceswitchname]='Off'
 		end
-
 	end
-
 end
 
 return commandArray
