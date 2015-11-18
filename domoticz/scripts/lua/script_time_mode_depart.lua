@@ -30,7 +30,7 @@ for i, v in pairs(otherdevices) do
 		difference = timedifference(otherdevices_lastupdate[tc])
 		timewait = timeon * 60
 
-		if (door == 'Off' and uservariables['MotionTrigger'] == '0' and difference >= timewait and difference < (timewait + 600)) then
+		if (door == 'Off' and otherdevices['MotionTrigger'] == 'Off' and difference >= timewait and difference < (timewait + 600)) then
 			print ("Departing")
 			commandArray[presenceswitchname]='Off'
 		end
