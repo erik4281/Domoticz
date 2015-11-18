@@ -55,6 +55,7 @@ if (s:sub(1,6) == 'Switch') then
 	scene = scene..'.sh'
 	print ('Switch triggered: '..scriptfolder..c..'/'..scene)
 	os.execute (scriptfolder..c..'/'..scene)
+	os.execute (scriptfolder..c..'/'..scene)
 
 end
 
