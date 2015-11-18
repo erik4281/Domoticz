@@ -15,7 +15,7 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	--if (c == 'FrontDoor') then
 	if (c == 'Dining') then
 		commandArray['TriggerDoor'] = 'On'
-	elseif (devicechanged[t] == 'On')
+	elseif (devicechanged[t] == 'On') then
 		commandArray['TriggerDoor'] = 'Off'
 	end
 
