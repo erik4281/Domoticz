@@ -56,7 +56,6 @@ for i, v in pairs(otherdevices) do
 				scene = scene..'Slow.sh'
 				print ('Time triggered: '..scriptfolder..c..'/'..scene)
 				os.execute (scriptfolder..c..'/'..scene)
-				os.execute (scriptfolder..c..'/'..scene)
 				execute = 0
 			end
 		end
