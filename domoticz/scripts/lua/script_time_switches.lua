@@ -60,10 +60,11 @@ for i, v in pairs(otherdevices) do
 				if (otherdevices['SleepMode'] == 'On') then
 					scene = 9
 				end
+				scene = scene..'.sh'
+				print ('Backup triggered: '..scriptfolder..c..'/'..scene)
+				os.execute (scriptfolder..c..'/'..scene)
+				scene = 1
 			end
-			scene = scene..'.sh'
-			print ('Backup triggered: '..scriptfolder..c..'/'..scene)
-			os.execute (scriptfolder..c..'/'..scene)
 			if (time1) then
 				scene = 0
 			else
@@ -109,10 +110,10 @@ for i, v in pairs(otherdevices) do
 			difference = timedifference(otherdevices_lastupdate[t])
 			if (difference >= 1 and difference < 61) then
 				scene = 'Off'
+				scene = scene..'.sh'
+				print ('Backup triggered: '..scriptfolder..c..'/'..scene)
+				os.execute (scriptfolder..c..'/'..scene)
 			end
-			scene = scene..'.sh'
-			print ('Backup triggered: '..scriptfolder..c..'/'..scene)
-			os.execute (scriptfolder..c..'/'..scene)
 		end
 	end
 end
