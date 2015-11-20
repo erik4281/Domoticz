@@ -29,7 +29,7 @@ for i, v in pairs(otherdevices) do
 		--if (presenceswitch == "On" and door == 'Off' and otherdevices['TriggerDoor'] == 'On' and difference >= timewait and difference < (timewait + 600)) then
 		if (presenceswitch == "On" and door == 'Off' and otherdevices['TriggerDoor'] == 'On' and difference >= timewait) then
 			print ("Departing")
-			commandArray[TriggerDoor]='Off'
+			commandArray['TriggerDoor']='Off'
 			commandArray[presenceswitchname]='Off'
 		end
 	end
