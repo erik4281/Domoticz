@@ -9,7 +9,7 @@ local ping_success
 local bt_success
 
 ping[1]={'10.0.1.121', 'iPhoneErik', 'iPhoneErik', 'nil', 10}
-ping[2]={'10.0.1.123', 'iPhoneJinHee', 'iPhoneJinHee', 'nil', 5}
+ping[2]={'10.0.1.123', 'iPhoneJinHee', 'iPhoneJinHee', 'nil', 10}
 
 for ip = 1, #ping do
   if ping[ip][4] == 'nil' then
