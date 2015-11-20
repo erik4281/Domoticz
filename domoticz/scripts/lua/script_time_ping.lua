@@ -1,6 +1,6 @@
 commandArray={}
 
-debug=false
+debug=true
 
 prefixe="(PING) "
 
@@ -8,7 +8,7 @@ local ping={}
 local ping_success
 local bt_success
 
-ping[1]={'10.0.1.121', 'iPhoneErik', 'iPhoneErik', 'nil', 10}
+ping[1]={'10.0.1.121', 'iPhoneErik', 'iPhoneErik', 'DC:9B:9C:BE:D5:08', 10}
 ping[2]={'10.0.1.122', 'iPhoneJinHee', 'iPhoneJinHee', 'nil', 10}
 
 for ip = 1, #ping do
