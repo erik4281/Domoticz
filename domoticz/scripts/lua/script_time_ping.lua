@@ -16,12 +16,12 @@ for ip = 1, #ping do
 	else
 		f = assert (io.popen ("hcitool names "..ping[ip][4]))
 		bt = f:read()
-	if bt==nil then
-		bt_success=false
-	else
-		bt_success=true
-	end
-	f:close()
+		if bt==nil then
+			bt_success=false
+		else
+			bt_success=true
+		end
+		f:close()
 	end
 	if ping_success or bt_success then
 		print(prefix.."ping success "..ping[ip][2])
