@@ -31,7 +31,7 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and devicechanged[t] == 'On') th
 		end
 		if ping_success or bt_success then
 			print(prefix.."ping success "..ping[ip][2])
-			if (otherdevice['ALARM'] == 'On') then
+			if (otherdevices['ALARM'] == 'On') then
 				commandArray['ALARM'] = 'Off'
 			end
 			if (presenceswitch == 'Off') then
@@ -42,7 +42,7 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and devicechanged[t] == 'On') th
 			end
 		else
 			print(prefix.."ping fail "..ping[ip][2])
-			if (otherdevice['ALARM'] == 'Off') then
+			if (otherdevices['ALARM'] == 'Off') then
 				commandArray['ALARM'] = 'On'
 			end
 		end
