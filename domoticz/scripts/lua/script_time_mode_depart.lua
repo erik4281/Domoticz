@@ -17,6 +17,8 @@ door = otherdevices['MotionFrontDoor']
 doortime = otherdevices_lastupdate['MotionFrontDoor']
 presenceswitch = otherdevices['People']
 presenceswitchname = 'People'
+erik = otherdevices['iPhoneErik']
+jinhee = otherdevices['iPhoneJinHee']
 
 for i, v in pairs(otherdevices) do
 	tc = tostring(i)
@@ -25,8 +27,8 @@ for i, v in pairs(otherdevices) do
 	if (v == 'Motion' and c == 'FrontDoor') then
 		timeon = uservariables['DepartTimer']
 		difference = timedifference(otherdevices_lastupdate[tc])
-		timewait = timeon * 60
-		if (presenceswitch == "On" and door == 'Off' and difference >= timewait and difference < (timewait + 600)) then
+		timewait = (timeon * 60) + 60
+		if (presenceswitch == "On" and erik == 'Off' and jinhee = 'Off' and door == 'Off' and difference >= timewait and difference < (timewait + 60)) then
 			print ("Departing")
 			commandArray[presenceswitchname]='Off'
 		end
