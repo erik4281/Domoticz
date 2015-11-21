@@ -3,18 +3,14 @@ commandArray = {}
 t = next(devicechanged)
 s = tostring(t)
 
-if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
+--if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
+if (s:sub(1,6) == 'Motion') then
 	c = s:sub(7)
 	d = nil
 	e = nil
 	f = nil
 	l = nil
 	m = nil
-	if (c == 'FrontDoor') then
-		commandArray['TriggerDoor'] = 'On'
-	elseif (devicechanged[t] == 'On') then
-		commandArray['TriggerDoor'] = 'Off'
-	end
 	if (c == 'Living') then
 		c = 'Living'
 		d = 'Dining'
