@@ -19,7 +19,7 @@ if (dc == 'SleepMode' or dc == 'People') then
 				scene = '1Slow.sh'
 				print ('SleepMode triggered wake: '..scriptfolder..c..'/'..scene)
 				os.execute (scriptfolder..c..'/'..scene)
-			elseif (dc == 'People' and otherdevices[dc] == 'Off')
+			elseif (dc == 'People' and otherdevices[dc] == 'Off') then
 				scene = 'Off.sh'
 				print ('Presence triggered away: '..scriptfolder..c..'/'..scene)
 				os.execute (scriptfolder..c..'/'..scene)
