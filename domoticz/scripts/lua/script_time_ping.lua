@@ -5,9 +5,10 @@ prefix="(PING) "
 local ping={}
 local ping_success
 local bt_success
+timeon = uservariables['DepartTimer']
 
-ping[1]={'10.0.1.121', 'iPhoneErik', 'iPhoneErik', 'DC:9B:9C:BE:D5:08', 10}
-ping[2]={'10.0.1.122', 'iPhoneJinHee', 'iPhoneJinHee', 'F0:24:75:D0:AF:C2', 10}
+ping[1]={'10.0.1.121', 'iPhoneErik', 'iPhoneErik', 'DC:9B:9C:BE:D5:08', timeon}
+ping[2]={'10.0.1.122', 'iPhoneJinHee', 'iPhoneJinHee', 'F0:24:75:D0:AF:C2', timeon}
 
 for ip = 1, #ping do
 	if ping[ip][4] == 'nil' then
