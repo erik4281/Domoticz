@@ -8,15 +8,38 @@ presencewitchname = 'People'
 
 if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and devicechanged[t] == 'On' and presenceswitch == 'Off') then
 	print ("Arriving")
-	commandArray[presencewitchname] = 'On'
-	commandArray['TriggerDoor'] = 'Off'
 	os.execute ('/home/pi/domoticz/scripts/bash/Hallway/1.sh')
-end
-if (s:sub(1,6) == 'Motion' and c == 'Bedroom' and devicechanged[t] == 'On' and presenceswitch == 'Off') then
-	print ("Movement in Bedroom. Switching to present again!")
-	commandArray[presencewitchname] = 'On'
-	commandArray['TriggerDoor'] = 'Off'
-	os.execute ('/home/pi/domoticz/scripts/bash/Bedroom/0.sh')
+	prefix="(PING) "
+	local ping={}
+	local ping_success
+	local bt_success
+	ping[1]={'10.0.1.121', 'iPhoneErik', 'iPhoneErik', 'DC:9B:9C:BE:D5:08'}
+	ping[2]={'10.0.1.122', 'iPhoneJinHee', 'iPhoneJinHee', 'F0:24:75:D0:AF:C2'}
+	for ip = 1, #ping do
+		if ping[ip][4] == 'nil' then
+			bt_success=false
+			ping_success=os.execute('ping -c 1 -w 1 '..ping[ip][1])
+		else
+			f = assert (io.popen ("hcitool names "..ping[ip][4]))
+			bt = f:read()
+		if bt==nil then
+			bt_success=false
+		else
+			bt_success=true
+		end
+		f:close()
+		end
+		if ping_success or bt_success then
+			print(prefix.."ping success "..ping[ip][2])
+			commandArray[presencewitchname] = 'On'
+			if (otherdevices[ping[ip][2]]=='Off') then
+				commandArray[ping[ip][2]]='On'
+			end
+		else
+			print(prefix.."ping fail "..ping[ip][2])
+			commandArray['ALARM'] = 'On'
+		end
+	end
 end
 
 return commandArray
