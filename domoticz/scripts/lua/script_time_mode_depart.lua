@@ -50,6 +50,12 @@ for i, v in pairs(otherdevices) do
 				end
 				if ping_success or bt_success then
 					print(prefix.."ping success "..ping[ip][2])
+					if (otherdevices['ALARM'] == 'On') then
+						commandArray['ALARM'] = 'Off'
+					end
+					if (presenceswitch == 'Off') then
+						commandArray[presenceswitchname] = 'On'
+					end
 					if (otherdevices[ping[ip][2]]=='Off') then
 						commandArray[ping[ip][2]]='On'
 					end
@@ -67,9 +73,17 @@ for i, v in pairs(otherdevices) do
 					end
 				end
 			end
+			if (erik == 'On' or jinhee == 'On') then
+				print ("Phones still present")
+					if (presenceswitch == 'Off') then
+						commandArray[presenceswitchname] = 'On'
+					end
+			end
 			if (erik == 'Off' and jinhee == 'Off') then
-				print ("Departing")
-				commandArray[presenceswitchname]='Off'
+				print ("Phones departed")
+					if (presenceswitch == 'On') then
+						commandArray[presenceswitchname] = 'Off'
+					end
 			end
 		end
 	end
