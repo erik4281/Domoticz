@@ -1,7 +1,5 @@
 commandArray={}
 
-debug=true
-
 prefix="(PING) "
 
 local ping={}
@@ -26,9 +24,7 @@ for ip = 1, #ping do
     f:close()
   end
   if ping_success or bt_success then
-    if (debug==true) then
-      print(prefix.."ping success "..ping[ip][2])
-    end
+    print(prefix.."ping success "..ping[ip][2])
     if (otherdevices[ping[ip][2]]=='Off') then
       commandArray[ping[ip][2]]='On'
     end
@@ -36,9 +32,7 @@ for ip = 1, #ping do
       commandArray['Variable:'..ping[ip][3]]= tostring(1)
     end
   else
-    if (debug==true) then
-      print(prefix.."ping fail "..ping[ip][2])
-    end
+    print(prefix.."ping fail "..ping[ip][2])
     if (otherdevices[ping[ip][2]]=='On') then
       if (uservariables[ping[ip][3]])==ping[ip][5] then
         commandArray[ping[ip][2]]='Off'
