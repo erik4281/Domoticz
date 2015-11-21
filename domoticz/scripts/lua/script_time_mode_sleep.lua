@@ -23,7 +23,7 @@ for i, v in pairs(otherdevices) do
 	tc = tostring(i)
 	v = i:sub(1,6)
 	c = i:sub(7)
-	if (v == 'Motion' and (c == 'Living' or c == 'Dining ' or c == 'Kitchen') and (timenumber >= sleepstart or timenumber < sleepstop)) then
+	if (otherdevices['People'] == 'On' and v == 'Motion' and (c == 'Living' or c == 'Dining ' or c == 'Kitchen') and (timenumber >= sleepstart or timenumber < sleepstop)) then
 		c = 'Living'
 		d = 'Dining'
 		e = 'Kitchen'
