@@ -11,7 +11,6 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On' and sleepswitch ==
 	wakestop = 1200
 	if (timenumber >= wakestart and timenumber < wakestop) then
 		c = s:sub(7)
-		scriptfolder = "/home/pi/domoticz/scripts/bash/"
 		if (c == 'Living' or c == 'Dining' or c == 'Kitchen') then
 			print ("Waking up")
 			commandArray[sleepswitchname] = 'Off'
