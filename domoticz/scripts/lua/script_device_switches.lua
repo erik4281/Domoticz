@@ -1,6 +1,5 @@
 commandArray = {}
 
-t0 = os.time()
 t = next(devicechanged)
 s = tostring(t)
 
