@@ -4,9 +4,9 @@ t = next(devicechanged)
 s = tostring(t)
 c = s:sub(7)
 presenceswitch = otherdevices['People']
-presencewitchname = 'People'
+presenceswitchname = 'People'
 
-if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and devicechanged[t] == 'On' and presenceswitch == 'Off') then
+if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and devicechanged[t] == 'On') then
 	print ("Arriving")
 	os.execute ('/home/pi/domoticz/scripts/bash/Hallway/1.sh')
 	prefix="(PING) "
@@ -22,16 +22,18 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and devicechanged[t] == 'On' and
 		else
 			f = assert (io.popen ("hcitool names "..ping[ip][4]))
 			bt = f:read()
-		if bt==nil then
-			bt_success=false
-		else
-			bt_success=true
-		end
-		f:close()
+			if bt==nil then
+				bt_success=false
+			else
+				bt_success=true
+			end
+			f:close()
 		end
 		if ping_success or bt_success then
 			print(prefix.."ping success "..ping[ip][2])
-			commandArray[presencewitchname] = 'On'
+			if (presenceswitch == 'Off') then
+				commandArray[presenceswitchname] = 'On'
+			end
 			if (otherdevices[ping[ip][2]]=='Off') then
 				commandArray[ping[ip][2]]='On'
 			end
