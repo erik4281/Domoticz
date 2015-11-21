@@ -21,10 +21,7 @@ if (s:sub(1,6) == 'Motion') then
 		l = 'LivingExtra'
 	elseif (c == 'Kitchen') then
 		c = 'Kitchen'
-		d = 'Living'
-		e = 'Dining'
-		l = 'LivingExtra'
-		m = 'KitchenExtra'
+		l = 'KitchenExtra'
 	elseif (c == 'FrontDoor') then
 		c = 'Hallway'
 		d = 'FrontDoor'
