@@ -106,4 +106,11 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'Off') then
 	end
 end
 
+if (s:sub(1,6) == 'Tamper' and otherdevices['People'] == 'Off') then
+	c = s:sub(7)
+	if (otherdevices['ALARM'] == 'Off') then
+		commandArray['ALARM'] = 'On'
+	end
+end
+
 return commandArray
