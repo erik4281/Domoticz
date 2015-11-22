@@ -55,9 +55,11 @@ for i, v in pairs(otherdevices) do
 					end
 					if (presenceswitch == 'Off') then
 						commandArray[presenceswitchname] = 'On'
+						commandArray['SendNotification']='Presence#Home mode activated!#0#default'
 					end
 					if (otherdevices[ping[ip][2]]=='Off') then
 						commandArray[ping[ip][2]]='On'
+						commandArray['SendNotification']='Presence#'..ping[ip][2]..' arrived at home!#0#default'
 					end
 					if (uservariables[ping[ip][3]]) ~= 1 then
 						commandArray['Variable:'..ping[ip][3]]= tostring(1)
@@ -67,6 +69,7 @@ for i, v in pairs(otherdevices) do
 					if (otherdevices[ping[ip][2]]=='On') then
 						if (uservariables[ping[ip][3]])==ping[ip][5] then
 							commandArray[ping[ip][2]]='Off'
+							commandArray['SendNotification']='Presence#'..ping[ip][2]..' departed!#0#default'
 						else
 							commandArray['Variable:'..ping[ip][3]]= tostring((uservariables[ping[ip][3]]) + 1)
 						end
@@ -77,12 +80,14 @@ for i, v in pairs(otherdevices) do
 				print ("Phones still present")
 					if (presenceswitch == 'Off') then
 						commandArray[presenceswitchname] = 'On'
+						commandArray['SendNotification']='Presence#Home mode activated!#0#default'
 					end
 			end
 			if (erik == 'Off' and jinhee == 'Off') then
 				print ("Phones departed")
 					if (presenceswitch == 'On') then
 						commandArray[presenceswitchname] = 'Off'
+						commandArray['SendNotification']='Presence#Home mode deactivated!#0#default'
 					end
 			end
 		end
