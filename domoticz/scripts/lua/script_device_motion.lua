@@ -5,7 +5,6 @@ s = tostring(t)
 
 --if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 if (s:sub(1,6) == 'Motion') then
-	commandArray['SendNotification']='subject#body#0#sound#device-name'
 	c = s:sub(7)
 	d = nil
 	e = nil
