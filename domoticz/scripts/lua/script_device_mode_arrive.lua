@@ -48,6 +48,7 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and devicechanged[t] == 'On') th
 			print(prefix.."ping fail "..ping[ip][2])
 			if (otherdevices['ALARM'] == 'Off') then
 				commandArray['ALARM'] = 'On'
+				commandArray['SendNotification']='ALARM#Door opened, but no phone detected!#2#default'
 			end
 		end
 	end
