@@ -41,7 +41,7 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and devicechanged[t] == 'On') th
 			end
 			if (otherdevices[ping[ip][2]]=='Off') then
 				commandArray[ping[ip][2]]='On'
-				commandArray['SendNotification']='Presence#'..ping[ip][2]..' arrived at home!#0#default'
+				--commandArray['SendNotification']='Presence#'..ping[ip][2]..' arrived at home!#0#default'
 			end
 			if (uservariables[ping[ip][3]]) ~= 1 then
 				commandArray['Variable:'..ping[ip][3]]= tostring(1)
