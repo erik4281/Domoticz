@@ -4,9 +4,9 @@ t = next(devicechanged)
 s = tostring(t)
 
 if (s:sub(1,6) == 'Switch') then
-	commandArray['SendNotification']='Switch#Switch switched!#1#default#iPadErik'
 	c = s:sub(7)
 	t = 'Switch'..c
+	commandArray['SendNotification']='Switch#'..c..' switched!#1#default#iPadErik'
 	scriptfolder = "/home/pi/domoticz/scripts/bash/"
 	if (otherdevices[t] == 'On') then
 		timenumber = tonumber(os.date("%H")..os.date("%M"))
