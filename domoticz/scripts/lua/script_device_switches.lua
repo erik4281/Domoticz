@@ -4,6 +4,7 @@ t = next(devicechanged)
 s = tostring(t)
 
 if (s:sub(1,6) == 'Switch') then
+	commandArray['SendNotification']='Switch#Switch switched!#1#default#iPadErik'
 	c = s:sub(7)
 	t = 'Switch'..c
 	scriptfolder = "/home/pi/domoticz/scripts/bash/"
