@@ -3,8 +3,7 @@ commandArray = {}
 t = next(devicechanged)
 s = tostring(t)
 
---if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
-if (s:sub(1,6) == 'Motion') then
+if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	c = s:sub(7)
 	d = nil
 	e = nil
