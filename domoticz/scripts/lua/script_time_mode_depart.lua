@@ -23,7 +23,8 @@ for i, v in pairs(otherdevices) do
 	tc = tostring(i)
 	v = i:sub(1,6)
 	c = i:sub(7)
-	if (tc == 'MotionFrontDoor') then
+	--if (tc == 'MotionFrontDoor') then
+	if (tc == 'MotionFrontDoor' or tc == 'TestFrontDoor') then
 		timeon = uservariables['DepartTimer']
 		difference = timedifference(otherdevices_lastupdate[tc])
 		timewait = (timeon * 60) + 120
@@ -78,17 +79,17 @@ for i, v in pairs(otherdevices) do
 			end
 			if (erik == 'On' or jinhee == 'On') then
 				print ("Phones still present")
-					if (presenceswitch == 'Off') then
-						commandArray[presenceswitchname] = 'On'
-						commandArray['SendNotification']='Presence#Home mode activated!#0#default'
-					end
+				if (presenceswitch == 'Off') then
+					commandArray[presenceswitchname] = 'On'
+					commandArray['SendNotification']='Presence#Home mode activated!#0#default'
+				end
 			end
 			if (erik == 'Off' and jinhee == 'Off') then
 				print ("Phones departed")
-					if (presenceswitch == 'On') then
-						commandArray[presenceswitchname] = 'Off'
-						commandArray['SendNotification']='Presence#Home mode deactivated!#0#default'
-					end
+				if (presenceswitch == 'On') then
+					commandArray[presenceswitchname] = 'Off'
+					commandArray['SendNotification']='Presence#Home mode deactivated!#0#default'
+				end
 			end
 		end
 	end
