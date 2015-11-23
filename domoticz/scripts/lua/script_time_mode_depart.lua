@@ -21,8 +21,7 @@ for i, v in pairs(otherdevices) do
 	tc = tostring(i)
 	v = i:sub(1,6)
 	c = i:sub(7)
-	--if (tc == 'MotionFrontDoor') then
-	if (tc == 'MotionFrontDoor' or tc == 'TestFrontDoor') then
+	if (tc == 'MotionFrontDoor') then
 		timeon = uservariables['DepartTimer']
 		difference = timedifference(otherdevices_lastupdate[tc])
 		timewait = (timeon * 60) + 120
