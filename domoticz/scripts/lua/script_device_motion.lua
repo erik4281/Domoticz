@@ -49,7 +49,7 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	if (e) then
 		v = 'Motion'..e
 	end
-	if (otherdevices[t] == 'On' or otherdevices[u] == 'On' or otherdevices[v] == 'On') then
+	if (otherdevices[t] == 'On' or otherdevices[u] == 'On' or otherdevices[v] == 'On' or otherdevices[t] == 'Open' or otherdevices[u] == 'Open' or otherdevices[v] == 'Open') then
 		if (cbr < cbrt) then
 			if (otherdevices['Switch'..c] == 'Off') then
 				print (s..' saw motion. Now triggering switch Switch'..c)
