@@ -28,7 +28,7 @@ for i, v in pairs(otherdevices) do
 		timeon = uservariables['DepartTimer']
 		difference = timedifference(otherdevices_lastupdate[tc])
 		timewait = (timeon * 60) + 120
-		print (tc..' - '..presenceswitch..' - '..door)
+		print (tc..' - '..presenceswitch..' - '..door..' - '..difference..' - '..timewait)
 		if (presenceswitch == "On" and door == 'Off' and difference < (timewait + 60)) then
 			prefix="(PING) "
 			local ping={}
