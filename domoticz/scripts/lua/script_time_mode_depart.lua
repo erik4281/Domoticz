@@ -25,10 +25,10 @@ for i, v in pairs(otherdevices) do
 	c = i:sub(7)
 	--if (tc == 'MotionFrontDoor') then
 	if (tc == 'MotionFrontDoor' or tc == 'TestFrontDoor') then
-		print (tc)
 		timeon = uservariables['DepartTimer']
 		difference = timedifference(otherdevices_lastupdate[tc])
 		timewait = (timeon * 60) + 120
+		print (tc..' - '..presenceswitch..' - '..door)
 		if (presenceswitch == "On" and door == 'Off' and difference < (timewait + 60)) then
 			prefix="(PING) "
 			local ping={}
