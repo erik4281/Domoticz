@@ -54,14 +54,14 @@ for i, v in pairs(otherdevices) do
 		t = 'Motion'..c
 		ctimeon = uservariables['WaitOff'..c]
 		cdifference = timedifference(otherdevices_lastupdate[t])
-		if (otherdevices[t] == 'On') then
+		if (otherdevices[t] == 'On' or otherdevices[t] == 'Open') then
 			motioncheck = 'On'
 		end
 		if (d) then
 			u = 'Motion'..d
 			dtimeon = uservariables['WaitOff'..d]
 			ddifference = timedifference(otherdevices_lastupdate[u])
-			if (otherdevices[u] == 'On') then
+			if (otherdevices[u] == 'On' or otherdevices[u] == 'Open') then
 				motioncheck = 'On'
 			end
 		end
@@ -69,7 +69,7 @@ for i, v in pairs(otherdevices) do
 			v = 'Motion'..e
 			etimeon = uservariables['WaitOff'..e]
 			edifference = timedifference(otherdevices_lastupdate[v])
-			if (otherdevices[v] == 'On') then
+			if (otherdevices[v] == 'On' or otherdevices[v] == 'Open') then
 				motioncheck = 'On'
 			end
 		end
@@ -77,7 +77,7 @@ for i, v in pairs(otherdevices) do
 			w = 'Motion'..f
 			ftimeon = uservariables['WaitOff'..f]
 			fdifference = timedifference(otherdevices_lastupdate['Motion'..f])
-			if (otherdevices[w] == 'On') then
+			if (otherdevices[w] == 'On' or otherdevices[w] == 'Open') then
 				motioncheck = 'On'
 			end
 		end
