@@ -16,8 +16,6 @@ commandArray = {}
 door = otherdevices['MotionFrontDoor']
 presenceswitch = otherdevices['People']
 presenceswitchname = 'People'
-erik = otherdevices['iPhoneErik']
-jinhee = otherdevices['iPhoneJinHee']
 
 for i, v in pairs(otherdevices) do
 	tc = tostring(i)
@@ -77,14 +75,14 @@ for i, v in pairs(otherdevices) do
 					end
 				end
 			end
-			if (erik == 'On' or jinhee == 'On') then
+			if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
 				print ("Phones still present")
 				if (presenceswitch == 'Off') then
 					commandArray[presenceswitchname] = 'On'
 					commandArray['SendNotification']='Presence#Home mode activated!#0#default'
 				end
 			end
-			if (erik == 'Off' and jinhee == 'Off') then
+			if (otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') then
 				print ("Phones departed")
 				if (presenceswitch == 'On') then
 					commandArray[presenceswitchname] = 'Off'
