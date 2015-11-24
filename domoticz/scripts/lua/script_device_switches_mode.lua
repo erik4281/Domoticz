@@ -27,12 +27,12 @@ if (dc == 'SleepMode' or dc == 'People') then
 				end
 			elseif (dc == 'People' and otherdevices[dc] == 'On') then
 				if (otherdevices['NestAway'] == 'On') then
-					print ('Presence triggered home: Nest switched to home)
+					print ('Presence triggered home: Nest switched to home')
 					commandArray['NestAway'] = 'Off'
 				end
 			elseif (dc == 'People' and otherdevices[dc] == 'Off') then
 				if (otherdevices['NestAway'] == 'Off') then
-					print ('Presence triggered away: Nest switched to away)
+					print ('Presence triggered away: Nest switched to away')
 					commandArray['NestAway'] = 'On'
 				end
 				scene = 'Off.sh'
