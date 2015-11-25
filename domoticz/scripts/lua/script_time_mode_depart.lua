@@ -53,7 +53,6 @@ for i, v in pairs(otherdevices) do
 					end
 					if (presenceswitch == 'Off') then
 						commandArray[presenceswitchname] = 'On'
-						commandArray['SendNotification']='Presence#Home mode activated!#0#default'
 					end
 					if (otherdevices[ping[ip][2]]=='Off') then
 						commandArray[ping[ip][2]]='On'
@@ -76,14 +75,12 @@ for i, v in pairs(otherdevices) do
 				print ("Phones still present")
 				if (presenceswitch == 'Off') then
 					commandArray[presenceswitchname] = 'On'
-					commandArray['SendNotification']='Presence#Home mode activated!#0#default'
 				end
 			end
 			if (otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') then
 				print ("Phones departed")
 				if (presenceswitch == 'On') then
 					commandArray[presenceswitchname] = 'Off'
-					commandArray['SendNotification']='Presence#Home mode deactivated!#0#default'
 				end
 			end
 		end
