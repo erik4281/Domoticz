@@ -37,9 +37,9 @@ if (dc == 'SleepMode' or dc == 'People') then
 					commandArray['NestAway'] = 'On'
 				end
 				commandArray['SendNotification']='Presence#AWAY mode activated!#0#default'
-				scene = 'Off.sh'
-				print ('Presence triggered away: '..scriptfolder..c..'/'..scene)
-				os.execute (scriptfolder..c..'/'..scene)
+				if (otherdevices[t] == 'On') then
+					commandArray[t] = 'Off'
+				end
 			end
 		end
 	end
