@@ -96,22 +96,17 @@ if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On') then
 	end
 end
 
-if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'Off') then
-	c = s:sub(7)
-	if (c == 'FrontDoor') then
-	else
-		if (otherdevices['ALARM'] == 'Off') then
-			commandArray['ALARM'] = 'On'
-			--commandArray['SendNotification']='ALARM#Motion detected at '..c..'!#2#default'
-		end
-	end
-end
-
-if (s:sub(1,6) == 'Tamper' and otherdevices['People'] == 'Off') then
+if (s:sub(1,6) == 'Motion' and otherdevices[t] == 'On' and otherdevices['People'] == 'Off') then
 	c = s:sub(7)
 	if (otherdevices['ALARM'] == 'Off') then
 		commandArray['ALARM'] = 'On'
-		--commandArray['SendNotification']='ALARM#Motion detected at '..c..'!#2#default'
+	end
+end
+
+if (s:sub(1,6) == 'Tamper' and otherdevices[t] == 'On' and otherdevices['People'] == 'Off') then
+	c = s:sub(7)
+	if (otherdevices['ALARM'] == 'Off') then
+		commandArray['ALARM'] = 'On'
 	end
 end
 
