@@ -37,7 +37,6 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and (devicechanged[t] == 'On' or
 			end
 			if (presenceswitch == 'Off') then
 				commandArray[presenceswitchname] = 'On'
-				commandArray['SendNotification']='Presence#Home mode activated!#0#default'
 			end
 			if (otherdevices[ping[ip][2]]=='Off') then
 				commandArray[ping[ip][2]]='On'
