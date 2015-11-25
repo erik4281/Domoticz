@@ -46,7 +46,7 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and (devicechanged[t] == 'On' or
 			end
 		else
 			print(prefix.."ping fail "..ping[ip][2])
-			if (otherdevices['ALARM'] == 'Off') then
+			if (presenceswitch == 'Off' and otherdevices['ALARM'] == 'Off') then
 				commandArray['ALARM'] = 'On'
 			end
 		end
