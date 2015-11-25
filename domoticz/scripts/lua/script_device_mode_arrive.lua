@@ -41,7 +41,6 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and (devicechanged[t] == 'On' or
 			end
 			if (otherdevices[ping[ip][2]]=='Off') then
 				commandArray[ping[ip][2]]='On'
-				--commandArray['SendNotification']='Presence#'..ping[ip][2]..' arrived at home!#0#default'
 			end
 			if (uservariables[ping[ip][3]]) ~= 1 then
 				commandArray['Variable:'..ping[ip][3]]= tostring(1)
@@ -50,7 +49,6 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and (devicechanged[t] == 'On' or
 			print(prefix.."ping fail "..ping[ip][2])
 			if (otherdevices['ALARM'] == 'Off') then
 				commandArray['ALARM'] = 'On'
-				--commandArray['SendNotification']='ALARM#Door opened, but no phone detected!#2#default'
 			end
 		end
 	end
