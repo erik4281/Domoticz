@@ -43,4 +43,20 @@ if (dc == 'SleepMode' or dc == 'People') then
 	end
 end
 
+if (dc == 'ALARM') then
+	for i, v in pairs(otherdevices) do
+		tc = tostring(i)
+		v = i:sub(1,6)
+		if (v == 'Motion' and otherdevices[tc] == 'On') then
+			commandArray['SendNotification']='ALARM#ALARM: '..tc..' is ON, but nobody is home!#2#default'
+		end
+		if (v == 'Motion' and otherdevices[tc] == 'Open') then
+			commandArray['SendNotification']='ALARM#ALARM: '..tc..' is OPEN, but nobody is home!#2#default'
+		end
+		if (v == 'Tamper' and otherdevices[tc] == 'On') then
+			commandArray['SendNotification']='ALARM#ALARM: '..tc..' is ON, but nobody is home!#2#default'
+		end
+	end
+end
+
 return commandArray
