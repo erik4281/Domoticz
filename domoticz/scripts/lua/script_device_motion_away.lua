@@ -6,9 +6,10 @@ c = s:sub(7)
 presenceswitch = otherdevices['People']
 presenceswitchname = 'People'
 
-if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and (devicechanged[t] == 'On' or devicechanged[t] == 'Open')) then
-	print ("Door opening, checking presence of phones")
-	os.execute ('/home/pi/domoticz/scripts/bash/Hallway/1.sh')
+if (s:sub(1,6) == 'Motion' and presenceswitch == 'Off' and (devicechanged[t] == 'On' or devicechanged[t] == 'Open')) then
+	if (c == 'FrontDoor') then
+		commandArray['SwitchHallway'] = 'On'
+	end
 	prefix="(PING) "
 	local ping={}
 	local ping_success
@@ -46,7 +47,7 @@ if (s:sub(1,6) == 'Motion' and c == 'FrontDoor' and (devicechanged[t] == 'On' or
 			end
 		else
 			print(prefix.."ping fail "..ping[ip][2])
-			if (presenceswitch == 'Off' and otherdevices['ALARM'] == 'Off') then
+			if (otherdevices['ALARM'] == 'Off') then
 				commandArray['ALARM'] = 'On'
 			end
 		end
