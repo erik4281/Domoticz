@@ -3,7 +3,7 @@ commandArray = {}
 dc = next(devicechanged)
 s = tostring(t)
 
-if (dc == 'SleepMode' or dc == 'People') then
+if (dc == 'SleepMode' or dc == 'People' or dc == 'ALARM') then
 	for i, v in pairs(otherdevices) do
 		tc = tostring(i)
 		v = i:sub(1,6)
@@ -25,7 +25,8 @@ if (dc == 'SleepMode' or dc == 'People') then
 					print ('SleepMode triggered wake: '..scriptfolder..c..'/'..scene)
 					os.execute (scriptfolder..c..'/'..scene)
 				end
-			elseif (dc == 'People' and otherdevices[dc] == 'On') then
+			end
+			if (dc == 'People' and otherdevices[dc] == 'On') then
 				if (otherdevices['NestAway'] == 'On') then
 					print ('Presence triggered home: Nest switched to home')
 					commandArray['NestAway'] = 'Off'
@@ -42,21 +43,16 @@ if (dc == 'SleepMode' or dc == 'People') then
 				end
 			end
 		end
-	end
-end
-
-if (dc == 'ALARM') then
-	for i, v in pairs(otherdevices) do
-		tc = tostring(i)
-		v = i:sub(1,6)
-		if (v == 'Motion' and otherdevices[tc] == 'On') then
-			commandArray['SendNotification']='ALARM#ALARM: '..tc..' is ON, but nobody is home!#2#default'
-		end
-		if (v == 'Motion' and otherdevices[tc] == 'Open') then
-			commandArray['SendNotification']='ALARM#ALARM: '..tc..' is OPEN, but nobody is home!#2#default'
-		end
-		if (v == 'Tamper' and otherdevices[tc] == 'On') then
-			commandArray['SendNotification']='ALARM#ALARM: '..tc..' is ON, but nobody is home!#2#default'
+		if (dc == 'ALARM' and otherdevices[dc] == 'On') then
+			if (v == 'Motion' and otherdevices[tc] == 'On') then
+				commandArray['SendNotification']='ALARM#ALARM: '..tc..' is ON, but nobody is home!#2#default'
+			end
+			if (v == 'Motion' and otherdevices[tc] == 'Open') then
+				commandArray['SendNotification']='ALARM#ALARM: '..tc..' is OPEN, but nobody is home!#2#default'
+			end
+			if (v == 'Tamper' and otherdevices[tc] == 'On') then
+				commandArray['SendNotification']='ALARM#ALARM: '..tc..' is ON, but nobody is home!#2#default'
+			end
 		end
 	end
 end
