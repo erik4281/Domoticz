@@ -43,7 +43,7 @@ if (dc == 'SleepMode' or dc == 'People' or dc == 'ALARM') then
 				end
 			end
 		end
-		if (dc == 'ALARM' and otherdevices[dc] == 'On') then
+		if (dc == 'ALARM' and otherdevices[dc] == 'On' and otherdevices['People'] == 'Off') then
 			if (v == 'Motion' and otherdevices[tc] == 'On') then
 				commandArray['SendNotification']='ALARM#ALARM: '..tc..' is ON, but nobody is home!#2#default'
 			end
