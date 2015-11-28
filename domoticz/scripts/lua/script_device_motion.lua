@@ -97,4 +97,14 @@ if (s:sub(1,6) == 'Motion' and presenceswitch == 'On') then
 	end
 end
 
+if (s:sub(1,6) == 'Tamper' and presenceswitch == 'On' and devicechanged[t] == 'On') then
+	if (otherdevices['ALARM'] == 'Off') then
+		commandArray['ALARM'] = 'On'
+	end
+elseif (s:sub(1,6) == 'Tamper' and presenceswitch == 'On' and devicechanged[t] == 'Off') then
+	if (otherdevices['ALARM'] == 'On') then
+		commandArray['ALARM'] = 'Off'
+	end
+end
+
 return commandArray
