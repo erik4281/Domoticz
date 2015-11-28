@@ -11,14 +11,6 @@
                      "name": "Nest",
                      "username" : "jinheeanderik@gmail.com",
                      "password" : "Tilburg5042!"
-              },
-              {
-                     "platform": "HarmonyHub",
-                     "name": "Woonkamer"
-              },
-              {
-                     "platform": "HarmonyHub",
-                     "name": "Slaapkamer"
               }
        ]
 }
