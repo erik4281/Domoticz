@@ -56,12 +56,11 @@ if (dc == 'SleepMode' or dc == 'People' or dc == 'ALARM') then
 		end
 		if (dc == 'ALARM' and otherdevices[dc] == 'On') then
 			commandArray['UpdateDevice']='41|0|24'
-			print (otherdevices_svalues['Room Setpoint'])
 		elseif (dc == 'ALARM' and otherdevices[dc] == 'Off') then
 			commandArray['UpdateDevice']='41|0|21'
-			print (otherdevices_svalues['Room Setpoint'])
 		end
 	end
+	print (otherdevices_svalues['Room Setpoint'])
 end
 
 return commandArray
