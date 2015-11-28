@@ -54,17 +54,7 @@ if (dc == 'SleepMode' or dc == 'People' or dc == 'ALARM') then
 				commandArray['SendNotification']='ALARM#ALARM: '..tc..' is ON, but nobody is home!#2#default'
 			end
 		end
-		if (dc == 'ALARM' and otherdevices[dc] == 'On') then
-			if (otherdevices_svalues['Room Setpoint'] < '22') then
-				commandArray['UpdateDevice']='41|0|24'
-			end
-		elseif (dc == 'ALARM' and otherdevices[dc] == 'Off') then
-			if (otherdevices_svalues['Room Setpoint'] < '22') then
-				commandArray['UpdateDevice']='41|0|21'
-			end
-		end
 	end
-	print (otherdevices_svalues['Room Setpoint'])
 end
 
 return commandArray
