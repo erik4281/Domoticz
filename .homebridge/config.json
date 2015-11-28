@@ -20,22 +20,5 @@
                      "platform": "HarmonyHub",
                      "name": "Slaapkamer"
               }
-       ],
-       "accessories": [
-              {
-                     "accessory": "Speakers Woonkamer",
-                     "name": "Woonkamer",
-                     "room": "Woonkamer"
-              },
-              {
-                     "accessory": "Speakers Keuken",
-                     "name": "Keuken",
-                     "room": "Keuken"
-              },
-              {
-                     "accessory": "Speakers Badkamer",
-                     "name": "Badkamer",
-                     "room": "Badkamer"
-              }
        ]
 }
