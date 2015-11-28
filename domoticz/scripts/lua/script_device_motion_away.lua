@@ -6,7 +6,7 @@ c = s:sub(7)
 presenceswitch = otherdevices['People']
 presenceswitchname = 'People'
 
-if (s:sub(1,6) == 'Motion' and presenceswitch == 'Off' and (devicechanged[t] == 'On' or devicechanged[t] == 'Open')) then
+if ((s:sub(1,6) == 'Motion' or s:sub(1,6) == 'Tamper') and presenceswitch == 'Off' and (devicechanged[t] == 'On' or devicechanged[t] == 'Open')) then
 	if (c == 'FrontDoor') then
 		commandArray['SwitchHallway'] = 'On'
 	end
