@@ -6,5 +6,11 @@
                      "ip_address": "10.0.1.102",
                      "username": "erikvennink"
               }   
+              {
+                     "platform": "Nest",
+                     "name": "Nest",
+                     "username" : "jinheeanderik@gmail.com",
+                     "password" : "Tilburg5042!"
+              }
        ]
 }
