@@ -1,27 +1,27 @@
 {
-"platforms": [
-       {
-         "platform": "PhilipsHue",
-         "name": "Philips Hue",
-         "ip_address": "10.0.1.102",
-         "username": "erikvennink"
-       }   
-   ]
-  "accessories": [
-    {
-      "accessory": "Speakers Woonkamer",
-      "name": "Woonkamer",
-      "room": "Woonkamer"
-    }
-    {
-      "accessory": "Speakers Keuken",
-      "name": "Keuken",
-      "room": "Keuken"
-    }
-    {
-      "accessory": "Speakers Badkamer",
-      "name": "Badkamer",
-      "room": "Badkamer"
-    }
-  ]
+       "platforms": [
+              {
+                     "platform": "PhilipsHue",
+                     "name": "Philips Hue",
+                     "ip_address": "10.0.1.102",
+                     "username": "erikvennink"
+              }   
+       ]
+       "accessories": [
+              {
+                     "accessory": "Speakers Woonkamer",
+                     "name": "Woonkamer",
+                     "room": "Woonkamer"
+              }
+              {
+                     "accessory": "Speakers Keuken",
+                     "name": "Keuken",
+                     "room": "Keuken"
+              }
+              {
+                     "accessory": "Speakers Badkamer",
+                     "name": "Badkamer",
+                     "room": "Badkamer"
+              }
+       ]
 }
