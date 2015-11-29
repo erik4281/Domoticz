@@ -11,23 +11,16 @@
                      "name": "Nest",
                      "username" : "jinheeanderik@gmail.com",
                      "password" : "Tilburg5042!"
-              }
-       ],
-       "accessories": [
+              },
               {
-                     "accessory": "Speakers Woonkamer",
+                     "platform": "HarmonyHub",
                      "name": "Woonkamer",
-                     "room": "Woonkamer"
+                     "ip_address": "10.0.1.107"
               },
               {
-                     "accessory": "Speakers Keuken",
-                     "name": "Keuken",
-                     "room": "Keuken"
-              },
-              {
-                     "accessory": "Speakers Badkamer",
-                     "name": "Badkamer",
-                     "room": "Badkamer"
+                     "platform": "HarmonyHub",
+                     "name": "Slaapkamer",
+                     "ip_address": "10.0.1.108"
               }
        ]
 }
