@@ -26,7 +26,7 @@ for ip = 1, #ping do
 		if (debug==true) then
 			print(prefix.."ping success "..ping[ip][2])
 		end
-		print(ping[ip][2]..otherdevices[ping[ip][2]])
+		print(otherdevices[ping[ip][2]])
 		if (otherdevices[ping[ip][2]]=='Off') then
 			commandArray[ping[ip][2]]='On'
 		end
