@@ -1,6 +1,6 @@
 commandArray={}
 
-debug=true
+debug=false
 
 prefix="(TIMED PING) "
 --timeon = uservariables['DepartTimer']
@@ -23,27 +23,26 @@ ping[9]={'10.0.1.110', 'Printer', 'Printer', timeon}
 for ip = 1, #ping do
 	ping_success=os.execute('ping -c 1 -w 1 '..ping[ip][1])
 	if ping_success then
-		--if (debug==true) then
+		if (debug==true) then
 			print(prefix.."ping success "..ping[ip][2])
-		--end
-		--print(otherdevices[ping[ip][2]])
-		--if (otherdevices[ping[ip][2]]=='Off') then
+		end
+		if (otherdevices[ping[ip][2]]=='Off') then
 			commandArray[ping[ip][2]]='On'
-		--end
-		--if (uservariables[ping[ip][3]]) ~= 1 then
+		end
+		if (uservariables[ping[ip][3]]) ~= 1 then
 			commandArray['Variable:'..ping[ip][3]]= tostring(1)
-		--end
+		end
 	else
-		--if (debug==true) then
+		if (debug==true) then
 			print(prefix.."ping fail "..ping[ip][2])
-		--end
-		--if (otherdevices[ping[ip][2]]=='On') then
+		end
+		if (otherdevices[ping[ip][2]]=='On') then
 			if (uservariables[ping[ip][3]])==ping[ip][4] then
 				commandArray[ping[ip][2]]='Off'
 			else
 				commandArray['Variable:'..ping[ip][3]]= tostring((uservariables[ping[ip][3]]) + 1)
 			end
-		--end
+		end
 	end
 end
 
