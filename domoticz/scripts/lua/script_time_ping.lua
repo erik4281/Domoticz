@@ -2,7 +2,7 @@ commandArray={}
 
 debug=true
 
-prefix="(PING) "
+prefix="(TIMED PING) "
 --timeon = uservariables['DepartTimer']
 timeon = 5
 
