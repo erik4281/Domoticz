@@ -27,8 +27,8 @@ for ip = 1, #ping do
 			print(prefix.."ping success "..ping[ip][2])
 		end
 		if (otherdevices[ping[ip][2]]=='Off') then
-			print(ping[ip][2]..otherdevices[ping[ip][2]])
 			commandArray[ping[ip][2]]='On'
+			print(ping[ip][2]..otherdevices[ping[ip][2]])
 		end
 		if (uservariables[ping[ip][3]]) ~= 1 then
 			commandArray['Variable:'..ping[ip][3]]= tostring(1)
