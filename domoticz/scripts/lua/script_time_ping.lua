@@ -4,7 +4,7 @@ debug=true
 
 prefix="(PING) "
 --timeon = uservariables['DepartTimer']
-timeon = 2
+timeon = 5
 
 local ping={}
 local ping_success
