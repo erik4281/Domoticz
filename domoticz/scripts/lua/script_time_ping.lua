@@ -5,9 +5,8 @@ presence = otherdevices['People']
 if (presence == 'On') then
 	
 	prefix="(TIMED PING) "
-	--timeon = uservariables['DepartTimer']
-	timeon = 2
-	
+	timeon = uservariables['DeviceTimer']
+
 	local ping={}
 	local ping_success
 	local bt_success
