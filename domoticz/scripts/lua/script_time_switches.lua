@@ -105,7 +105,7 @@ for i, v in pairs(otherdevices) do
 				os.execute (scriptfolder..sc..'/'..scene)
 				execute = 0
 			end
-		elseif (otherdevices[t] == 'Off') then
+		elseif (otherdevices[ts] == 'Off') then
 			difference = timedifference(otherdevices_lastupdate[ts])
 			if (difference >= 1 and difference < 61) then
 				scene = 'Off'
