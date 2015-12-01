@@ -1,13 +1,13 @@
 commandArray = {}
 
-t = next(devicechanged)
-s = tostring(t)
-c = s:sub(7)
-presenceswitch = otherdevices['People']
-presenceswitchname = 'People'
+dc = next(devicechanged)
+ts = tostring(t)
+presence = otherdevices['People']
+switchpresence = 'People'
 
-if ((s:sub(1,6) == 'Motion' or s:sub(1,6) == 'Tamper') and presenceswitch == 'Off' and (devicechanged[t] == 'On' or devicechanged[t] == 'Open')) then
-	if (c == 'FrontDoor') then
+if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
+	sc = ts:sub(7)
+	if (sc == 'FrontDoor') then
 		commandArray['SwitchHallway'] = 'On'
 	end
 	prefix="(PING) "
@@ -37,7 +37,7 @@ if ((s:sub(1,6) == 'Motion' or s:sub(1,6) == 'Tamper') and presenceswitch == 'Of
 				commandArray['ALARM'] = 'Off'
 			end
 			if (presenceswitch == 'Off') then
-				commandArray[presenceswitchname] = 'On'
+				commandArray[switchpresence] = 'On'
 			end
 			if (otherdevices[ping[ip][2]]=='Off') then
 				commandArray[ping[ip][2]]='On'
