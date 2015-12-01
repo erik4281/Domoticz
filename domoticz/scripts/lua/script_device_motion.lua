@@ -101,7 +101,7 @@ if (ts:sub(1,6) == 'Tamper' and presence == 'On' and devicechanged[dc] == 'On') 
 	if (otherdevices['ALARM'] == 'Off') then
 		commandArray['ALARM'] = 'On'
 	end
-elseif (ts:sub(1,6) == 'Tamper' and presenceswitch == 'On' and devicechanged[dc] == 'Off') then
+elseif (ts:sub(1,6) == 'Tamper' and presence == 'On' and devicechanged[dc] == 'Off') then
 	if (otherdevices['ALARM'] == 'On') then
 		commandArray['ALARM'] = 'Off'
 	end
