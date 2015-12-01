@@ -1,41 +1,41 @@
 commandArray = {}
 
-t = next(devicechanged)
-s = tostring(t)
-presenceswitch = otherdevices['People']
+dc = next(devicechanged)
+ts = tostring(dc)
+presence = otherdevices['People']
 
-if (s:sub(1,6) == 'Motion' and presenceswitch == 'On') then
-	c = s:sub(7)
-	d = nil
-	e = nil
-	f = nil
-	l = nil
-	m = nil
-	if (c == 'Living') then
-		c = 'Living'
-		d = 'Dining'
-		l = 'LivingExtra'
-	elseif (c == 'Dining') then
-		c = 'Living'
-		d = 'Dining'
-		l = 'LivingExtra'
-	elseif (c == 'Kitchen') then
-		c = 'Kitchen'
-		l = 'LivingExtra'
-		m = 'KitchenExtra'
-	elseif (c == 'FrontDoor') then
-		c = 'Hallway'
-		d = 'FrontDoor'
-	elseif (c == 'Toilet') then
-		c = 'Toilet'
-		d = 'Hallway'
-	elseif (c == 'Bathroom') then
-		c = 'Bathroom'
-		d = 'Hallway'
+if (ts:sub(1,6) == 'Motion' and presence == 'On') then
+	sc = ts:sub(7)
+	sd = nil
+	se = nil
+	sf = nil
+	sl = nil
+	sm = nil
+	if (sc == 'Living') then
+		sc = 'Living'
+		sd = 'Dining'
+		sl = 'LivingExtra'
+	elseif (sc == 'Dining') then
+		sc = 'Living'
+		sd = 'Dining'
+		sl = 'LivingExtra'
+	elseif (sc == 'Kitchen') then
+		sc = 'Kitchen'
+		sl = 'LivingExtra'
+		sm = 'KitchenExtra'
+	elseif (sc == 'FrontDoor') then
+		sc = 'Hallway'
+		sd = 'FrontDoor'
+	elseif (sc == 'Toilet') then
+		sc = 'Toilet'
+		sd = 'Hallway'
+	elseif (sc == 'Bathroom') then
+		sc = 'Bathroom'
+		sd = 'Hallway'
 	end
-	t = 'Motion'..c
-	cbr = tonumber(otherdevices_svalues['Brightness'..c])
-	cbrt = tonumber(uservariables['BrightnessTrigger'..c])
+	mc = 'Motion'..c
+	cbr = tonumber(otherdevices_svalues['Brightness'..sc])
+	cbrt = tonumber(uservariables['BrightnessTrigger'..sc])
 	if (cbr) then
 	else
 		cbr = 1
@@ -44,64 +44,64 @@ if (s:sub(1,6) == 'Motion' and presenceswitch == 'On') then
 	else
 		cbrt = 250
 	end
-	if (d) then
-		u = 'Motion'..d
+	if (sd) then
+		md = 'Motion'..d
 	end
-	if (e) then
-		v = 'Motion'..e
+	if (se) then
+		me = 'Motion'..e
 	end
-	if (otherdevices[t] == 'On' or otherdevices[u] == 'On' or otherdevices[v] == 'On' or otherdevices[t] == 'Open' or otherdevices[u] == 'Open' or otherdevices[v] == 'Open') then
+	if (otherdevices[mc] == 'On' or otherdevices[md] == 'On' or otherdevices[me] == 'On' or otherdevices[mc] == 'Open' or otherdevices[md] == 'Open' or otherdevices[me] == 'Open') then
 		if (cbr < cbrt) then
-			if (otherdevices['Switch'..c] == 'Off') then
-				print (s..' saw motion. Now triggering switch Switch'..c)
-				commandArray['Switch'..c] = 'On'
+			if (otherdevices['Switch'..sc] == 'Off') then
+				print (ts..' saw motion. Now triggering switch Switch'..sc)
+				commandArray['Switch'..sc] = 'On'
 			end
-			if (d and otherdevices['Switch'..d] == 'Off') then
-				print (s..' saw motion. Now triggering switch Switch'..d)
-				commandArray['Switch'..d] = 'On'
+			if (d and otherdevices['Switch'..sd] == 'Off') then
+				print (ts..' saw motion. Now triggering switch Switch'..sd)
+				commandArray['Switch'..sd] = 'On'
 			end
-			if (e and otherdevices['Switch'..e] == 'Off') then
-				print (s..' saw motion. Now triggering switch Switch'..e)
-				commandArray['Switch'..e] = 'On'
+			if (e and otherdevices['Switch'..se] == 'Off') then
+				print (ts..' saw motion. Now triggering switch Switch'..se)
+				commandArray['Switch'..se] = 'On'
 			end
-			if (l and otherdevices['Switch'..l] == 'Off') then
-				print (s..' saw motion. Now triggering switch Switch'..l)
-				commandArray['Switch'..l] = 'On'
+			if (l and otherdevices['Switch'..sl] == 'Off') then
+				print (ts..' saw motion. Now triggering switch Switch'..sl)
+				commandArray['Switch'..sl] = 'On'
 			end
-			if (m and otherdevices['Switch'..m] == 'Off') then
-				print (s..' saw motion. Now triggering switch Switch'..m)
-				commandArray['Switch'..m] = 'On'
+			if (m and otherdevices['Switch'..sm] == 'Off') then
+				print (ts..' saw motion. Now triggering switch Switch'..sm)
+				commandArray['Switch'..sm] = 'On'
 			end
 		else
-			if (otherdevices['Switch'..c] == 'On') then
-				print (s..' saw motion. Now triggering switch Switch'..c)
-				commandArray['Switch'..c] = 'Off'
+			if (otherdevices['Switch'..sc] == 'On') then
+				print (ts..' saw motion. Now triggering switch Switch'..sc)
+				commandArray['Switch'..sc] = 'Off'
 			end
-			if (d and otherdevices['Switch'..d] == 'On') then
-				print (s..' saw motion. Now triggering switch Switch'..d)
-				commandArray['Switch'..d] = 'Off'
+			if (d and otherdevices['Switch'..sd] == 'On') then
+				print (ts..' saw motion. Now triggering switch Switch'..sd)
+				commandArray['Switch'..sd] = 'Off'
 			end
-			if (e and otherdevices['Switch'..e] == 'On') then
-				print (s..' saw motion. Now triggering switch Switch'..e)
-				commandArray['Switch'..e] = 'Off'
+			if (e and otherdevices['Switch'..se] == 'On') then
+				print (ts..' saw motion. Now triggering switch Switch'..se)
+				commandArray['Switch'..se] = 'Off'
 			end
-			if (l and otherdevices['Switch'..l] == 'Off') then
-				print (s..' saw motion. Now triggering switch Switch'..l)
-				commandArray['Switch'..l] = 'On'
+			if (l and otherdevices['Switch'..sl] == 'Off') then
+				print (ts..' saw motion. Now triggering switch Switch'..sl)
+				commandArray['Switch'..sl] = 'On'
 			end
-			if (m and otherdevices['Switch'..m] == 'Off') then
-				print (s..' saw motion. Now triggering switch Switch'..m)
-				commandArray['Switch'..m] = 'On'
+			if (m and otherdevices['Switch'..sm] == 'Off') then
+				print (ts..' saw motion. Now triggering switch Switch'..sm)
+				commandArray['Switch'..sm] = 'On'
 			end
 		end
 	end
 end
 
-if (s:sub(1,6) == 'Tamper' and presenceswitch == 'On' and devicechanged[t] == 'On') then
+if (ts:sub(1,6) == 'Tamper' and presence == 'On' and devicechanged[dc] == 'On') then
 	if (otherdevices['ALARM'] == 'Off') then
 		commandArray['ALARM'] = 'On'
 	end
-elseif (s:sub(1,6) == 'Tamper' and presenceswitch == 'On' and devicechanged[t] == 'Off') then
+elseif (ts:sub(1,6) == 'Tamper' and presenceswitch == 'On' and devicechanged[dc] == 'Off') then
 	if (otherdevices['ALARM'] == 'On') then
 		commandArray['ALARM'] = 'Off'
 	end
