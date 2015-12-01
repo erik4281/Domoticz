@@ -22,7 +22,7 @@ for i, v in pairs(otherdevices) do
 		sc = i:sub(7)
 		scriptfolder = "/home/pi/domoticz/scripts/bash/"
 		if (otherdevices[ts] == 'On') then
-			difference = timedifference(otherdevices_lastupdate[t])
+			difference = timedifference(otherdevices_lastupdate[ts])
 			timenumber = tonumber(os.date("%H")..os.date("%M"))
 			time0 = tonumber(uservariables['Timer'..sc..'0'])
 			time1 = tonumber(uservariables['Timer'..sc..'1'])
