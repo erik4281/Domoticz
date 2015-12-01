@@ -40,7 +40,7 @@ for i, v in pairs(otherdevices) do
 		timewait = timeon * 60
 		mc = 'Switch'..sc
 		md = 'Switch'..sd
-		if (otherdevices[mc] == 'Off' and otherdevices[md] == 'Off' and difference >= timewait and difference < (timewait + 60)) then
+		if (otherdevices[mc] == 'Off' and otherdevices[md] == 'Off' and difference >= timewait and sleep == 'Off') then
 			commandArray[switchsleep]='On'
 		end
 	end
