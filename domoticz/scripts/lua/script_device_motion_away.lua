@@ -36,7 +36,7 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 			if (otherdevices['ALARM'] == 'On') then
 				commandArray['ALARM'] = 'Off'
 			end
-			if (presenceswitch == 'Off') then
+			if (presence == 'Off') then
 				commandArray[switchpresence] = 'On'
 			end
 			if (otherdevices[ping[ip][2]]=='Off') then
