@@ -34,9 +34,6 @@ for i, v in pairs(otherdevices) do
 		if (ddifference < difference) then
 			difference = ddifference
 		end
-		if (edifference < difference) then
-			difference = edifference
-		end
 		timewait = timeon * 60
 		mc = 'Switch'..sc
 		md = 'Switch'..sd
