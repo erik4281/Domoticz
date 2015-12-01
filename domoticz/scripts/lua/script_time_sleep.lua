@@ -24,14 +24,12 @@ for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	v = i:sub(1,6)
 	sc = i:sub(7)
-	if (presence == 'On' and sleep == 'Off' and v == 'Motion' and (sc == 'Living' or sc == 'Dining ' or sc == 'Kitchen') and (timenumber >= sleepstart or timenumber < sleepstop)) then
+	if (presence == 'On' and sleep == 'Off' and v == 'Switch' and (sc == 'Living' or sc == 'Kitchen') and (timenumber >= sleepstart or timenumber < sleepstop)) then
 		sc = 'Living'
-		sd = 'Dining'
-		se = 'Kitchen'
+		sd = 'Kitchen'
 		timeon = uservariables['SleepTimer']
-		cdifference = timedifference(otherdevices_lastupdate['Motion'..sc])
-		ddifference = timedifference(otherdevices_lastupdate['Motion'..sd])
-		edifference = timedifference(otherdevices_lastupdate['Motion'..se])
+		cdifference = timedifference(otherdevices_lastupdate['Switch'..sc])
+		ddifference = timedifference(otherdevices_lastupdate['Switch'..sd])
 		difference = cdifference
 		if (ddifference < difference) then
 			difference = ddifference
@@ -40,10 +38,9 @@ for i, v in pairs(otherdevices) do
 			difference = edifference
 		end
 		timewait = timeon * 60
-		mc = 'Motion'..sc
-		md = 'Motion'..sd
-		me = 'Motion'..se
-		if (otherdevices[mc] == 'Off' and otherdevices[md] == 'Off' and otherdevices[me] == 'Off' and difference >= timewait and difference < (timewait + 60)) then
+		mc = 'Switch'..sc
+		md = 'Switch'..sd
+		if (otherdevices[mc] == 'Off' and otherdevices[md] == 'Off' and difference >= timewait and difference < (timewait + 60)) then
 			commandArray[switchsleep]='On'
 		end
 	end
