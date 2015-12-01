@@ -12,7 +12,13 @@ function timedifference(s)
 end
  
 commandArray = {}
- 
+
+MbErik = tostring(uservariables['MacBookAirErik'])
+MbJinHee = tostring(uservariables['MacBookAirJinHee'])
+TvLiving = tostring(uservariables['TvLiving'])
+
+print(MbErik..' '..MbJinHee..' '..TvLiving)
+
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	v = i:sub(1,6)
