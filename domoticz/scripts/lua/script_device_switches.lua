@@ -1,18 +1,17 @@
 commandArray = {}
 
-t = next(devicechanged)
-s = tostring(t)
+dc = next(devicechanged)
+ts = tostring(t)
 
-if (s:sub(1,6) == 'Switch') then
-	c = s:sub(7)
-	t = 'Switch'..c
+if (ts:sub(1,6) == 'Switch') then
+	sc = ts:sub(7)
 	scriptfolder = "/home/pi/domoticz/scripts/bash/"
-	if (otherdevices[t] == 'On') then
+	if (devicechanged[dc] == 'On') then
 		timenumber = tonumber(os.date("%H")..os.date("%M"))
-		time1 = tonumber(uservariables['Timer'..c..'1'])
-		time2 = tonumber(uservariables['Timer'..c..'2'])
-		time3 = tonumber(uservariables['Timer'..c..'3'])
-		time4 = tonumber(uservariables['Timer'..c..'4'])
+		time1 = tonumber(uservariables['Timer'..sc..'1'])
+		time2 = tonumber(uservariables['Timer'..sc..'2'])
+		time3 = tonumber(uservariables['Timer'..sc..'3'])
+		time4 = tonumber(uservariables['Timer'..sc..'4'])
 		if (time1) then
 			scene = 0
 		else
@@ -45,8 +44,8 @@ if (s:sub(1,6) == 'Switch') then
 		scene = 'Off'
 	end
 	scene = scene..'.sh'
-	print ('Switch triggered: '..scriptfolder..c..'/'..scene)
-	os.execute (scriptfolder..c..'/'..scene)
+	print ('Switch triggered: '..scriptfolder..sc..'/'..scene)
+	os.execute (scriptfolder..sc..'/'..scene)
 end
 
 return commandArray
