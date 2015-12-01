@@ -1,19 +1,20 @@
 commandArray = {}
 
-t = next(devicechanged)
-s = tostring(t)
-sleepswitch = otherdevices['SleepMode']
-sleepswitchname = 'SleepMode'
+dc = next(devicechanged)
+ts = tostring(dc)
+sleep = otherdevices['SleepMode']
+switchsleep = 'SleepMode'
+presence = otherdevices['People']
 
-if (s:sub(1,6) == 'Motion' and otherdevices['People'] == 'On' and sleepswitch == 'On') then
+if (ts:sub(1,6) == 'Motion' and presence == 'On' and sleep == 'On') then
 	timenumber = tonumber(os.date("%H")..os.date("%M"))
 	wakestart = 0600
 	wakestop = 1200
 	if (timenumber >= wakestart and timenumber < wakestop) then
-		c = s:sub(7)
-		if (c == 'Living' or c == 'Dining' or c == 'Kitchen') then
+		sc = ts:sub(7)
+		if (sc == 'Living' or sc == 'Dining' or sc == 'Kitchen') then
 			print ("Waking up")
-			commandArray[sleepswitchname] = 'Off'
+			commandArray[switchsleep] = 'Off'
 		end
 	end
 end
