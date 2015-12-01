@@ -14,13 +14,13 @@ if (presence == 'On') then
 	local ping_success
 	local bt_success
 	
-	ping[1]={'10.0.1.125', 'MacBookAirErik', 'MacBookAirErik', timeon}
-	ping[2]={'10.0.1.126', 'MacBookAirJinHee', 'MacBookAirJinHee', timeon}
-	ping[3]={'10.0.1.109', 'TvLiving', 'TvLiving', timeon}
-	--ping[4]={'10.0.1.123', 'iPadErik', 'iPadErik', timeon}
-	--ping[5]={'10.0.1.124', 'iPadJinHee', 'iPadJinHee', timeon}
-	--ping[6]={'10.0.1.114', 'AppleTvLiving', 'AppleTvLiving', timeon}
-	--ping[7]={'10.0.1.115', 'AppleTvBedroom', 'AppleTvBedroom', timeon}
+	ping[1]={'10.0.1.125', 'MacBookAirErik', 'MacBookAirErik', 'MacBookAirErikOff', timeon}
+	ping[2]={'10.0.1.126', 'MacBookAirJinHee', 'MacBookAirJinHee', 'MacBookAirJinHeeOff', timeon}
+	ping[3]={'10.0.1.109', 'TvLiving', 'TvLiving', 'TvLivingOff', timeon}
+	--ping[4]={'10.0.1.114', 'AppleTvLiving', 'AppleTvLiving', 'AppleTvLivingOff', timeon}
+	--ping[5]={'10.0.1.115', 'AppleTvBedroom', 'AppleTvBedroom', 'AppleTvBedroomOff', timeon}
+	--ping[6]={'10.0.1.123', 'iPadErik', 'iPadErik', timeon}
+	--ping[7]={'10.0.1.124', 'iPadJinHee', 'iPadJinHee', timeon}
 	--ping[8]={'10.0.1.101', 'PS4', 'PS4', timeon}
 	--ping[9]={'10.0.1.110', 'Printer', 'Printer', timeon}
 	
@@ -32,32 +32,37 @@ if (presence == 'On') then
 			end
 			if (otherdevices[ping[ip][2]]=='Off') then
 				commandArray[ping[ip][2]]='On'
+				commandArray['Variable:'..ping[ip][3]]= tostring(1)
 			end
 			if (uservariables[ping[ip][3]]) ~= 1 then
-				commandArray['Variable:'..ping[ip][3]]= tostring(1)
+				commandArray['Variable:'..ping[ip][3]]= tostring((uservariables[ping[ip][3]]) + 1)
+			end
+			if (uservariables[ping[ip][4]]) ~= 1 then
+				commandArray['Variable:'..ping[ip][4]]= tostring(1)
 			end
 		else
 			if (debug==true) then
 				print(prefix.."ping fail "..ping[ip][2])
 			end
 			if (otherdevices[ping[ip][2]]=='On') then
-				if (uservariables[ping[ip][3]])==ping[ip][4] then
+				if (uservariables[ping[ip][4]])==ping[ip][5] then
 					commandArray[ping[ip][2]]='Off'
+					commandArray['Variable:'..ping[ip][3]]= tostring(1)
 				else
-					commandArray['Variable:'..ping[ip][3]]= tostring((uservariables[ping[ip][3]]) + 1)
+					commandArray['Variable:'..ping[ip][4]]= tostring((uservariables[ping[ip][4]]) + 1)
 				end
 			end
 		end
 	end
 else
 
-	ping[1]={'10.0.1.125', 'MacBookAirErik', 'MacBookAirErik', timeon}
-	ping[2]={'10.0.1.126', 'MacBookAirJinHee', 'MacBookAirJinHee', timeon}
-	ping[3]={'10.0.1.109', 'TvLiving', 'TvLiving', timeon}
-	--ping[4]={'10.0.1.123', 'iPadErik', 'iPadErik', timeon}
-	--ping[5]={'10.0.1.124', 'iPadJinHee', 'iPadJinHee', timeon}
-	--ping[6]={'10.0.1.114', 'AppleTvLiving', 'AppleTvLiving', timeon}
-	--ping[7]={'10.0.1.115', 'AppleTvBedroom', 'AppleTvBedroom', timeon}
+	ping[1]={'10.0.1.125', 'MacBookAirErik', 'MacBookAirErik', 'MacBookAirErikOff', timeon}
+	ping[2]={'10.0.1.126', 'MacBookAirJinHee', 'MacBookAirJinHee', 'MacBookAirJinHeeOff', timeon}
+	ping[3]={'10.0.1.109', 'TvLiving', 'TvLiving', 'TvLivingOff', timeon}
+	--ping[4]={'10.0.1.114', 'AppleTvLiving', 'AppleTvLiving', 'AppleTvLivingOff', timeon}
+	--ping[5]={'10.0.1.115', 'AppleTvBedroom', 'AppleTvBedroom', 'AppleTvBedroomOff', timeon}
+	--ping[6]={'10.0.1.123', 'iPadErik', 'iPadErik', timeon}
+	--ping[7]={'10.0.1.124', 'iPadJinHee', 'iPadJinHee', timeon}
 	--ping[8]={'10.0.1.101', 'PS4', 'PS4', timeon}
 	--ping[9]={'10.0.1.110', 'Printer', 'Printer', timeon}
 	
@@ -65,6 +70,8 @@ else
 		if (debug==true) then
 			print(prefix.."ping skipped "..ping[ip][2])
 		end
+		commandArray['Variable:'..ping[ip][3]]= tostring(1)
+		commandArray['Variable:'..ping[ip][4]]= tostring(1)
 		if (otherdevices[ping[ip][2]]=='On') then
 			commandArray[ping[ip][2]]='Off'
 		end
