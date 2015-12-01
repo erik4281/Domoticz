@@ -14,106 +14,105 @@ end
 commandArray = {}
  
 for i, v in pairs(otherdevices) do
-	tc = tostring(i)
+	ts = tostring(i)
 	v = i:sub(1,6)
 	if (v == 'Motion') then
-		c = i:sub(7)
-		d = nil
-		e = nil
-		f = nil
-		l = nil
-		m = nil
-		if (c == 'Living') then
-			c = 'Living'
-			d = 'Dining'
-			e = 'Kitchen'
-			l = 'LivingExtra'
-			m = 'KitchenExtra'
-		elseif (c == 'Dining') then
-			c = 'Living'
-			d = 'Dining'
-			e = 'Kitchen'
-			l = 'LivingExtra'
-			m = 'KitchenExtra'
-		elseif (c == 'Kitchen') then
-			c = 'Kitchen'
-			l = 'KitchenExtra'
-			m = nothing
-		elseif (c == 'Hallway') then
-			c = 'Hallway'
-			d = 'FrontDoor'
-			e = 'Toilet'
-			f = 'Bathroom'
-		elseif (c == 'FrontDoor') then
-			c = 'Hallway'
-			d = 'FrontDoor'
-			e = 'Toilet'
-			f = 'Bathroom'
+		sc = i:sub(7)
+		sd = nil
+		se = nil
+		sf = nil
+		sl = nil
+		sm = nil
+		if (sc == 'Living') then
+			sc = 'Living'
+			sd = 'Dining'
+			se = 'Kitchen'
+			sl = 'LivingExtra'
+			sm = 'KitchenExtra'
+		elseif (sc == 'Dining') then
+			sc = 'Living'
+			sd = 'Dining'
+			se = 'Kitchen'
+			sl = 'LivingExtra'
+			sm = 'KitchenExtra'
+		elseif (sc == 'Kitchen') then
+			sc = 'Kitchen'
+			sl = 'KitchenExtra'
+		elseif (sc == 'Hallway') then
+			sc = 'Hallway'
+			sd = 'FrontDoor'
+			se = 'Toilet'
+			sf = 'Bathroom'
+		elseif (sc == 'FrontDoor') then
+			sc = 'Hallway'
+			sd = 'FrontDoor'
+			se = 'Toilet'
+			sf = 'Bathroom'
 		end
 		motioncheck = 'Off'
-		t = 'Motion'..c
-		ctimeon = uservariables['WaitOff'..c]
-		cdifference = timedifference(otherdevices_lastupdate[t])
-		if (otherdevices[t] == 'On' or otherdevices[t] == 'Open') then
+		mc = 'Motion'..c
+		ctimeon = uservariables['WaitOff'..sc]
+		cdifference = timedifference(otherdevices_lastupdate[mc])
+		if (otherdevices[mc] == 'On' or otherdevices[mc] == 'Open') then
 			motioncheck = 'On'
 		end
-		if (d) then
-			u = 'Motion'..d
-			dtimeon = uservariables['WaitOff'..d]
-			ddifference = timedifference(otherdevices_lastupdate[u])
-			if (otherdevices[u] == 'On' or otherdevices[u] == 'Open') then
+		if (sd) then
+			md = 'Motion'..sd
+			dtimeon = uservariables['WaitOff'..sd]
+			ddifference = timedifference(otherdevices_lastupdate[md])
+			if (otherdevices[md] == 'On' or otherdevices[md] == 'Open') then
 				motioncheck = 'On'
 			end
 		end
-		if (e) then
-			v = 'Motion'..e
-			etimeon = uservariables['WaitOff'..e]
-			edifference = timedifference(otherdevices_lastupdate[v])
-			if (otherdevices[v] == 'On' or otherdevices[v] == 'Open') then
+		if (se) then
+			me = 'Motion'..se
+			etimeon = uservariables['WaitOff'..se]
+			edifference = timedifference(otherdevices_lastupdate[me])
+			if (otherdevices[me] == 'On' or otherdevices[me] == 'Open') then
 				motioncheck = 'On'
 			end
 		end
-		if (f) then
-			w = 'Motion'..f
-			ftimeon = uservariables['WaitOff'..f]
-			fdifference = timedifference(otherdevices_lastupdate['Motion'..f])
-			if (otherdevices[w] == 'On' or otherdevices[w] == 'Open') then
+		if (sf) then
+			mf = 'Motion'..sf
+			ftimeon = uservariables['WaitOff'..sf]
+			fdifference = timedifference(otherdevices_lastupdate['Motion'..sf])
+			if (otherdevices[mf] == 'On' or otherdevices[mf] == 'Open') then
 				motioncheck = 'On'
 			end
 		end
 		difference = cdifference
-		if (d and (ddifference < difference)) then
+		if (sd and (ddifference < difference)) then
 			difference = ddifference
 		end
-		if (e and (edifference < difference)) then
+		if (se and (edifference < difference)) then
 			difference = edifference
 		end
-		if (f and (fdifference < difference)) then
+		if (sf and (fdifference < difference)) then
 			difference = fdifference
 		end
 		timeon = ctimeon
-		if (d and (dtimeon > timeon)) then
+		if (sd and (dtimeon > timeon)) then
 			timeon = dtimeon
 		end
-		if (e and (etimeon > timeon)) then
+		if (se and (etimeon > timeon)) then
 			timeon = etimeon
 		end
-		if (f and (ftimeon > timeon)) then
+		if (sf and (ftimeon > timeon)) then
 			timeon = ftimeon
 		end
 		timewait = timeon * 60
 		if (motioncheck == 'Off' and difference >= timewait and difference < (timewait + 60)) then
-			if (otherdevices['Switch'..c] == 'On') then
-				print (tc..' saw no more motion. Now triggering switch Switch'..c)
-				commandArray['Switch'..c] = 'Off'
+			if (otherdevices['Switch'..sc] == 'On') then
+				print (ts..' saw no more motion. Now triggering switch Switch'..sc)
+				commandArray['Switch'..sc] = 'Off'
 			end
-			if (l and otherdevices['Switch'..l] == 'On') then
-				print (tc..' saw no more motion. Now triggering switch Switch'..l)
-				commandArray['Switch'..l] = 'Off'
+			if (sl and otherdevices['Switch'..sl] == 'On') then
+				print (ts..' saw no more motion. Now triggering switch Switch'..sl)
+				commandArray['Switch'..sl] = 'Off'
 			end
-			if (m and otherdevices['Switch'..l] == 'On') then
-				print (tc..' saw no more motion. Now triggering switch Switch'..m)
-				commandArray['Switch'..m] = 'Off'
+			if (sm and otherdevices['Switch'..sm] == 'On') then
+				print (ts..' saw no more motion. Now triggering switch Switch'..sm)
+				commandArray['Switch'..sm] = 'Off'
 			end
 		end
 	end
