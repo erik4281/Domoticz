@@ -109,7 +109,8 @@ for i, v in pairs(otherdevices) do
 			timewait = timewait + TvL
 		end
 		print ('timewait: '..timewait)
-		if (motioncheck == 'Off' and difference >= timewait and difference < (timewait + 60)) then
+		--if (motioncheck == 'Off' and difference >= timewait and difference < (timewait + 60)) then
+		if (motioncheck == 'Off' and difference >= timewait) then
 			if (otherdevices['Switch'..sc] == 'On') then
 				print (ts..' saw no more motion. Now triggering switch Switch'..sc)
 				commandArray['Switch'..sc] = 'Off'
