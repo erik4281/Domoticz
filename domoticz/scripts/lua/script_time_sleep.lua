@@ -14,23 +14,24 @@ end
 commandArray = {}
 
 timenumber = tonumber(os.date("%H")..os.date("%M"))
-sleepswitch = otherdevices['SleepMode']
-sleepswitchname = 'SleepMode'
+sleep = otherdevices['SleepMode']
+switchsleep = 'SleepMode'
+presence = otherdevices['People']
 sleepstart = 2200
 sleepstop = 0400
 
 for i, v in pairs(otherdevices) do
-	tc = tostring(i)
+	ts = tostring(i)
 	v = i:sub(1,6)
-	c = i:sub(7)
-	if (otherdevices['People'] == 'On' and v == 'Motion' and (c == 'Living' or c == 'Dining ' or c == 'Kitchen') and (timenumber >= sleepstart or timenumber < sleepstop)) then
-		c = 'Living'
-		d = 'Dining'
-		e = 'Kitchen'
+	sc = i:sub(7)
+	if (presence == 'On' and sleep == 'Off' and v == 'Motion' and (sc == 'Living' or sc == 'Dining ' or sc == 'Kitchen') and (timenumber >= sleepstart or timenumber < sleepstop)) then
+		sc = 'Living'
+		sd = 'Dining'
+		se = 'Kitchen'
 		timeon = uservariables['SleepTimer']
-		cdifference = timedifference(otherdevices_lastupdate['Motion'..c])
-		ddifference = timedifference(otherdevices_lastupdate['Motion'..d])
-		edifference = timedifference(otherdevices_lastupdate['Motion'..e])
+		cdifference = timedifference(otherdevices_lastupdate['Motion'..sc])
+		ddifference = timedifference(otherdevices_lastupdate['Motion'..sd])
+		edifference = timedifference(otherdevices_lastupdate['Motion'..se])
 		difference = cdifference
 		if (ddifference < difference) then
 			difference = ddifference
@@ -39,12 +40,11 @@ for i, v in pairs(otherdevices) do
 			difference = edifference
 		end
 		timewait = timeon * 60
-		t = 'Motion'..c
-		u = 'Motion'..d
-		v = 'Motion'..e
-		if (sleepswitch == 'Off' and otherdevices[t] == 'Off' and otherdevices[u] == 'Off' and otherdevices[v] == 'Off' and difference >= timewait and difference < (timewait + 60)) then
-			print ("Going to sleep")
-			commandArray[sleepswitchname]='On'
+		mc = 'Motion'..sc
+		md = 'Motion'..sd
+		me = 'Motion'..se
+		if (otherdevices[mc] == 'Off' and otherdevices[md] == 'Off' and otherdevices[me] == 'Off' and difference >= timewait and difference < (timewait + 60)) then
+			commandArray[switchsleep]='On'
 		end
 	end
 end
