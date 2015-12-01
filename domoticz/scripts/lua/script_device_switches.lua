@@ -1,7 +1,7 @@
 commandArray = {}
 
 dc = next(devicechanged)
-ts = tostring(t)
+ts = tostring(dc)
 
 if (ts:sub(1,6) == 'Switch') then
 	sc = ts:sub(7)
