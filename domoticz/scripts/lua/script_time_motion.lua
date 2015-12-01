@@ -104,11 +104,14 @@ for i, v in pairs(otherdevices) do
 		if (sf and (ftimeon > timeon)) then
 			timeon = ftimeon
 		end
-		timewait = timeon * 60
 		if (sc == 'Living') then
-			timewait = timewait + TvL
+			timeon = timeon + TvL + MbE + MbJ
 		end
-		print ('timewait: '..timewait)
+		if (sc == 'Study') then
+			timeon = timeon + MbE + MbJ
+		end
+		timewait = timeon * 60
+		print (sc..' timewait: '..timewait)
 		--if (motioncheck == 'Off' and difference >= timewait and difference < (timewait + 60)) then
 		if (motioncheck == 'Off' and difference >= timewait) then
 			if (otherdevices['Switch'..sc] == 'On') then
