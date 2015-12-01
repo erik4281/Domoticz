@@ -16,26 +16,25 @@ commandArray = {}
 time = os.date("*t")
 
 for i, v in pairs(otherdevices) do
-	tc = tostring(i)
+	ts = tostring(i)
 	v = i:sub(1,6)
 	if (v == 'Switch') then
-		c = i:sub(7)
-		t = 'Switch'..c
+		sc = i:sub(7)
 		scriptfolder = "/home/pi/domoticz/scripts/bash/"
-		if (otherdevices[t] == 'On') then
+		if (otherdevices[ts] == 'On') then
 			difference = timedifference(otherdevices_lastupdate[t])
 			timenumber = tonumber(os.date("%H")..os.date("%M"))
-			time0 = tonumber(uservariables['Timer'..c..'0'])
-			time1 = tonumber(uservariables['Timer'..c..'1'])
-			time2 = tonumber(uservariables['Timer'..c..'2'])
-			time3 = tonumber(uservariables['Timer'..c..'3'])
-			time4 = tonumber(uservariables['Timer'..c..'4'])
+			time0 = tonumber(uservariables['Timer'..sc..'0'])
+			time1 = tonumber(uservariables['Timer'..sc..'1'])
+			time2 = tonumber(uservariables['Timer'..sc..'2'])
+			time3 = tonumber(uservariables['Timer'..sc..'3'])
+			time4 = tonumber(uservariables['Timer'..sc..'4'])
 			execute = 0
 			if (difference >= 1 and difference < 61) then
 				if (time1) then
 					scene = 0
 				else
-					scene = '1'
+					scene = 1
 				end
 				if (scene == 0 and time1) then
 					if (timenumber >= time1) then
@@ -61,8 +60,8 @@ for i, v in pairs(otherdevices) do
 					scene = 9
 				end
 				scene = scene..'.sh'
-				print ('Backup triggered: '..scriptfolder..c..'/'..scene)
-				os.execute (scriptfolder..c..'/'..scene)
+				print ('Backup triggered: '..scriptfolder..sc..'/'..scene)
+				os.execute (scriptfolder..sc..'/'..scene)
 				scene = 1
 			end
 			if (time1) then
@@ -102,17 +101,17 @@ for i, v in pairs(otherdevices) do
 			end
 			if (execute == 1) then
 				scene = scene..'Slow.sh'
-				print ('Time triggered: '..scriptfolder..c..'/'..scene)
-				os.execute (scriptfolder..c..'/'..scene)
+				print ('Time triggered: '..scriptfolder..sc..'/'..scene)
+				os.execute (scriptfolder..sc..'/'..scene)
 				execute = 0
 			end
 		elseif (otherdevices[t] == 'Off') then
-			difference = timedifference(otherdevices_lastupdate[t])
+			difference = timedifference(otherdevices_lastupdate[ts])
 			if (difference >= 1 and difference < 61) then
 				scene = 'Off'
 				scene = scene..'.sh'
-				print ('Backup triggered: '..scriptfolder..c..'/'..scene)
-				os.execute (scriptfolder..c..'/'..scene)
+				print ('Backup triggered: '..scriptfolder..sc..'/'..scene)
+				os.execute (scriptfolder..sc..'/'..scene)
 			end
 		end
 	end
