@@ -15,7 +15,7 @@ if (ts:sub(1,6) == 'Switch') then
 		if (time1) then
 			scene = 0
 		else
-			scene = '1'
+			scene = 1
 		end
 		if (scene == 0 and time1) then
 			if (timenumber >= time1) then
