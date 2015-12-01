@@ -50,7 +50,7 @@ for i, v in pairs(otherdevices) do
 			sf = 'Bathroom'
 		end
 		motioncheck = 'Off'
-		mc = 'Motion'..c
+		mc = 'Motion'..sc
 		ctimeon = uservariables['WaitOff'..sc]
 		cdifference = timedifference(otherdevices_lastupdate[mc])
 		if (otherdevices[mc] == 'On' or otherdevices[mc] == 'Open') then
