@@ -9,13 +9,13 @@ if (ts == 'SleepMode') then
 		if (v == 'Switch') then
 			c = i:sub(7)
 			scriptfolder = "/home/pi/domoticz/scripts/bash/"
-			if (otherdevices[ts] == 'On') then
+			if (devicechanged[dc] == 'On') then
 				commandArray['Bedroom Humidifier'] = 'On'
 				if (otherdevices[i] == 'On') then
 					scene = '9Slow.sh'
 					os.execute (scriptfolder..c..'/'..scene)
 				end
-			elseif (otherdevices[ts] == 'Off') then
+			elseif (devicechanged[dc] == 'Off') then
 				commandArray['Bedroom Humidifier'] = 'Off'
 				if (otherdevices[i] == 'On') then
 					scene = '1Slow.sh'
@@ -27,12 +27,12 @@ if (ts == 'SleepMode') then
 end
 
 if (ts == 'People') then
-	if (otherdevices[ts] == 'On') then
+	if (devicechanged[dc] == 'On') then
 		if (otherdevices['NestAway'] == 'On') then
 			commandArray['NestAway'] = 'Off'
 		end
 		commandArray['SendNotification']='Presence#Activated HOME mode#0#default'
-	elseif (otherdevices[ts] == 'Off') then
+	elseif (devicechanged[dc] == 'Off') then
 		if (otherdevices['NestAway'] == 'Off') then
 			commandArray['NestAway'] = 'On'
 		end
@@ -48,7 +48,7 @@ if (ts == 'People') then
 	end
 end
 
-if (ts == 'ALARM' and otherdevices[ts] == 'On' and otherdevices['People'] == 'Off') then
+if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'Off') then
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On') then
