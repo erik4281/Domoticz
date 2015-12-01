@@ -45,10 +45,10 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		cbrt = 250
 	end
 	if (sd) then
-		md = 'Motion'..d
+		md = 'Motion'..sd
 	end
 	if (se) then
-		me = 'Motion'..e
+		me = 'Motion'..se
 	end
 	if (otherdevices[mc] == 'On' or otherdevices[md] == 'On' or otherdevices[me] == 'On' or otherdevices[mc] == 'Open' or otherdevices[md] == 'Open' or otherdevices[me] == 'Open') then
 		if (cbr < cbrt) then
