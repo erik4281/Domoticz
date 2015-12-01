@@ -14,18 +14,17 @@ end
 commandArray = {}
 
 door = otherdevices['MotionFrontDoor']
-presenceswitch = otherdevices['People']
-presenceswitchname = 'People'
+presence = otherdevices['People']
+switchpresence = 'People'
 
 for i, v in pairs(otherdevices) do
-	tc = tostring(i)
+	ts = tostring(i)
 	v = i:sub(1,6)
-	c = i:sub(7)
-	if (tc == 'MotionFrontDoor') then
+	if (ts == 'MotionFrontDoor') then
 		timeon = uservariables['DepartTimer']
-		difference = timedifference(otherdevices_lastupdate[tc])
+		difference = timedifference(otherdevices_lastupdate[ts])
 		timewait = (timeon * 60) + 120
-		if (presenceswitch == "On" and door == 'Closed' and difference < (timewait + 60)) then
+		if (presence == "On" and door == 'Closed' and difference < (timewait + 60)) then
 			prefix="(PING) "
 			local ping={}
 			local ping_success
@@ -51,8 +50,8 @@ for i, v in pairs(otherdevices) do
 					if (otherdevices['ALARM'] == 'On') then
 						commandArray['ALARM'] = 'Off'
 					end
-					if (presenceswitch == 'Off') then
-						commandArray[presenceswitchname] = 'On'
+					if (presence == 'Off') then
+						commandArray[switchpresence] = 'On'
 					end
 					if (otherdevices[ping[ip][2]]=='Off') then
 						commandArray[ping[ip][2]]='On'
@@ -73,14 +72,14 @@ for i, v in pairs(otherdevices) do
 			end
 			if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
 				print ("Phones still present")
-				if (presenceswitch == 'Off') then
-					commandArray[presenceswitchname] = 'On'
+				if (presence == 'Off') then
+					commandArray[switchpresence] = 'On'
 				end
 			end
 			if (otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') then
 				print ("Phones departed")
-				if (presenceswitch == 'On') then
-					commandArray[presenceswitchname] = 'Off'
+				if (presence == 'On') then
+					commandArray[switchpresence] = 'Off'
 				end
 			end
 		end
