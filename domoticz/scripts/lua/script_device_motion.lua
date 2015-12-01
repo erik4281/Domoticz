@@ -33,7 +33,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		sc = 'Bathroom'
 		sd = 'Hallway'
 	end
-	mc = 'Motion'..c
+	mc = 'Motion'..sc
 	cbr = tonumber(otherdevices_svalues['Brightness'..sc])
 	cbrt = tonumber(uservariables['BrightnessTrigger'..sc])
 	if (cbr) then
