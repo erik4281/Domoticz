@@ -111,7 +111,7 @@ for i, v in pairs(otherdevices) do
 			timeon = timeon + MbE + MbJ
 		end
 		timewait = timeon * 60
-		print (sc..' timewait: '..timeon)
+		print (sc..' timewait: '..difference..'/'..timewait)
 		--if (motioncheck == 'Off' and difference >= timewait and difference < (timewait + 60)) then
 		if (motioncheck == 'Off' and difference >= timewait) then
 			if (otherdevices['Switch'..sc] == 'On') then
