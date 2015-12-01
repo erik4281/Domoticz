@@ -24,7 +24,7 @@ if (presence == 'On') then
 	for ip = 1, #ping do
 		ping_success=os.execute('ping -c 1 -w 1 '..ping[ip][1])
 		if ping_success then
-			print(prefix.."ping success "..ping[ip][2])
+			--print(prefix.."ping success "..ping[ip][2])
 			if (otherdevices[ping[ip][2]]=='Off') then
 				commandArray[ping[ip][2]]='On'
 				commandArray['Variable:'..ping[ip][3]]= tostring(1)
@@ -35,7 +35,7 @@ if (presence == 'On') then
 				commandArray['Variable:'..ping[ip][4]]= tostring(1)
 			end
 		else
-			print(prefix.."ping fail "..ping[ip][2])
+			--print(prefix.."ping fail "..ping[ip][2])
 			if (otherdevices[ping[ip][2]]=='On') then
 				if (uservariables[ping[ip][4]])==ping[ip][5] then
 					commandArray[ping[ip][2]]='Off'
@@ -59,7 +59,7 @@ else
 	--ping[9]={'10.0.1.110', 'Printer', 'Printer', timeon}
 	
 	for ip = 1, #ping do
-		print(prefix.."ping skipped "..ping[ip][2])
+		--print(prefix.."ping skipped "..ping[ip][2])
 		commandArray['Variable:'..ping[ip][3]]= tostring(1)
 		commandArray['Variable:'..ping[ip][4]]= tostring(1)
 		if (otherdevices[ping[ip][2]]=='On') then
