@@ -13,11 +13,9 @@ end
  
 commandArray = {}
 
-MbErik = tostring(uservariables['MacBookAirErik'])
-MbJinHee = tostring(uservariables['MacBookAirJinHee'])
-TvLiving = tostring(uservariables['TvLiving'])
-
-print(MbErik..' '..MbJinHee..' '..TvLiving)
+MbE = tostring(uservariables['MacBookAirErik'])
+MbJ = tostring(uservariables['MacBookAirJinHee'])
+TvL = tostring(uservariables['TvLiving'])
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
@@ -107,6 +105,10 @@ for i, v in pairs(otherdevices) do
 			timeon = ftimeon
 		end
 		timewait = timeon * 60
+		if (sc == 'Living') then
+			timewait = timewait + TvL
+		end
+		print ('timewait: '..timewait)
 		if (motioncheck == 'Off' and difference >= timewait and difference < (timewait + 60)) then
 			if (otherdevices['Switch'..sc] == 'On') then
 				print (ts..' saw no more motion. Now triggering switch Switch'..sc)
