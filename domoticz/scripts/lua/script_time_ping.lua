@@ -39,7 +39,6 @@ if (presence == 'On') then
 			if (otherdevices[ping[ip][2]]=='On') then
 				if (uservariables[ping[ip][4]])==ping[ip][5] then
 					commandArray[ping[ip][2]]='Off'
-					commandArray['Variable:'..ping[ip][3]]= tostring(1)
 				else
 					commandArray['Variable:'..ping[ip][4]]= tostring((uservariables[ping[ip][4]]) + 1)
 				end
