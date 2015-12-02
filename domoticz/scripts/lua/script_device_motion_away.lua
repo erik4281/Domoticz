@@ -1,7 +1,7 @@
 commandArray = {}
 
 dc = next(devicechanged)
-ts = tostring(t)
+ts = tostring(dc)
 presence = otherdevices['People']
 switchpresence = 'People'
 
