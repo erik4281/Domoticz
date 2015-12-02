@@ -44,7 +44,7 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 			if (uservariables[ping[ip][3]]) ~= 1 then
 				commandArray['Variable:'..ping[ip][3]]= tostring(1)
 			end
-			if (check = 1) then
+			if (check == 1) then
 				if (otherdevices['People'] == 'Off') then
 					commandArray['People'] = 'On'
 				end
@@ -54,7 +54,7 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 			end
 		else
 			print(prefix.."ping fail "..ping[ip][2])
-			if (check = 0) then
+			if (check == 0) then
 				if (otherdevices['People'] == 'On') then
 					commandArray['People'] = 'Off'
 				end
