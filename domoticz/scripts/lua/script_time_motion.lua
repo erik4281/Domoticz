@@ -13,9 +13,9 @@ end
  
 commandArray = {}
 
-MbE = tostring(uservariables['MacBookAirErik'])
-MbJ = tostring(uservariables['MacBookAirJinHee'])
-TvL = tostring(uservariables['TvLiving'])
+MbE = uservariables['MacBookAirErik']
+MbJ = uservariables['MacBookAirJinHee']
+TvL = uservariables['TvLiving']
 
 if (MbE < 10) then
 	MbE = 0
@@ -26,6 +26,13 @@ end
 if (TvL < 10) then
 	TvL = 0
 end
+MbE = tostring(MbE)
+MbJ = tostring(MbJ)
+TvL = tostring(TvL)
+
+print(MbE)
+print(MbJ)
+print(TvL)
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
