@@ -44,20 +44,20 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 		end
 	end
 	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
-		if (otherdevices['People'] == 'Off') then
+		--if (otherdevices['People'] == 'Off') then
 			commandArray['People'] = 'On'
-		end
-		if (otherdevices['ALARM'] == 'On') then
+		--end
+		--if (otherdevices['ALARM'] == 'On') then
 			commandArray['ALARM'] = 'Off'
-		end
+		--end
 	end
 	if (otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') then
-		if (otherdevices['People'] == 'On') then
+		--if (otherdevices['People'] == 'On') then
 			commandArray['People'] = 'Off'
-		end
-		if (otherdevices['ALARM'] == 'Off') then
+		--end
+		--if (otherdevices['ALARM'] == 'Off') then
 			commandArray['ALARM'] = 'On'
-		end
+		--end
 	end
 elseif ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' and (devicechanged[dc] == 'Off' or devicechanged[dc] == 'Closed')) then
 	if (otherdevices['ALARM'] == 'On') then
