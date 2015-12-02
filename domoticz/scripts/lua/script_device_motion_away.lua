@@ -52,6 +52,10 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 			end
 		end
 	end
+elseif ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' and (devicechanged[dc] == 'Off' or devicechanged[dc] == 'Closed')) then
+	if (otherdevices['ALARM'] == 'On') then
+		commandArray['ALARM'] = 'Off'
+	end
 end
 
 return commandArray
