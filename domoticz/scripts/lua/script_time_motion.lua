@@ -26,13 +26,10 @@ end
 if (TvL < 10) then
 	TvL = 0
 end
+
 MbE = tostring(MbE)
 MbJ = tostring(MbJ)
 TvL = tostring(TvL)
-
-print(MbE)
-print(MbJ)
-print(TvL)
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
