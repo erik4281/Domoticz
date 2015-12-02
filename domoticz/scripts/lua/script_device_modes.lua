@@ -3,6 +3,15 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 
+if ((ts == 'iPhoneErik' or ts == 'iPhoneJinHee')) then
+	if ((otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') and presence == 'Off') then
+		commandArray['People'] = 'On'
+	end
+	if ((otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') and presence == 'On') then
+		commandArray['People'] = 'Off'
+	end
+end
+
 if (ts == 'SleepMode') then
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
