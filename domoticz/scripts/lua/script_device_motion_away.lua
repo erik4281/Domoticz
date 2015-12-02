@@ -8,6 +8,7 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 	sc = ts:sub(7)
 	if (sc == 'FrontDoor') then
 		commandArray['SwitchHallway'] = 'On'
+		commandArray['People'] = 'On'
 	end
 	prefix="(PING) "
 	local ping={}
@@ -43,10 +44,17 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 		end
 	end
 	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
+		if (otherdevices['People'] == 'Off') then
+			commandArray['People'] = 'On'
+		end
 		if (otherdevices['ALARM'] == 'On') then
 			commandArray['ALARM'] = 'Off'
 		end
-	else
+	end
+	if (otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') then
+		if (otherdevices['People'] == 'On') then
+			commandArray['People'] = 'Off'
+		end
 		if (otherdevices['ALARM'] == 'Off') then
 			commandArray['ALARM'] = 'On'
 		end
