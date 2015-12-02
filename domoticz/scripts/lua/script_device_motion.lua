@@ -77,19 +77,6 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 				print (ts..' saw motion. Now triggering switch Switch'..se)
 				commandArray['Switch'..se] = 'Off'
 			end
-		else
-			if (otherdevices['Switch'..sc] == 'On') then
-				print (ts..' saw motion. Now triggering switch Switch'..sc)
-				commandArray['Switch'..sc] = 'Off'
-			end
-			if (sd and otherdevices['Switch'..sd] == 'On') then
-				print (ts..' saw motion. Now triggering switch Switch'..sd)
-				commandArray['Switch'..sd] = 'Off'
-			end
-			if (se and otherdevices['Switch'..se] == 'On') then
-				print (ts..' saw motion. Now triggering switch Switch'..se)
-				commandArray['Switch'..se] = 'Off'
-			end
 		end
 		if (sl and otherdevices['Switch'..sl] == 'Off') then
 			print (ts..' saw motion. Now triggering switch Switch'..sl)
