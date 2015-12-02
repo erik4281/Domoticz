@@ -3,9 +3,8 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 
-print (ts)
-
 if ((ts == 'iPhoneErik' or ts == 'iPhoneJinHee')) then
+	print (ts..' - '..presence)
 	if ((otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') and presence == 'Off') then
 		commandArray['People'] = 'On'
 	end
