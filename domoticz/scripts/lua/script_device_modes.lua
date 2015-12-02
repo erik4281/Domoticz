@@ -4,12 +4,12 @@ dc = next(devicechanged)
 ts = tostring(dc)
 
 if ((ts == 'iPhoneErik' or ts == 'iPhoneJinHee')) then
-	print ('Running this if ts is a phone '..ts..' - '..otherdevices[ts]..' - '..presence)
-	if ((otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') and presence == 'Off') then
+	print ('Running this if ts is a phone '..ts..' - '..otherdevices[ts]..' - '..otherdevices['People'])
+	if ((otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') and otherdevices['People'] == 'Off') then
 		print ('people on!')
 		commandArray['People'] = 'On'
 	end
-	if ((otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') and presence == 'On') then
+	if ((otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') and otherdevices['People'] == 'On') then
 		print ('people off!')
 		commandArray['People'] = 'Off'
 	end
