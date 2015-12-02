@@ -111,9 +111,6 @@ for i, v in pairs(otherdevices) do
 			timeon = timeon + MbE + MbJ
 		end
 		timewait = timeon * 60
-		difmin = difference / 60
-		timemin = timewait / 60
-		print (sc..' timewait: '..difmin..'/'..timemin)
 		if (motioncheck == 'Off' and difference >= timewait) then
 			if (otherdevices['Switch'..sc] == 'On') then
 				print (ts..' saw no more motion. Now triggering switch Switch'..sc)
