@@ -19,7 +19,8 @@ presence = otherdevices['People']
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	v = i:sub(1,6)
-	if (ts == 'MotionFrontDoor') then
+	if (otherdevices == 'MotionFrontDoor') then
+		print ('CHECKING OK!!!!')
 		timeon = uservariables['DepartTimer']
 		difference = timedifference(otherdevices_lastupdate[ts])
 		timewait = (timeon * 60) + 120
