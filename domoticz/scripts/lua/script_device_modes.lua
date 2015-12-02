@@ -6,11 +6,11 @@ ts = tostring(dc)
 if ((ts == 'iPhoneErik' or ts == 'iPhoneJinHee')) then
 	print (ts..' - '..otherdevices[ts]..' - '..presence)
 	if ((otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') and presence == 'Off') then
-		print (people on!)
+		print ('people on!')
 		commandArray['People'] = 'On'
 	end
 	if ((otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') and presence == 'On') then
-		print (people off!)
+		print ('people off!')
 		commandArray['People'] = 'Off'
 	end
 end
