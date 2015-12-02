@@ -3,7 +3,6 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 presence = otherdevices['People']
-switchpresence = 'People'
 
 if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
 	sc = ts:sub(7)
