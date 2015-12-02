@@ -17,6 +17,16 @@ MbE = tostring(uservariables['MacBookAirErik'])
 MbJ = tostring(uservariables['MacBookAirJinHee'])
 TvL = tostring(uservariables['TvLiving'])
 
+if (MbE < 10) then
+	MbE = 0
+end
+if (MbJ < 10) then
+	MbJ = 0
+end
+if (TvL < 10) then
+	TvL = 0
+end
+
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	v = i:sub(1,6)
