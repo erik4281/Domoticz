@@ -56,19 +56,19 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 				print (ts..' saw motion. Now triggering switch Switch'..sc)
 				commandArray['Switch'..sc] = 'On'
 			end
-			if (d and otherdevices['Switch'..sd] == 'Off') then
+			if (sd and otherdevices['Switch'..sd] == 'Off') then
 				print (ts..' saw motion. Now triggering switch Switch'..sd)
 				commandArray['Switch'..sd] = 'On'
 			end
-			if (e and otherdevices['Switch'..se] == 'Off') then
+			if (se and otherdevices['Switch'..se] == 'Off') then
 				print (ts..' saw motion. Now triggering switch Switch'..se)
 				commandArray['Switch'..se] = 'On'
 			end
-			if (l and otherdevices['Switch'..sl] == 'Off') then
+			if (sl and otherdevices['Switch'..sl] == 'Off') then
 				print (ts..' saw motion. Now triggering switch Switch'..sl)
 				commandArray['Switch'..sl] = 'On'
 			end
-			if (m and otherdevices['Switch'..sm] == 'Off') then
+			if (sm and otherdevices['Switch'..sm] == 'Off') then
 				print (ts..' saw motion. Now triggering switch Switch'..sm)
 				commandArray['Switch'..sm] = 'On'
 			end
@@ -77,19 +77,19 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 				print (ts..' saw motion. Now triggering switch Switch'..sc)
 				commandArray['Switch'..sc] = 'Off'
 			end
-			if (d and otherdevices['Switch'..sd] == 'On') then
+			if (sd and otherdevices['Switch'..sd] == 'On') then
 				print (ts..' saw motion. Now triggering switch Switch'..sd)
 				commandArray['Switch'..sd] = 'Off'
 			end
-			if (e and otherdevices['Switch'..se] == 'On') then
+			if (se and otherdevices['Switch'..se] == 'On') then
 				print (ts..' saw motion. Now triggering switch Switch'..se)
 				commandArray['Switch'..se] = 'Off'
 			end
-			if (l and otherdevices['Switch'..sl] == 'Off') then
+			if (sl and otherdevices['Switch'..sl] == 'Off') then
 				print (ts..' saw motion. Now triggering switch Switch'..sl)
 				commandArray['Switch'..sl] = 'On'
 			end
-			if (m and otherdevices['Switch'..sm] == 'Off') then
+			if (sm and otherdevices['Switch'..sm] == 'Off') then
 				print (ts..' saw motion. Now triggering switch Switch'..sm)
 				commandArray['Switch'..sm] = 'On'
 			end
