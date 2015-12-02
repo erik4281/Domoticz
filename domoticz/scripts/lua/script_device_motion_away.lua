@@ -5,6 +5,9 @@ ts = tostring(t)
 presence = otherdevices['People']
 switchpresence = 'People'
 
+print(ts:sub(1,6)..' - '..presence..' - '..devicechanged[dc])
+
+
 if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
 	sc = ts:sub(7)
 	if (sc == 'FrontDoor') then
