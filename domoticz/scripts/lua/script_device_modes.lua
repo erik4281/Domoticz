@@ -8,18 +8,20 @@ if (ts == 'SleepMode') then
 		v = i:sub(1,6)
 		if (v == 'Switch') then
 			c = i:sub(7)
-			scriptfolder = "/home/pi/domoticz/scripts/bash/"
+			--scriptfolder = "/home/pi/domoticz/scripts/bash/"
 			if (devicechanged[dc] == 'On') then
 				commandArray['Bedroom Humidifier'] = 'On'
 				if (otherdevices[i] == 'On') then
-					scene = '9Slow.sh'
-					os.execute (scriptfolder..c..'/'..scene)
+					commandArray[otherdevices[i]] = 'On'
+					--scene = '9Slow.sh'
+					--os.execute (scriptfolder..c..'/'..scene)
 				end
 			elseif (devicechanged[dc] == 'Off') then
 				commandArray['Bedroom Humidifier'] = 'Off'
 				if (otherdevices[i] == 'On') then
-					scene = '1Slow.sh'
-					os.execute (scriptfolder..c..'/'..scene)
+					commandArray[otherdevices[i]] = 'On'
+					--scene = '1Slow.sh'
+					--os.execute (scriptfolder..c..'/'..scene)
 				end
 			end
 		end
