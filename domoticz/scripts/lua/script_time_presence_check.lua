@@ -16,14 +16,15 @@ commandArray = {}
 door = otherdevices['MotionFrontDoor']
 presence = otherdevices['People']
 
-for i, v in pairs(otherdevices) do
-	ts = tostring(i)
-	v = i:sub(1,6)
-	if (ts == 'MotionFrontDoor') then
+--for i, v in pairs(otherdevices) do
+--	ts = tostring(i)
+--	v = i:sub(1,6)
+--	if (ts == 'MotionFrontDoor') then
 		timeon = uservariables['DepartTimer']
-		difference = timedifference(otherdevices_lastupdate[ts])
+		difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 		timewait = (timeon * 60) + 120
-		if (presence == "On" and door == 'Closed' and difference < (timewait + 60)) then
+--		if (presence == "On" and door == 'Closed' and difference < (timewait + 60)) then
+		if (presence == "On" and door == 'Closed') then
 			prefix="(PING) "
 			local ping={}
 			local ping_success
@@ -70,7 +71,7 @@ for i, v in pairs(otherdevices) do
 				commandArray['People'] = 'Off'
 			end
 		end
-	end
-end
+--	end
+--end
 
 return commandArray
