@@ -4,7 +4,7 @@ dc = next(devicechanged)
 ts = tostring(dc)
 
 if ((ts == 'iPhoneErik' or ts == 'iPhoneJinHee')) then
-	print (ts..' - '..otherdevices[ts]..' - '..presence)
+	print ('Running this if ts is a phone '..ts..' - '..otherdevices[ts]..' - '..presence)
 	if ((otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') and presence == 'Off') then
 		print ('people on!')
 		commandArray['People'] = 'On'
