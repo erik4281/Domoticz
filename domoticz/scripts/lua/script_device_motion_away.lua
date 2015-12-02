@@ -33,12 +33,6 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 		end
 		if ping_success or bt_success then
 			print(prefix.."ping success "..ping[ip][2])
-			if (otherdevices['ALARM'] == 'On') then
-				commandArray['ALARM'] = 'Off'
-			end
-			if (presence == 'Off') then
-				commandArray[switchpresence] = 'On'
-			end
 			if (otherdevices[ping[ip][2]]=='Off') then
 				commandArray[ping[ip][2]]='On'
 			end
@@ -47,9 +41,15 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 			end
 		else
 			print(prefix.."ping fail "..ping[ip][2])
-			if (otherdevices['ALARM'] == 'Off') then
-				commandArray['ALARM'] = 'On'
-			end
+		end
+	end
+	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
+		if (otherdevices['ALARM'] == 'On') then
+			commandArray['ALARM'] = 'Off'
+		end
+	else
+		if (otherdevices['ALARM'] == 'Off') then
+			commandArray['ALARM'] = 'On'
 		end
 	end
 elseif ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' and (devicechanged[dc] == 'Off' or devicechanged[dc] == 'Closed')) then
