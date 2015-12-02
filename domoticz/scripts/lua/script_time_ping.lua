@@ -2,14 +2,14 @@ commandArray={}
 
 presence = otherdevices['People']
 
-if (presence == 'On') then
-	
 	prefix="(TIMED PING) "
 	timeon = uservariables['DeviceTimer']
 
 	local ping={}
 	local ping_success
 	local bt_success
+
+if (presence == 'On') then
 	
 	ping[1]={'10.0.1.125', 'MacBookAirErik', 'MacBookAirErik', 'MacBookAirErikOff', timeon}
 	ping[2]={'10.0.1.126', 'MacBookAirJinHee', 'MacBookAirJinHee', 'MacBookAirJinHeeOff', timeon}
