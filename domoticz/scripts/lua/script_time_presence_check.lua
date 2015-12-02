@@ -15,7 +15,6 @@ commandArray = {}
 
 door = otherdevices['MotionFrontDoor']
 presence = otherdevices['People']
-switchpresence = 'People'
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
@@ -47,12 +46,6 @@ for i, v in pairs(otherdevices) do
 				end
 				if ping_success or bt_success then
 					print(prefix.."ping success "..ping[ip][2])
-					if (otherdevices['ALARM'] == 'On') then
-						commandArray['ALARM'] = 'Off'
-					end
-					if (presence == 'Off') then
-						commandArray[switchpresence] = 'On'
-					end
 					if (otherdevices[ping[ip][2]]=='Off') then
 						commandArray[ping[ip][2]]='On'
 					end
@@ -68,18 +61,6 @@ for i, v in pairs(otherdevices) do
 							commandArray['Variable:'..ping[ip][3]]= tostring((uservariables[ping[ip][3]]) + 1)
 						end
 					end
-				end
-			end
-			if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
-				print ("Phones still present")
-				if (presence == 'Off') then
-					commandArray[switchpresence] = 'On'
-				end
-			end
-			if (otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') then
-				print ("Phones departed")
-				if (presence == 'On') then
-					commandArray[switchpresence] = 'Off'
 				end
 			end
 		end
