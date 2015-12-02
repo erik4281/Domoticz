@@ -64,6 +64,12 @@ for i, v in pairs(otherdevices) do
 					end
 				end
 			end
+			if ((otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') and otherdevices['People'] == 'Off') then
+				commandArray['People'] = 'On'
+			end
+			if ((otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') and otherdevices['People'] == 'On') then
+				commandArray['People'] = 'Off'
+			end
 		end
 	end
 end
