@@ -7,32 +7,13 @@ if (ts == 'SleepMode') then
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
 		if (v == 'Switch') then
-			--c = i:sub(7)
-			--scriptfolder = "/home/pi/domoticz/scripts/bash/"
 			if (devicechanged[dc] == 'On') then
 				commandArray['Bedroom Humidifier'] = 'On'
 				commandArray[1] = {['UpdateDevice'] = "41|0|18"}
-				--if (otherdevices[i] == 'On') then
-					--commandArray[otherdevices[i]] = 'On'
-					--scene = '9Slow.sh'
-					--os.execute (scriptfolder..c..'/'..scene)
-				--end
 			elseif (devicechanged[dc] == 'Off') then
 				commandArray['Bedroom Humidifier'] = 'Off'
 				commandArray[1] = {['UpdateDevice'] = "41|0|22"}
-				--if (otherdevices[i] == 'On') then
-					--commandArray[otherdevices[i]] = 'On'
-					--scene = '1Slow.sh'
-					--os.execute (scriptfolder..c..'/'..scene)
-				--end
 			end
-			--if (otherdevices[i] == 'On') then
-				--print('Switching lights '..i..' to comply to new mode')
-				--commandArray[otherdevices[i]] = 'On'
-				--commandArray[otherdevices['SwitchLiving']] = 'On'
-				--scene = '9Slow.sh'
-				--os.execute (scriptfolder..c..'/'..scene)
-			--end
 			sc = i:sub(7)
 			scriptfolder = "/home/pi/domoticz/scripts/bash/"
 			if (otherdevices[i] == 'On') then
@@ -69,10 +50,9 @@ if (ts == 'SleepMode') then
 				if (devicechanged[dc] == 'On') then
 					scene = 9
 				end
-				print (sc..' - '..i..' - '..scene)
 				scene = scene..'Slow.sh'
 				print ('Switch triggered: '..scriptfolder..sc..'/'..scene)
-				--os.execute (scriptfolder..sc..'/'..scene)
+				os.execute (scriptfolder..sc..'/'..scene)
 			end
 		end
 	end
