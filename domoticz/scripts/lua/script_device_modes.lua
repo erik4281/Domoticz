@@ -11,6 +11,7 @@ if (ts == 'SleepMode') then
 			--scriptfolder = "/home/pi/domoticz/scripts/bash/"
 			if (devicechanged[dc] == 'On') then
 				commandArray['Bedroom Humidifier'] = 'On'
+				commandArray[1] = {['UpdateDevice'] = "41|0|18"}
 				if (otherdevices[i] == 'On') then
 					commandArray[otherdevices[i]] = 'On'
 					--scene = '9Slow.sh'
@@ -18,6 +19,7 @@ if (ts == 'SleepMode') then
 				end
 			elseif (devicechanged[dc] == 'Off') then
 				commandArray['Bedroom Humidifier'] = 'Off'
+				commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 				if (otherdevices[i] == 'On') then
 					commandArray[otherdevices[i]] = 'On'
 					--scene = '1Slow.sh'
