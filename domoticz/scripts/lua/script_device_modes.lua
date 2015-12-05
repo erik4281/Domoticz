@@ -29,7 +29,7 @@ if (ts == 'SleepMode') then
 			if (otherdevices[i] == 'On') then
 				print('Switching lights '..i..' to comply to new mode')
 				commandArray[otherdevices[i]] = 'On'
-				commandArray[otherdevices['SwitchLiving'] = 'On'
+				commandArray[otherdevices['SwitchLiving']] = 'On'
 				--scene = '9Slow.sh'
 				--os.execute (scriptfolder..c..'/'..scene)
 			end
