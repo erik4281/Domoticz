@@ -12,19 +12,24 @@ if (ts == 'SleepMode') then
 			if (devicechanged[dc] == 'On') then
 				commandArray['Bedroom Humidifier'] = 'On'
 				commandArray[1] = {['UpdateDevice'] = "41|0|18"}
-				if (otherdevices[i] == 'On') then
-					commandArray[otherdevices[i]] = 'On'
+				--if (otherdevices[i] == 'On') then
+					--commandArray[otherdevices[i]] = 'On'
 					--scene = '9Slow.sh'
 					--os.execute (scriptfolder..c..'/'..scene)
-				end
+				--end
 			elseif (devicechanged[dc] == 'Off') then
 				commandArray['Bedroom Humidifier'] = 'Off'
 				commandArray[1] = {['UpdateDevice'] = "41|0|22"}
-				if (otherdevices[i] == 'On') then
-					commandArray[otherdevices[i]] = 'On'
+				--if (otherdevices[i] == 'On') then
+					--commandArray[otherdevices[i]] = 'On'
 					--scene = '1Slow.sh'
 					--os.execute (scriptfolder..c..'/'..scene)
-				end
+				--end
+			end
+			if (otherdevices[i] == 'On') then
+				commandArray[otherdevices[i]] = 'On'
+				--scene = '9Slow.sh'
+				--os.execute (scriptfolder..c..'/'..scene)
 			end
 		end
 	end
