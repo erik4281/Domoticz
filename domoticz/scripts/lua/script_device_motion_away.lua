@@ -23,7 +23,7 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 			bt_success=false
 			ping_success=os.execute('ping -c 1 -w 1 '..ping[ip][1])
 			if ping_success then
-				check = 1
+				check = check + 1
 			end
 		else
 			f = assert (io.popen ("hcitool names "..ping[ip][4]))
@@ -32,7 +32,7 @@ if ((ts:sub(1,6) == 'Motion' or ts:sub(1,6) == 'Tamper') and presence == 'Off' a
 				bt_success=false
 			else
 				bt_success=true
-				check = 1
+				check = check + 1
 			end
 			f:close()
 		end
