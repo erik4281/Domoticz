@@ -69,7 +69,7 @@ if (ts == 'SleepMode') then
 				if (devicechanged[dc] == 'On') then
 					scene = 9
 				end
-				print (sc..' - '..i..' - '..scene
+				print (sc..' - '..i..' - '..scene)
 				scene = scene..'Slow.sh'
 				print ('Switch triggered: '..scriptfolder..sc..'/'..scene)
 				--os.execute (scriptfolder..sc..'/'..scene)
