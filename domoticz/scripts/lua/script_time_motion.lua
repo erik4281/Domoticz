@@ -19,18 +19,18 @@ TvL = uservariables['TvLiving']
 
 if (MbE < 10) then
 	MbE = 0
-elseif (MbE > 45) then
-	MbE = 45
+elseif (MbE > 75) then
+	MbE = 75
 end
 if (MbJ < 10) then
 	MbJ = 0
-elseif (MbJ > 45) then
-	MbJ = 45
+elseif (MbJ > 75) then
+	MbJ = 75
 end
 if (TvL < 10) then
 	TvL = 0
-elseif (TvL > 45) then
-	TvL = 45
+elseif (TvL > 75) then
+	TvL = 75
 end
 
 MbE = tostring(MbE)
