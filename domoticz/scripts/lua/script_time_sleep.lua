@@ -39,9 +39,6 @@ for i, v in pairs(otherdevices) do
 		if (edifference < difference) then
 			difference = edifference
 		end
-		if (fdifference < difference) then
-			difference = fdifference
-		end
 		timewait = timeon * 60
 		if (otherdevices[sc] == 'Off' and otherdevices[sd] == 'Off' and otherdevices[se] == 'Closed' and difference >= timewait and sleep == 'Off') then
 			commandArray[switchsleep]='On'
