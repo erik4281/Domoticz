@@ -24,25 +24,25 @@ if (presence == 'On') then
 		ping_success=os.execute('ping -c 1 -w 1 '..ping[ip][1])
 		if ping_success then
 			--print(prefix.."ping success "..ping[ip][2])
-			if (otherdevices[ping[ip][2]]=='Off') then
-				commandArray[ping[ip][2]]='On'
-				commandArray['Variable:'..ping[ip][3]]= tostring(1)
-			else
+			--if (otherdevices[ping[ip][2]]=='Off') then
+				--commandArray[ping[ip][2]]='On'
+			--	commandArray['Variable:'..ping[ip][3]]= tostring(1)
+			--else
 				commandArray['Variable:'..ping[ip][3]]= tostring((uservariables[ping[ip][3]]) + 1)
-			end
+			--end
 			if (uservariables[ping[ip][4]]) ~= 1 then
 				commandArray['Variable:'..ping[ip][4]]= tostring(1)
 			end
 		else
 			--print(prefix.."ping fail "..ping[ip][2])
-			if (otherdevices[ping[ip][2]]=='On') then
+			--if (otherdevices[ping[ip][2]]=='On') then
 				if (uservariables[ping[ip][4]])==ping[ip][5] then
-					commandArray[ping[ip][2]]='Off'
+					--commandArray[ping[ip][2]]='Off'
 					commandArray['Variable:'..ping[ip][3]]= tostring(0)
 				else
 					commandArray['Variable:'..ping[ip][4]]= tostring((uservariables[ping[ip][4]]) + 1)
 				end
-			end
+			--end
 		end
 	end
 else
