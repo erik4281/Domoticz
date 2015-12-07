@@ -22,7 +22,7 @@ domoticzpassword = ""
  
 # If enabled. The script will log to the file _.log
 # Logging to file only happens after the check for other instances, before that it only prints to screen.
-log_to_file = False
+log_to_file = True
  
 # The script supports two types to check if another instance of the script is running.
 # One will use the ps command, but this does not work on all machine (Synology has problems)
@@ -103,7 +103,8 @@ if lastreported == 0 :
  
 while 1==1:
   currentstate = subprocess.call('hcitool names '+ device + ' > /dev/null', shell=True)
- 
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + currentstate)
+  
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, no need to tell domoticz")
