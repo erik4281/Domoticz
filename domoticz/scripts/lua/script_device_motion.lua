@@ -95,6 +95,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'On'
 		print ('Motion in the hallway, people are present, switching on light and setting mode to present')
 		commandArray['SwitchHallway'] = 'On'
 		commandArray['People'] = 'On'
+		commandArray['Variable: AlarmTimer'] = tostring(0)
 	else
 		if (otherdevices['ALARM'] == 'Off') then
 			commandArray['ALARM'] = 'On'
