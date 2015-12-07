@@ -19,13 +19,15 @@ timeon = uservariables['DepartTimer']
 difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 timewait = (timeon * 60) + 120
 
-if (presence == "On" and door == 'Closed' and difference < (timewait + 60)) then
+if (presence == 'On' and door == 'Closed' and difference < (timewait + 60)) then
 	if ((otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') and presence == 'Off') then
 		commandArray['People'] = 'On'
 	end
 	if ((otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') and presence == 'On') then
 		commandArray['People'] = 'Off'
 	end
+elseif (presence == 'On' and (otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off')) then
+	
 end
 
 return commandArray
