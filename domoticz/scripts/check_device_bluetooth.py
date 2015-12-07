@@ -103,8 +103,7 @@ if lastreported == 0 :
  
 while 1==1:
   currentstate = subprocess.call('hcitool names '+ device + ' > /dev/null', shell=True)
-  log (currentstate)
-  
+
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, no need to tell domoticz")
