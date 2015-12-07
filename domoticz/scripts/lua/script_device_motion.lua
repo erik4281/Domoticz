@@ -89,11 +89,28 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	end
 end
 
-if (ts:sub(1,6) == 'Tamper' and presence == 'On' and devicechanged[dc] == 'On') then
+if (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
+	sc = ts:sub(7)
+	if (sc == 'FrontDoor' or sc == 'Hallway') then
+		print ('Motion in the hallway, people are present, switching on light and setting mode to present')
+		commandArray['SwitchHallway'] = 'On'
+		commandArray['People'] = 'On'
+	else
+		if (otherdevices['ALARM'] == 'Off') then
+			commandArray['ALARM'] = 'On'
+		end
+	end
+elseif (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'Off' or devicechanged[dc] == 'Closed')) then
+	if (otherdevices['ALARM'] == 'On') then
+		commandArray['ALARM'] = 'Off'
+	end
+end
+
+if (ts:sub(1,6) == 'Tamper' and devicechanged[dc] == 'On') then
 	if (otherdevices['ALARM'] == 'Off') then
 		commandArray['ALARM'] = 'On'
 	end
-elseif (ts:sub(1,6) == 'Tamper' and presence == 'On' and devicechanged[dc] == 'Off') then
+elseif (ts:sub(1,6) == 'Tamper' and devicechanged[dc] == 'Off') then
 	if (otherdevices['ALARM'] == 'On') then
 		commandArray['ALARM'] = 'Off'
 	end
