@@ -17,7 +17,7 @@ door = otherdevices['MotionFrontDoor']
 presence = otherdevices['People']
 timeon = uservariables['DepartTimer']
 difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
-timewait = (timeon * 60 * 60) + 120
+timewait = (timeon * 60) + 120
 
 if (presence == "On" and door == 'Closed' and difference < (timewait + 60)) then
 	prefix="(PING) "
