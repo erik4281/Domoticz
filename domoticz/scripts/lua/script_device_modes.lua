@@ -90,7 +90,7 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 		elseif (v == 'Tamper' and otherdevices[i] == 'On') then
 			commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
 		else
-			commandArray['SendNotification']='ALARM#ALARM: Something is ON, but nobody is home!#2#default'
+			commandArray['SendNotification']='ALARM#ALARM: Something is going on, but nobody is home!#2#default'
 		end
 	end
 end
