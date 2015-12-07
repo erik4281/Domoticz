@@ -16,7 +16,7 @@ import json
 import base64
  
 # Settings for the domoticz server
-domoticzserver="127.0.0.1:8080"
+domoticzserver="10.0.1.120:8080"
 domoticzusername = ""
 domoticzpassword = ""
  
