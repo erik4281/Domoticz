@@ -17,6 +17,8 @@ MbE = otherdevices['MacBookAirErik']
 MbJ = otherdevices['MacBookAirJinHee']
 TvL = otherdevices['TvLiving']
 
+print (MbE)
+
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	v = i:sub(1,6)
