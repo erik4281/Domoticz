@@ -14,19 +14,23 @@ end
 commandArray = {}
 
 door = otherdevices['MotionFrontDoor']
-presence = otherdevices['People']
 timeon = uservariables['DepartTimer']
 difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 timewait = (timeon * 60) + 120
 
-if (presence == 'On' and door == 'Closed' and difference < (timewait + 60)) then
-	if ((otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') and presence == 'Off') then
-		commandArray['People'] = 'On'
-	end
-	if ((otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') and presence == 'On') then
+if (otherdevices['People'] == 'On' and door == 'Closed' and difference < (timewait + 60)) then
+	if (otherdevices['Phones'] == 'Off') then
 		commandArray['People'] = 'Off'
+		if (otherdevices['ALARM'] == 'Off') then
+			if (uservariables['AlarmTimer'] < 2) then
+				commandArray['Variable: AlarmTimer'] = tostring(uservariables['AlarmTime'] + 1)
+			if (uservariables['AlarmTimer'] >= 2) then
+				commandArray['ALARM'] = 'On'
+			end
+		end
+
 	end
-elseif (presence == 'On' and (otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off')) then
+elseif (otherdevices['People'] == 'On' and (otherdevices['Phones'] == 'Off')) then
 	
 end
 
