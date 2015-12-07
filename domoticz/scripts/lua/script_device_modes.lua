@@ -85,12 +85,12 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On') then
 			commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
-		end
-		if (v == 'Motion' and otherdevices[i] == 'Open') then
+		elseif (v == 'Motion' and otherdevices[i] == 'Open') then
 			commandArray['SendNotification']='ALARM#ALARM: '..i..' is OPEN, but nobody is home!#2#default'
-		end
-		if (v == 'Tamper' and otherdevices[i] == 'On') then
+		elseif (v == 'Tamper' and otherdevices[i] == 'On') then
 			commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
+		else
+			commandArray['SendNotification']='ALARM#ALARM: Something is ON, but nobody is home!#2#default'
 		end
 	end
 end
