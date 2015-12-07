@@ -21,7 +21,7 @@ timewait = ((timeon + 2) * 60)
 if (otherdevices['People'] == 'On' and door == 'Closed' and difference < timewait) then
 	if (otherdevices['Phones'] == 'On') then 
 		commandArray['Variable: AlarmTimer'] = tostring(0)
-	if (otherdevices['Phones'] == 'Off') then
+	elseif (otherdevices['Phones'] == 'Off') then
 		commandArray['Variable: AlarmTimer'] = tostring(uservariables['AlarmTime'] + 1)
 		if (uservariables['AlarmTimer'] > 5 and uservariables['AlarmTimer'] < 10 and uservariables['People'] == 'On') then
 			commandArray['People'] = 'Off'
