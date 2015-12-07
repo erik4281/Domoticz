@@ -13,31 +13,9 @@ end
  
 commandArray = {}
 
-MbE = uservariables['MacBookAirErik']
-MbJ = uservariables['MacBookAirJinHee']
-TvL = uservariables['TvLiving']
-
-if (MbE < 10) then
-	MbE = 0
-elseif (MbE > 75) then
-	MbE = 75
-end
-if (MbJ < 10) then
-	MbJ = 0
-elseif (MbJ > 75) then
-	MbJ = 75
-end
-if (TvL < 10) then
-	TvL = 0
-elseif (TvL > 75) then
-	TvL = 75
-end
-
-MbE = tostring(MbE)
-MbJ = tostring(MbJ)
-TvL = tostring(TvL)
-
-print('Added timers: Tv:'..TvL..', MbE:'..MbE..', MbJ:'..MbJ)
+MbE = otherdevices['MacBookAirErik']
+MbJ = otherdevices['MacBookAirJinHee']
+TvL = otherdevices['TvLiving']
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
@@ -126,11 +104,11 @@ for i, v in pairs(otherdevices) do
 		if (sf and (ftimeon > timeon)) then
 			timeon = ftimeon
 		end
-		if (sc == 'Living') then
-			timeon = timeon + TvL + MbE + MbJ
+		if (sc == 'Living' and (MbE == 'On' or MbJ == 'On' or Tv: == 'On')) then
+			timeon = timeon + 75
 		end
-		if (sc == 'Study') then
-			timeon = timeon + MbE + MbJ
+		if (sc == 'Study' and (MbE == 'On' or MbJ == 'On')) then
+			timeon = timeon + 75
 		end
 		timewait = timeon * 60
 		if (motioncheck == 'Off' and difference >= timewait) then
