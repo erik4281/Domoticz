@@ -103,7 +103,7 @@ if lastreported == 0 :
  
 while 1==1:
   currentstate = subprocess.call('hcitool names '+ device + ' > /dev/null', shell=True)
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + currentstate)
+  log (currentstate)
   
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
