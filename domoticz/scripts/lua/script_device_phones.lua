@@ -16,9 +16,6 @@ if (ts:sub(1,6) == 'iPhone') then
 		if (otherdevices['Phones' == 'On') then
 			commandArray['Phones'] = 'Off'
 		end
-		if (otherdevices['People' == 'On') then
-			commandArray['People'] = 'Off'
-		end
 	end
 end
 
