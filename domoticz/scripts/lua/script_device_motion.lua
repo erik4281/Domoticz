@@ -27,6 +27,9 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		sc = 'Hallway'
 		sd = 'FrontDoor'
 		commandArray['Variable:AlarmTimer'] = tostring(0)
+		if (otherdevices['SleepMode'] == 'On') then
+			commandArray['SleepMode'] = 'Off'
+		end
 	elseif (sc == 'Toilet') then
 		sc = 'Toilet'
 		sd = 'Hallway'
