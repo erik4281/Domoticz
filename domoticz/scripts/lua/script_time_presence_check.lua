@@ -18,19 +18,21 @@ timeon = uservariables['DepartTimer']
 difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 timewait = ((timeon + 2) * 60)
 
-if (otherdevices['People'] == 'On' and door == 'Closed' and difference < timewait) then
-	if (otherdevices['Phones'] == 'On') then 
-		commandArray['Variable:AlarmTimer'] = tostring(0)
-	elseif (otherdevices['Phones'] == 'Off') then
-		commandArray['Variable:AlarmTimer'] = tostring(uservariables['AlarmTimer'] + 1)
-		if (uservariables['AlarmTimer'] > 5 and otherdevices['People'] == 'On') then
-			commandArray['People'] = 'Off'
+if (door == 'Closed' and difference < timewait) then
+	if (otherdevices['People'] == 'On') then
+		if (otherdevices['Phones'] == 'On') then
+			commandArray['Variable:AlarmTimer'] = tostring(0)
+		else
+			commandArray['Variable:AlarmTimer'] = tostring(uservariables['AlarmTimer'] + 1)
+			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
+			if (uservariables['PeopleTimer'] > 12 then
+				commandArray['People'] = 'Off'
+			end
+			if (uservariables['AlarmTimer'] > 12) then
+				commandArray['ALARM'] = 'On'
+			end
 		end
 	end
-end
-
-if (uservariables['AlarmTimer'] > 11) then
-	--commandArray['ALARM'] = 'On'
 end
 
 return commandArray
