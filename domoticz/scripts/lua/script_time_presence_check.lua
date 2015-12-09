@@ -25,7 +25,7 @@ if (door == 'Closed' and difference < timewait) then
 		else
 			commandArray['Variable:AlarmTimer'] = tostring(uservariables['AlarmTimer'] + 1)
 			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
-			if (uservariables['PeopleTimer'] > 12 then
+			if (uservariables['PeopleTimer'] > 12) then
 				commandArray['People'] = 'Off'
 			end
 			if (uservariables['AlarmTimer'] > 12) then
