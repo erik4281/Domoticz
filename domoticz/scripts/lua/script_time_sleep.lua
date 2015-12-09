@@ -18,7 +18,7 @@ sleep = otherdevices['SleepMode']
 switchsleep = 'SleepMode'
 presence = otherdevices['People']
 sleepstart = 2200
-sleepstop = 0400
+sleepstop = 0600
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
