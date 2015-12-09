@@ -23,14 +23,14 @@ if (otherdevices['People'] == 'On' and door == 'Closed' and difference < timewai
 		commandArray['Variable:AlarmTimer'] = tostring(0)
 	elseif (otherdevices['Phones'] == 'Off') then
 		commandArray['Variable:AlarmTimer'] = tostring(uservariables['AlarmTimer'] + 1)
-		if (uservariables['AlarmTimer'] > 5 and uservariables['AlarmTimer'] < 10 and uservariables['People'] == 'On') then
+		if (uservariables['AlarmTimer'] > 5 and otherdevices['People'] == 'On') then
 			commandArray['People'] = 'Off'
-		elseif (uservariables['AlarmTimer'] > 10 and uservariables['AlarmTimer'] < 11 and uservariables['People'] == 'On') then
-			commandArray['People'] = 'Off'
-		elseif (uservariables['AlarmTimer'] > 11) then
-			commandArray['ALARM'] = 'On'
 		end
 	end
+end
+
+if (uservariables['AlarmTimer'] > 11) then
+	--commandArray['ALARM'] = 'On'
 end
 
 return commandArray
