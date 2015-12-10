@@ -21,6 +21,7 @@
 #
 # m h  dom mon dow   command
 */1 * * * * sudo /home/pi/domoticz/scripts/bash/check_domoticz_online.sh 2>&1 >> /dev/null
+* 4 * * * sudo /home/pi/domoticz/scripts/bash/restart_domoticz.sh
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_bluetooth.py DC:9B:9C:BE:D5:08 113 30 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_bluetooth.py F0:24:75:D0:AF:C2 114 30 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.121 113 60 7200
