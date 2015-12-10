@@ -12,7 +12,7 @@ echo "startup_path=${startup_path}, hardware_id=${hardware_id}, device_id=${devi
 //Living TV
 if [ "$device_id" = "137" ] ; then
 	if [ "$status" = "On" ] ; then
-		exec `home/pi/HarmonyHubControl/HarmonyHubControl [email] [password] [harmony_ip] start_activity 6057248` &
+		exec `home/pi/HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 10.0.1.107 start_activity 6057248` &
 	fi
 fi
 
@@ -47,6 +47,6 @@ fi
 //Living On
 if [ "$device_id" = "136" ] ; then
 	if [ "$status" = "Off" ] ; then
-		exec `home/pi/HarmonyHubControl/HarmonyHubControl [email] [password] [harmony_ip] start_activity -1` &
+		exec `home/pi/HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 10.0.1.107 start_activity -1` &
 	fi
 fi
