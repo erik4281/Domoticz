@@ -32,6 +32,10 @@ if (door == 'Closed' and difference < timewait) then
 				commandArray['ALARM'] = 'On'
 			end
 		end
+	else
+		if (otherdevices['Phones'] == 'On') then
+			commandArray['People'] = 'On'
+		end
 	end
 end
 
