@@ -1,27 +1,10 @@
-# Edit this file to introduce tasks to be run by cron.
-#
-# Each task to run has to be defined through a single line
-# indicating with different fields when the task will be run
-# and what command to run for the task
-#
-# To define the time you can provide concrete values for
-# minute (m), hour (h), day of month (dom), month (mon),
-# and day of week (dow) or use '*' in these fields (for 'any').#
-# Notice that tasks will be started based on the cron's system
-# daemon's notion of time and timezones.
-#
-# Output of the crontab jobs (including errors) is sent through
-# email to the user the crontab file belongs to (unless redirected).
-#
-# For example, you can run a backup of all your user accounts
-# at 5 a.m every week with:
-# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-#
-# For more information see the manual pages of crontab(5) and cron(8)
-#
-# m h  dom mon dow   command
-*/1 * * * * sudo /home/pi/domoticz/scripts/bash/check_domoticz_online.sh 2>&1 >> /dev/null
+@reboot sleep 10 sudo git reset --hard HEAD
+@reboot sleep 12 sudo git pull
+@reboot sleep 20 sudo chmod -R 750 domoticz/scripts/bash/
+@reboot sleep 20 sudo chmod 750 domoticz/scripts/python/check_device_bluetooth.py
+@reboot sleep 20 sudo chmod 750 domoticz/scripts/python/check_device_online.py
 * 4 * * * sudo /home/pi/domoticz/scripts/bash/restart_domoticz.sh
+*/1 * * * * sudo /home/pi/domoticz/scripts/bash/check_domoticz_online.sh 2>&1 >> /dev/null
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_bluetooth.py DC:9B:9C:BE:D5:08 113 30 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_bluetooth.py F0:24:75:D0:AF:C2 114 30 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.121 113 60 7200
