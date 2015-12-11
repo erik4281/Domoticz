@@ -101,7 +101,8 @@ for i, v in pairs(otherdevices) do
 				end
 			end
 			scene = scene..'Slow.sh'
-			if (timeminute == 1 and sc == LivingExtra) then
+			print (timeminute..sc)
+			if (timeminute == 3 and sc == LivingExtra) then
 				print ('Check OK')
 				scene = 'Colorloop.sh'
 				execute = 1
