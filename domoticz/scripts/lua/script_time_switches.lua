@@ -25,12 +25,26 @@ for i, v in pairs(otherdevices) do
 			difference = timedifference(otherdevices_lastupdate[ts])
 			timenumber = tonumber(os.date("%H")..os.date("%M"))
 			timeminute = tonumber(os.date("%M"))
+			loopminute = tonumber(uservariables['LoopMinute'])
 			time0 = tonumber(uservariables['Timer'..sc..'0'])
 			time1 = tonumber(uservariables['Timer'..sc..'1'])
 			time2 = tonumber(uservariables['Timer'..sc..'2'])
 			time3 = tonumber(uservariables['Timer'..sc..'3'])
 			time4 = tonumber(uservariables['Timer'..sc..'4'])
 			execute = 0
+			if (sc == 'LivingExtra') then
+				--time0 = time0 + 1
+				--time1 = time1 + 1
+				--time2 = time2 + 1
+				--time3 = time3 + 1
+				--time4 = time4 + 1
+				if (timeminute == loopminute) then
+					scene = 'Colorloop.sh'
+					execute = 1
+				elseif (timeminute == loopminute + 1) then
+					difference = 30
+				end
+			end
 			if (difference >= 1 and difference < 61) then
 				if (time1) then
 					scene = 0
@@ -72,42 +86,35 @@ for i, v in pairs(otherdevices) do
 			end
 			if (time0) then
 				if (timenumber == time0) then
-					scene = 0
+					scene = '0Slow'
 					execute = 1
 				end
 			end
 			if (time1) then
 				if (timenumber == time1) then
-					scene = 1
+					scene = '1Slow'
 					execute = 1
 				end
 			end
 			if (time2) then
 				if (timenumber == time2) then
-					scene = 2
+					scene = '2Slow'
 					execute = 1
 				end
 			end
 			if (time3) then
 				if (timenumber == time3) then
-					scene = 3
+					scene = '3Slow'
 					execute = 1
 				end
 			end
 			if (time4) then
 				if (timenumber == time4) then
-					scene = 4
+					scene = '4Slow'
 					execute = 1
 				end
 			end
-			scene = scene..'Slow.sh'
-			print (timeminute..sc)
-			if (timeminute == 4 and sc == 'LivingExtra') then
-				print ('Check OK')
-				scene = 'Colorloop.sh'
-				execute = 1
-				print (scene)
-			end
+			scene = scene..'.sh'
 			if (execute == 1) then
 				print ('Time triggered: '..scriptfolder..sc..'/'..scene)
 				os.execute (scriptfolder..sc..'/'..scene)
