@@ -102,8 +102,9 @@ for i, v in pairs(otherdevices) do
 			end
 			if (execute == 1) then
 				scene = scene..'Slow.sh'
+				print (timeminute)
 				if (timeminute == 52 and sc == LivingExtra) then
-					scene = 'Colorloop'
+					scene = 'Colorloop.sh'
 				end
 				print ('Time triggered: '..scriptfolder..sc..'/'..scene)
 				os.execute (scriptfolder..sc..'/'..scene)
