@@ -42,6 +42,7 @@ for i, v in pairs(otherdevices) do
 				--time4 = time4 + 1
 				if (timeminute == loopminute) then
 					scene = 'Colorloop.sh'
+					print ('Colorloop triggered: '..scriptfolder..sc..'/'..scene)
 					os.execute (scriptfolder..sc..'/'..scene)
 					looping = 1
 				elseif (timeminute == loopminute + 1) then
