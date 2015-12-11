@@ -32,6 +32,7 @@ for i, v in pairs(otherdevices) do
 			time3 = tonumber(uservariables['Timer'..sc..'3'])
 			time4 = tonumber(uservariables['Timer'..sc..'4'])
 			execute = 0
+			looping = 0
 			if (sc == 'LivingExtra') then
 				--time0 = time0 + 1
 				--time1 = time1 + 1
@@ -40,7 +41,7 @@ for i, v in pairs(otherdevices) do
 				--time4 = time4 + 1
 				if (timeminute == loopminute) then
 					scene = 'Colorloop.sh'
-					execute = 1
+					looping = 1
 				elseif (timeminute == loopminute + 1) then
 					difference = 30
 				end
