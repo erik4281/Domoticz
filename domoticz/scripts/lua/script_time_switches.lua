@@ -24,6 +24,7 @@ for i, v in pairs(otherdevices) do
 		if (otherdevices[ts] == 'On') then
 			difference = timedifference(otherdevices_lastupdate[ts])
 			timenumber = tonumber(os.date("%H")..os.date("%M"))
+			timeminute = tonumber(os.date("%M"))
 			time0 = tonumber(uservariables['Timer'..sc..'0'])
 			time1 = tonumber(uservariables['Timer'..sc..'1'])
 			time2 = tonumber(uservariables['Timer'..sc..'2'])
@@ -101,6 +102,9 @@ for i, v in pairs(otherdevices) do
 			end
 			if (execute == 1) then
 				scene = scene..'Slow.sh'
+				if (timeminute == 52 and sc == LivingExtra) then
+					scene = 'Colorloop'
+				end
 				print ('Time triggered: '..scriptfolder..sc..'/'..scene)
 				os.execute (scriptfolder..sc..'/'..scene)
 				execute = 0
