@@ -33,13 +33,7 @@ for i, v in pairs(otherdevices) do
 			time4 = tonumber(uservariables['Timer'..sc..'4'])
 			execute = 0
 			looping = 0
-			slowcheck = ''
 			if (sc == 'LivingExtra') then
-				--time0 = time0 + 1
-				--time1 = time1 + 1
-				--time2 = time2 + 1
-				--time3 = time3 + 1
-				--time4 = time4 + 1
 				if (timeminute == loopminute) then
 					scene = 'Colorloop.sh'
 					print ('Colorloop triggered: '..scriptfolder..sc..'/'..scene)
@@ -48,7 +42,6 @@ for i, v in pairs(otherdevices) do
 				elseif (timeminute == loopminute + 1) then
 					difference = 30
 					looping = 1
-					slowcheck = 'Slow'
 				end
 			end
 			if (difference >= 1 and difference < 61) then
@@ -80,7 +73,7 @@ for i, v in pairs(otherdevices) do
 				if (otherdevices['SleepMode'] == 'On') then
 					scene = 9
 				end
-				scene = scene..slowcheck..'.sh'
+				scene = scene..'.sh'
 				print ('Backup triggered: '..scriptfolder..sc..'/'..scene)
 				os.execute (scriptfolder..sc..'/'..scene)
 				scene = 1
