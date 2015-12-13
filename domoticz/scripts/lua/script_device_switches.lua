@@ -9,11 +9,14 @@ if (ts:sub(1,6) == 'Switch') then
 	if (devicechanged[dc] == 'On') then
 		timenumber = tonumber(os.date("%H")..os.date("%M"))
 		weekday = tonumber(os.date("%w"))
-		print (timenumber..weekday)
-		time1 = tonumber(uservariables['Timer'..sc..'1'])
-		time2 = tonumber(uservariables['Timer'..sc..'2'])
-		time3 = tonumber(uservariables['Timer'..sc..'3'])
-		time4 = tonumber(uservariables['Timer'..sc..'4'])
+		wk = ''
+		if (weekday == 0 or weekday == 6) then
+			wk = 'Weekend'
+		end
+		time1 = tonumber(uservariables['Timer'..sc..'1'..wk])
+		time2 = tonumber(uservariables['Timer'..sc..'2'..wk])
+		time3 = tonumber(uservariables['Timer'..sc..'3'..wk])
+		time4 = tonumber(uservariables['Timer'..sc..'4'..wk])
 		if (time1) then
 			scene = 0
 		else
