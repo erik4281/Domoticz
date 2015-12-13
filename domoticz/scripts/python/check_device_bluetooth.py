@@ -1,10 +1,10 @@
 #!/usr/bin/python
 #   Title: check_device_online.py
 #   Author: Chopper_Rob
-#   Date: 18-02-2015
+#   Date: 25-02-2015
 #   Info: Checks the presence of the given device on the network and reports back to domoticz
 #   URL : https://www.chopperrob.nl/domoticz/5-report-devices-online-status-to-domoticz
-#   Version : 1.6.1
+#   Version : 1.6.2
  
 import sys
 import datetime
@@ -77,14 +77,17 @@ def log(message):
 def domoticzstatus ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
+  switchfound = False
  
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       if json_object["result"][i]["idx"] == switchid and "Lighting" in json_object["result"][i]["Type"] :
+        switchfound = True
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
           status = 0
+  if switchfound == False: print (datetime.datetime.now().strftime("%H:%M:%S") + "- Error. Could not find switch idx in Domoticz response. Defaulting to switch off.")
   return status
  
 def domoticzrequest (url):
