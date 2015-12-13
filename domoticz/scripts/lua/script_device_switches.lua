@@ -8,9 +8,10 @@ if (ts:sub(1,6) == 'Switch') then
 	scriptfolder = "/home/pi/domoticz/scripts/bash/"
 	if (devicechanged[dc] == 'On') then
 		timenumber = tonumber(os.date("%H")..os.date("%M"))
+		timehour = tonumber(os.date("%H"))
 		weekday = tonumber(os.date("%w"))
 		wk = ''
-		if (weekday == 0 or weekday == 6) then
+		if ((weekday == 0 and timehour < 18) or weekday == 6 or (weekday == 5 and timehour > 18)) then
 			wk = 'Weekend'
 		end
 		time1 = tonumber(uservariables['Timer'..sc..'1'..wk])
