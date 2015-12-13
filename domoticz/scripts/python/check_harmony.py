@@ -106,8 +106,8 @@ if lastreported == 0 :
  
 while 1==1:
 #  currentstate = subprocess.call('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw > /dev/null', shell=True)
-  currentstate = int(subprocess.check_output('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw', shell=True))
-  logcurrentstate = str (currentstate)
+  currentstate = int(subprocess.check_output('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw', shell=True)) + 1
+  logcurrentstate = str (currentstate - 1)
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Harmony activity running: " + logcurrentstate)
 
   if currentstate > 1 : lastsuccess=datetime.datetime.now()
