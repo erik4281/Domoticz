@@ -26,11 +26,16 @@ for i, v in pairs(otherdevices) do
 			timenumber = tonumber(os.date("%H")..os.date("%M"))
 			timeminute = tonumber(os.date("%M"))
 			loopminute = tonumber(uservariables['LoopMinute'])
-			time0 = tonumber(uservariables['Timer'..sc..'0'])
-			time1 = tonumber(uservariables['Timer'..sc..'1'])
-			time2 = tonumber(uservariables['Timer'..sc..'2'])
-			time3 = tonumber(uservariables['Timer'..sc..'3'])
-			time4 = tonumber(uservariables['Timer'..sc..'4'])
+			weekday = tonumber(os.date("%w"))
+			wk = ''
+			if (weekday == 0 or weekday == 6) then
+				wk = 'Weekend'
+			end
+			time0 = tonumber(uservariables['Timer'..sc..'0'..wk])
+			time1 = tonumber(uservariables['Timer'..sc..'1'..wk])
+			time2 = tonumber(uservariables['Timer'..sc..'2'..wk])
+			time3 = tonumber(uservariables['Timer'..sc..'3'..wk])
+			time4 = tonumber(uservariables['Timer'..sc..'4'..wk])
 			execute = 0
 			looping = 0
 			if (sc == 'LivingExtra') then
