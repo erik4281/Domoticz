@@ -55,14 +55,18 @@ for i, v in pairs(otherdevices) do
 		end
 		motioncheck = 'Off'
 		mc = 'Motion'..sc
-		ctimeon = uservariables['WaitOff'..sc]
+		sleeping = ''
+		if (otherdevices['SleepMode'] == 'On') then
+			sleeping = 'Sleep'
+		end
+		ctimeon = uservariables['WaitOff'..sc..sleeping]
 		cdifference = timedifference(otherdevices_lastupdate[mc])
 		if (otherdevices[mc] == 'On' or otherdevices[mc] == 'Open') then
 			motioncheck = 'On'
 		end
 		if (sd) then
 			md = 'Motion'..sd
-			dtimeon = uservariables['WaitOff'..sd]
+			dtimeon = uservariables['WaitOff'..sd..sleeping]
 			ddifference = timedifference(otherdevices_lastupdate[md])
 			if (otherdevices[md] == 'On' or otherdevices[md] == 'Open') then
 				motioncheck = 'On'
@@ -70,7 +74,7 @@ for i, v in pairs(otherdevices) do
 		end
 		if (se) then
 			me = 'Motion'..se
-			etimeon = uservariables['WaitOff'..se]
+			etimeon = uservariables['WaitOff'..se..sleeping]
 			edifference = timedifference(otherdevices_lastupdate[me])
 			if (otherdevices[me] == 'On' or otherdevices[me] == 'Open') then
 				motioncheck = 'On'
@@ -78,7 +82,7 @@ for i, v in pairs(otherdevices) do
 		end
 		if (sf) then
 			mf = 'Motion'..sf
-			ftimeon = uservariables['WaitOff'..sf]
+			ftimeon = uservariables['WaitOff'..sf..sleeping]
 			fdifference = timedifference(otherdevices_lastupdate['Motion'..sf])
 			if (otherdevices[mf] == 'On' or otherdevices[mf] == 'Open') then
 				motioncheck = 'On'
@@ -103,9 +107,6 @@ for i, v in pairs(otherdevices) do
 		end
 		if (sf and (ftimeon > timeon)) then
 			timeon = ftimeon
-		end
-		if (otherdevices['SleepMode'] == 'On') then
-			timeon = 5
 		end
 		if (sc == 'Living' and (MbE == 'On' or MbJ == 'On' or TvL == 'On')) then
 			timeon = timeon + 75
