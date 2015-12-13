@@ -106,7 +106,7 @@ if lastreported == 0 :
  
 while 1==1:
 #  currentstate = subprocess.call('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw > /dev/null', shell=True)
-  currentstate = subprocess.check_output('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw > /dev/null', shell=True)
+  currentstate = subprocess.check_output('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw', shell=True)
 
   if currentstate > 0 : lastsuccess=datetime.datetime.now()
   if currentstate > 0 and currentstate != previousstate and lastreported == 1 : 
