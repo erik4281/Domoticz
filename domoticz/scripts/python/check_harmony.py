@@ -105,12 +105,13 @@ if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
  
 while 1==1:
-  currentstate = subprocess.call('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw > /dev/null', shell=True)
+#  currentstate = subprocess.call('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw > /dev/null', shell=True)
+  currentstate = subprocess.check_output('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw > /dev/null', shell=True)
 
-  if currentstate == 0 : lastsuccess=datetime.datetime.now()
-  if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
+  if currentstate > 0 : lastsuccess=datetime.datetime.now()
+  if currentstate > 0 and currentstate != previousstate and lastreported == 1 : 
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, no need to tell domoticz")
-  if currentstate == 0 and currentstate != previousstate and lastreported != 1 :
+  if currentstate > 0 and currentstate != previousstate and lastreported != 1 :
     if domoticzstatus() == 0 :
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, tell domoticz it's back")
       domoticzrequest("http://" + domoticzserver + "/json.htm?type=command&param=switchlight&idx=" + switchid + "&switchcmd=On&level=0")
@@ -118,10 +119,10 @@ while 1==1:
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, but domoticz already knew")
     lastreported=1
  
-  if currentstate == 1 and currentstate != previousstate :
+  if currentstate < 1 and currentstate != previousstate :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " offline, waiting for it to come back")
  
-  if currentstate == 1 and (datetime.datetime.now()-lastsuccess).total_seconds() > float(cooldownperiod) and lastreported != 0 :
+  if currentstate < 1 and (datetime.datetime.now()-lastsuccess).total_seconds() > float(cooldownperiod) and lastreported != 0 :
     if domoticzstatus() == 1 :
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " offline, tell domoticz it's gone")
       domoticzrequest("http://" + domoticzserver + "/json.htm?type=command&param=switchlight&idx=" + switchid + "&switchcmd=Off&level=0")
