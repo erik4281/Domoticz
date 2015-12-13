@@ -9,6 +9,7 @@ if (ts:sub(1,6) == 'Switch') then
 	if (devicechanged[dc] == 'On') then
 		timenumber = tonumber(os.date("%H")..os.date("%M"))
 		weekday = tonumber(os.date("%w"))
+		print (weekday)
 		time1 = tonumber(uservariables['Timer'..sc..'1'])
 		time2 = tonumber(uservariables['Timer'..sc..'2'])
 		time3 = tonumber(uservariables['Timer'..sc..'3'])
