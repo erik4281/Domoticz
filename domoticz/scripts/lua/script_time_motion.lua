@@ -104,6 +104,9 @@ for i, v in pairs(otherdevices) do
 		if (sf and (ftimeon > timeon)) then
 			timeon = ftimeon
 		end
+		if (otherdevices['SleepMode'] == 'On') then
+			timeon = 5
+		end
 		if (sc == 'Living' and (MbE == 'On' or MbJ == 'On' or TvL == 'On')) then
 			timeon = timeon + 75
 		end
