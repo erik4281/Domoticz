@@ -110,10 +110,10 @@ while 1==1:
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + currentstate)
 #  currentstate = int (currentstate)
   
-  if currentstate > 0 : lastsuccess=datetime.datetime.now()
-  if currentstate > 0 and currentstate != previousstate and lastreported == 1 : 
+  if currentstate > 1 : lastsuccess=datetime.datetime.now()
+  if currentstate > 1 and currentstate != previousstate and lastreported == 1 : 
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, no need to tell domoticz")
-  if currentstate > 0 and currentstate != previousstate and lastreported != 1 :
+  if currentstate > 1 and currentstate != previousstate and lastreported != 1 :
     if domoticzstatus() == 0 :
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, tell domoticz it's back")
       domoticzrequest("http://" + domoticzserver + "/json.htm?type=command&param=switchlight&idx=" + switchid + "&switchcmd=On&level=0")
