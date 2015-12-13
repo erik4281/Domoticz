@@ -24,11 +24,12 @@ for i, v in pairs(otherdevices) do
 		if (otherdevices[ts] == 'On') then
 			difference = timedifference(otherdevices_lastupdate[ts])
 			timenumber = tonumber(os.date("%H")..os.date("%M"))
+			timehour = tonumber(os.date("%H"))
 			timeminute = tonumber(os.date("%M"))
 			loopminute = tonumber(uservariables['LoopMinute'])
 			weekday = tonumber(os.date("%w"))
 			wk = ''
-			if (weekday == 0 or weekday == 6) then
+			if ((weekday == 0 and timehour < 18) or weekday == 6 or (weekday == 5 and timehour > 18)) then
 				wk = 'Weekend'
 			end
 			time0 = tonumber(uservariables['Timer'..sc..'0'..wk])
