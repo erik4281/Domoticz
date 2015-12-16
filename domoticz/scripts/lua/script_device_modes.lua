@@ -1,7 +1,7 @@
 function notify(notSubject, notMessage)
 	notErik = 'uIlZfdCTm3'
 	notJinHee = 'VJsRPzgoPD'
-	result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
+	result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/'..notErik..'/Test/Message123'")
 	--os.execute("curl -k 'https://api.pilot.patrickferreira.com/'..notErik..'/Test/Testing123456'")
 	--os.execute("curl -k 'https://api.pilot.patrickferreira.com/'..notErik..'/'..notSubject..'/'..notMessage..")
 --	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message')
@@ -127,36 +127,6 @@ elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] 
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
 	notify ('Test', 'Testing')
-	--notErik = 'uIlZfdCTm3'
-	--notJinHee = 'VJsRPzgoPD'
-	--notSubject = 'Test'
-	--notMessage = 'Message'
-	--os.execute(curl "https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123")
-	--response = os.execute('curl https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
-	--io.popen("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
-	--io.popen(curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
-	--io.popen('curl https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
-	--io.popen(curl -s 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
-	--sMsg = 'curl https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'
-	--os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
-	--print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
-	
-
-	--os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
-	--os.execute("curl 'https://api.pilot.patrickferreira.com/'..notErik..'/Test/Message123'")
-	--os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
-	
-	--result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
-	--print(result)
-	
-	--io.popen("curl 'http://xxx:xxx/json.htm?type=devices&rid=xxx' 2>/dev/null | /usr/local/bin/jq -r .result[].BatteryLevel")
-
-
-	--notErik = 'uIlZfdCTm3'
-	--notJinHee = 'VJsRPzgoPD'
-	--notSubject = 'Test'
-	--notMessage = 'Message'
-	--os.execute('https://api.pilot.patrickferreira.com/notErik/notSubject/notMessage')
 end
 
 return commandArray
