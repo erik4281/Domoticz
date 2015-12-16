@@ -127,9 +127,9 @@ elseif (ts == 'ALARM') then
 	notSubject = 'Test'
 	notMessage = 'Message'
 	--os.execute(curl "https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123")
-	--os.execute("curl 'http://xxx:xxx/json.htm?type=devices&order=name' 2>/dev/null| /usr/local/bin/jq -r '.result[]|{(.Name): .idx}' >xxx)
+	os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123' 2>/dev/null '')
 	--sMsg = 'curl https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'
-	os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
+	--os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
 	print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
 	
 	--notErik = 'uIlZfdCTm3'
