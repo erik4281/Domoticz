@@ -156,7 +156,7 @@ elseif (ts == 'ALARM') then
 	--os.execute("curl 'https://api.pilot.patrickferreira.com/'..notErik..'/Test/Message123'")
 	--os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
 	
-	result = io.popen("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
+	result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
 	print(result)
 	
 	--io.popen("curl 'http://xxx:xxx/json.htm?type=devices&rid=xxx' 2>/dev/null | /usr/local/bin/jq -r .result[].BatteryLevel")
