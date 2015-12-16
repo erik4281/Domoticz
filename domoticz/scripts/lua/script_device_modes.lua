@@ -1,5 +1,5 @@
 function notify(notSubject, notMessage)
-	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message')
+--	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message')
 --	os.execute('https://api.pilot.patrickferreira.com/notJinHee/notSubject/notMessage')
 end
 
@@ -129,8 +129,8 @@ elseif (ts == 'ALARM') then
 	--os.execute(curl "https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123")
 	--os.execute("curl 'http://xxx:xxx/json.htm?type=devices&order=name' 2>/dev/null| /usr/local/bin/jq -r '.result[]|{(.Name): .idx}' >xxx)
 	--sMsg = 'curl https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'
-	response = os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
-	print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage..' = '..response)
+	os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
+	print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
 	
 	--notErik = 'uIlZfdCTm3'
 	--notJinHee = 'VJsRPzgoPD'
