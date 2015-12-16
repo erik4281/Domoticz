@@ -1,7 +1,18 @@
-function notify(notSubject, notMessage)
-	notErik = 'uIlZfdCTm3'
-	notJinHee = 'VJsRPzgoPD'
-	result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
+function notify(notSubject, notMessage, notPeople)
+	if (notPeople == 'Erik') then
+		notErik = 'uIlZfdCTm3'
+		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
+	elseif (notPeople == 'JinHee') then
+		--notJinHee = 'VJsRPzgoPD'
+		notJinHee = 'mSB8T4o142'
+		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notJinHee.."/"..notSubject.."/"..notMessage.."'")
+	else
+		notErik = 'uIlZfdCTm3'
+		--notJinHee = 'VJsRPzgoPD'
+		notJinHee = 'mSB8T4o142'
+		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
+		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notJinHee.."/"..notSubject.."/"..notMessage.."'")
+	end
 end
 
 commandArray = {}
@@ -122,7 +133,7 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
-	notify ('Test', 'Testing')
+	notify ('Test', 'Testing', 'Both')
 end
 
 return commandArray
