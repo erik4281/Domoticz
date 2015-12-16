@@ -1,12 +1,7 @@
 function notify(notSubject, notMessage)
 	notErik = 'uIlZfdCTm3'
 	notJinHee = 'VJsRPzgoPD'
-	result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/Test/Message123'")
-	result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
-	--os.execute("curl -k 'https://api.pilot.patrickferreira.com/'..notErik..'/Test/Testing123456'")
-	--os.execute("curl -k 'https://api.pilot.patrickferreira.com/'..notErik..'/'..notSubject..'/'..notMessage..")
---	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message')
---	os.execute('https://api.pilot.patrickferreira.com/notJinHee/notSubject/notMessage')
+	result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
 end
 
 commandArray = {}
