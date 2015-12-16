@@ -134,7 +134,7 @@ elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] 
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
 	i = 'TEST'
-	notify ('Test', 'Nobody is home', 'Erik')
+	notify ('Test', 'Nobody%20is%20home', 'Erik')
 end
 
 return commandArray
