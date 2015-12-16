@@ -129,7 +129,7 @@ elseif (ts == 'ALARM') then
 	print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
 	--os.execute(curl "https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123")
 	
-	sMsg = 'curl " https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'
+	sMsg = 'curl https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'
 	os.execute(sMsg)
 	
 	--notErik = 'uIlZfdCTm3'
