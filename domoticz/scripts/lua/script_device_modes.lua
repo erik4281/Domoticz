@@ -3,13 +3,11 @@ function notify(notSubject, notMessage, notPeople)
 		notErik = 'uIlZfdCTm3'
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
 	elseif (notPeople == 'JinHee') then
-		--notJinHee = 'VJsRPzgoPD'
-		notJinHee = 'mSB8T4o142'
+		notJinHee = 'VJsRPzgoPD'
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notJinHee.."/"..notSubject.."/"..notMessage.."'")
 	else
 		notErik = 'uIlZfdCTm3'
-		--notJinHee = 'VJsRPzgoPD'
-		notJinHee = 'mSB8T4o142'
+		notJinHee = 'VJsRPzgoPD'
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notJinHee.."/"..notSubject.."/"..notMessage.."'")
 	end
@@ -19,8 +17,6 @@ commandArray = {}
 
 dc = next(devicechanged)
 ts = tostring(dc)
---notErik = uIlZfdCTm3
---notJinHee = VJsRPzgoPD
 
 if (ts:sub(1,6) == 'iPhone') then
 	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
@@ -99,12 +95,14 @@ if (ts == 'People') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestAway'] = 'Off'
 		end
-		commandArray['SendNotification']='Presence#Activated HOME mode#0#default'
+		notify ('HOME', 'Home mode activated', 'Both')
+		--commandArray['SendNotification']='Presence#Activated HOME mode#0#default'
 	elseif (devicechanged[dc] == 'Off') then
 		if (otherdevices['NestAway'] == 'Off') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestAway'] = 'On'
 		end
+		notify ('HOME', 'Away mode activated', 'Both')
 		commandArray['SendNotification']='Presence#Activated AWAY mode#0#default'
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
@@ -121,6 +119,7 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On') then
+			notify ('ALARM', 'Nobody is home, but '..i..' is ON!', 'Both')
 			commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
 		end
 		if (v == 'Motion' and otherdevices[i] == 'Open') then
@@ -133,7 +132,8 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
-	notify ('Test', 'Testing', 'Erik')
+	i = 'TEST'
+	notify ('Test', 'Nobody is home, but '..i..' is ON!', 'Erik')
 end
 
 return commandArray
