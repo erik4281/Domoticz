@@ -2,7 +2,7 @@ function notify(notSubject, notMessage)
 	notErik = 'uIlZfdCTm3'
 	notJinHee = 'VJsRPzgoPD'
 	print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
-	os.execute('https://api.pilot.patrickferreira.com/'..notErik..'/'..notSubject..'/'..notMessage)
+	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message')
 --	os.execute('https://api.pilot.patrickferreira.com/notJinHee/notSubject/notMessage')
 end
 
