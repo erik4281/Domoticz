@@ -1,7 +1,4 @@
 function notify(notSubject, notMessage)
-	notErik = 'uIlZfdCTm3'
-	notJinHee = 'VJsRPzgoPD'
-	print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
 	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message')
 --	os.execute('https://api.pilot.patrickferreira.com/notJinHee/notSubject/notMessage')
 end
@@ -125,6 +122,11 @@ elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] 
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
 	--notify ('Test', 'Testing')
+	notErik = 'uIlZfdCTm3'
+	notJinHee = 'VJsRPzgoPD'
+	notSubject = 'Test'
+	notMessage = 'Message'
+	print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
 	os.execute("https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123")
 	--notErik = 'uIlZfdCTm3'
 	--notJinHee = 'VJsRPzgoPD'
