@@ -2,7 +2,7 @@ function notify(notSubject, notMessage)
 	notErik = 'uIlZfdCTm3'
 	notJinHee = 'VJsRPzgoPD'
 	print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
-	os.execute('https://api.pilot.patrickferreira.com/notErik/notSubject/notMessage')
+	os.execute('https://api.pilot.patrickferreira.com/'..notErik..'/'..notSubject..'/'..notMessage)
 --	os.execute('https://api.pilot.patrickferreira.com/notJinHee/notSubject/notMessage')
 end
 
@@ -124,12 +124,12 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
-	--notify ('Test', 'Testing')
-	notErik = 'uIlZfdCTm3'
-	notJinHee = 'VJsRPzgoPD'
-	notSubject = 'Test'
-	notMessage = 'Message'
-	os.execute('https://api.pilot.patrickferreira.com/notErik/notSubject/notMessage')
+	notify ('Test', 'Testing')
+	--notErik = 'uIlZfdCTm3'
+	--notJinHee = 'VJsRPzgoPD'
+	--notSubject = 'Test'
+	--notMessage = 'Message'
+	--os.execute('https://api.pilot.patrickferreira.com/notErik/notSubject/notMessage')
 end
 
 return commandArray
