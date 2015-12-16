@@ -125,7 +125,7 @@ elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] 
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
 	--notify ('Test', 'Testing')
-	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
+	os.execute("https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123")
 	--notErik = 'uIlZfdCTm3'
 	--notJinHee = 'VJsRPzgoPD'
 	--notSubject = 'Test'
