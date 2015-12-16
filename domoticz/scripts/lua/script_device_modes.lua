@@ -1,22 +1,10 @@
 function notify(notSubject, notMessage)
+	notErik = 'uIlZfdCTm3'
+	notJinHee = 'VJsRPzgoPD'
+	os.execute("curl 'https://api.pilot.patrickferreira.com/'..notErik..'/'..notSubject..'/'..notMessage..")
 --	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message')
 --	os.execute('https://api.pilot.patrickferreira.com/notJinHee/notSubject/notMessage')
 end
-
-function notifyMe(iPriority, sTitle, sBody, sSound, sDevice)
-   -- iPriority = -2,-1,0,1,2
-   -- sDevice = name of device, empty is all
-   -- Check for optional sound and device parameter
-   if sSound == nil then sSound = '' end
-   if sDevice == nil then sDevice = '' end
-   local sUserKey = '[KEY]'
-   local sToken = '[TOKEN]'
-   local sMsg = 'curl --data "token=' .. sToken .. '&user=' .. sUserKey .. '&title=' .. sTitle .. '&message=' .. sBody .. '&priority=' .. tostring(iPriority) .. '&sound=' .. sSound .. '&device=' .. sDevice .. '" https://api.pushover.net/1/messages.json'
-   os.execute(sMsg)
-end
-
-
-
 
 commandArray = {}
 
@@ -136,11 +124,11 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
-	--notify ('Test', 'Testing')
-	notErik = 'uIlZfdCTm3'
-	notJinHee = 'VJsRPzgoPD'
-	notSubject = 'Test'
-	notMessage = 'Message'
+	notify ('Test', 'Testing')
+	--notErik = 'uIlZfdCTm3'
+	--notJinHee = 'VJsRPzgoPD'
+	--notSubject = 'Test'
+	--notMessage = 'Message'
 	--os.execute(curl "https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123")
 	--response = os.execute('curl https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
 	--io.popen("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
@@ -149,15 +137,15 @@ elseif (ts == 'ALARM') then
 	--io.popen(curl -s 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
 	--sMsg = 'curl https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'
 	--os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
-	print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
+	--print(notErik..' - '..notJinHee..' - '..notSubject..' - '..notMessage)
 	
 
 	--os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
 	--os.execute("curl 'https://api.pilot.patrickferreira.com/'..notErik..'/Test/Message123'")
 	--os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
 	
-	result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
-	print(result)
+	--result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
+	--print(result)
 	
 	--io.popen("curl 'http://xxx:xxx/json.htm?type=devices&rid=xxx' 2>/dev/null | /usr/local/bin/jq -r .result[].BatteryLevel")
 
