@@ -124,7 +124,7 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 			--commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
 		end
 		if (v == 'Motion' and otherdevices[i] == 'Open') then
-			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!'', 'Both')
+			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Both')
 			--commandArray['SendNotification']='ALARM#ALARM: '..i..' is OPEN, but nobody is home!#2#default'
 		end
 		if (v == 'Tamper' and otherdevices[i] == 'On') then
