@@ -1,7 +1,7 @@
 function notify(notSubject, notMessage)
 	notErik = 'uIlZfdCTm3'
 	notJinHee = 'VJsRPzgoPD'
-	os.execute("curl -k 'https://api.pilot.patrickferreira.com/'..notErik..'/Test/Testing123456'")
+	--os.execute("curl -k 'https://api.pilot.patrickferreira.com/'..notErik..'/Test/Testing123456'")
 	--os.execute("curl -k 'https://api.pilot.patrickferreira.com/'..notErik..'/'..notSubject..'/'..notMessage..")
 --	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message')
 --	os.execute('https://api.pilot.patrickferreira.com/notJinHee/notSubject/notMessage')
@@ -125,7 +125,7 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
-	notify ('Test', 'Testing')
+	--notify ('Test', 'Testing')
 	--notErik = 'uIlZfdCTm3'
 	--notJinHee = 'VJsRPzgoPD'
 	--notSubject = 'Test'
@@ -145,7 +145,7 @@ elseif (ts == 'ALARM') then
 	--os.execute("curl 'https://api.pilot.patrickferreira.com/'..notErik..'/Test/Message123'")
 	--os.execute("curl 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123')
 	
-	--result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
+	result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/uIlZfdCTm3/Test/Message123'")
 	--print(result)
 	
 	--io.popen("curl 'http://xxx:xxx/json.htm?type=devices&rid=xxx' 2>/dev/null | /usr/local/bin/jq -r .result[].BatteryLevel")
