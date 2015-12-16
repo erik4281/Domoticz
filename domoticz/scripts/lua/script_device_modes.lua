@@ -1,7 +1,16 @@
+function notify(notSubject, notMessage)
+	notErik = uIlZfdCTm3
+	notJinHee = VJsRPzgoPD
+	os.execute('https://api.pilot.patrickferreira.com/notErik/notSubject/notMessage')
+--	os.execute('https://api.pilot.patrickferreira.com/notJinHee/notSubject/notMessage')
+end
+
 commandArray = {}
 
 dc = next(devicechanged)
 ts = tostring(dc)
+--notErik = uIlZfdCTm3
+--notJinHee = VJsRPzgoPD
 
 if (ts:sub(1,6) == 'iPhone') then
 	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
@@ -77,11 +86,13 @@ end
 if (ts == 'People') then
 	if (devicechanged[dc] == 'On') then
 		if (otherdevices['NestAway'] == 'On') then
+			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestAway'] = 'Off'
 		end
 		commandArray['SendNotification']='Presence#Activated HOME mode#0#default'
 	elseif (devicechanged[dc] == 'Off') then
 		if (otherdevices['NestAway'] == 'Off') then
+			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestAway'] = 'On'
 		end
 		commandArray['SendNotification']='Presence#Activated AWAY mode#0#default'
@@ -111,8 +122,8 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
-elseif (ts == 'ALARM') then
-	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/#SUBJECT/#MESSAGE')
+elseif (ts == 'ALARM')
+	notify ('Test', 'Testing')
 end
 
 return commandArray
