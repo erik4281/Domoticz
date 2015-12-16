@@ -112,7 +112,7 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
-	os.execute(https://api.pilot.patrickferreira.com/uIlZfdCTm3/#SUBJECT/#MESSAGE)
+	os.execute('https://api.pilot.patrickferreira.com/uIlZfdCTm3/#SUBJECT/#MESSAGE')
 end
 
 return commandArray
