@@ -96,15 +96,15 @@ if (ts == 'People') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestAway'] = 'Off'
 		end
-		notify ('HOME', 'Home mode activated', 'Both')
+		notify ('HOME', 'Home%20mode%20activated', 'Both')
 		--commandArray['SendNotification']='Presence#Activated HOME mode#0#default'
 	elseif (devicechanged[dc] == 'Off') then
 		if (otherdevices['NestAway'] == 'Off') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestAway'] = 'On'
 		end
-		notify ('HOME', 'Away mode activated', 'Both')
-		commandArray['SendNotification']='Presence#Activated AWAY mode#0#default'
+		notify ('HOME', 'Away%20mode%20activated', 'Both')
+		--commandArray['SendNotification']='Presence#Activated AWAY mode#0#default'
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
 			if (v == 'Switch') then
@@ -120,21 +120,24 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On') then
-			notify ('ALARM', 'Nobody is home, but '..i..' is ON!', 'Both')
-			commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
+			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
+			--commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
 		end
 		if (v == 'Motion' and otherdevices[i] == 'Open') then
-			commandArray['SendNotification']='ALARM#ALARM: '..i..' is OPEN, but nobody is home!#2#default'
+			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!'', 'Both')
+			--commandArray['SendNotification']='ALARM#ALARM: '..i..' is OPEN, but nobody is home!#2#default'
 		end
 		if (v == 'Tamper' and otherdevices[i] == 'On') then
-			commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
+			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
+			--commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
 		end
 	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
-	commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
+	notify ('ALARM', 'Alarm%20is%20OFF!', 'Both')
+	--commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 elseif (ts == 'ALARM') then
 	i = 'TEST'
-	notify ('Test', 'Nobody%20is%20home%20'..i , 'Erik')
+	notify ('Test', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
 end
 
 return commandArray
