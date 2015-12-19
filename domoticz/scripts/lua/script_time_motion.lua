@@ -62,6 +62,7 @@ for i, v in pairs(otherdevices) do
 			sleeping = 'Sleep'
 		end
 		ctimeon = uservariables['WaitOff'..sc..sleeping]
+		adifference = timedifference(otherdevices_lastupdate['Switch'..sc])
 		cdifference = timedifference(otherdevices_lastupdate[mc])
 		if (otherdevices[mc] == 'On' or otherdevices[mc] == 'Open') then
 			motioncheck = 'On'
@@ -90,7 +91,10 @@ for i, v in pairs(otherdevices) do
 				motioncheck = 'On'
 			end
 		end
-		difference = cdifference
+		difference = adifference
+		if (cdifference < difference)) then
+			difference = cdifference
+		end
 		if (sd and (ddifference < difference)) then
 			difference = ddifference
 		end
