@@ -44,11 +44,11 @@ for i, v in pairs(otherdevices) do
 		elseif (sc == 'Kitchen') then
 			sc = 'Kitchen'
 			sl = 'KitchenExtra'
-			print (v..sc)
+			print (otherdevices[v..sc])
 			print (timedifference(otherdevices_lastupdate[v..sc]))
 			print (uservariables['KitchenMotionOn'])
 			print (uservariables['KitchenMotionOff'])
-			if (otherdevices(v..sc) == 'On' or timedifference(otherdevices_lastupdate[v..sc]) < 120) then
+			if (otherdevices[v..sc] == 'On' or timedifference(otherdevices_lastupdate[v..sc]) < 120) then
 				commandArray['Variable:KitchenMotionOff'] = tostring(0)
 				--if (uservariables['KitchenMotionOn'] < 1) then
 				--	commandArray['Variable:KitchenMotionOn'] = tostring(1)
