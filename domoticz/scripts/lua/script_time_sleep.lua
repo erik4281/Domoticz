@@ -53,7 +53,7 @@ for i, v in pairs(otherdevices) do
 		print ('Wake-Up light triggered: '..scriptfolder..sc..'/'..scene)
 		os.execute (scriptfolder..sc..'/'..scene)
 	end
-	if (uservariables['WakeUpLightOn'] == tostring(1) and (timenumber == wakeuptime + 30)) then
+	if (uservariables['WakeUpLightOn'] == 1 and (timenumber == wakeuptime + 30)) then
 		commandArray['Variable:WakeUpLightOn'] = tostring(0)
 		--scriptfolder = "/home/pi/domoticz/scripts/bash/"
 		--scene = scene..'0/1.sh'
