@@ -12,10 +12,6 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	sl = nil
 	sm = nil
 	wakeuptimer = false
-	print(uservariables['WakeUpLightOn'])
-	if (uservariables['WakeUpLightOn'] == 1) then
-		print ('Check OK')
-	end
 	if (sc == 'Living') then
 		sc = 'Living'
 		sd = 'Dining'
@@ -36,7 +32,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		if (otherdevices['SleepMode'] == 'On') then
 			commandArray['SleepMode'] = 'Off'
 		end
-	elseif (sc == 'Bedroom' and uservariables['WakeUpLightOn'] == tostring(1)) then
+	elseif (sc == 'Bedroom' and uservariables['WakeUpLightOn'] == 1) then
 		wakeuptimer = true
 	elseif (sc == 'Toilet') then
 		sc = 'Toilet'
