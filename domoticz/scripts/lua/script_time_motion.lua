@@ -44,24 +44,18 @@ for i, v in pairs(otherdevices) do
 		elseif (sc == 'Kitchen') then
 			sc = 'Kitchen'
 			sl = 'KitchenExtra'
-			print (otherdevices[v..sc])
-			print (timedifference(otherdevices_lastupdate[v..sc]))
-			print (uservariables['KitchenMotionOn'])
-			print (uservariables['KitchenMotionOff'])
 			if (otherdevices[v..sc] == 'On' or timedifference(otherdevices_lastupdate[v..sc]) < 120) then
-				commandArray['Variable:KitchenMotionOff'] = tostring(0)
-				--if (uservariables['KitchenMotionOn'] < 1) then
-				--	commandArray['Variable:KitchenMotionOn'] = tostring(1)
-				--else 
-					commandArray['Variable:KitchenMotionOn'] = tostring(uservariables['KitchenMotionOn'] + 1)
-				--end
-			elseif (otherdevices[v..sc] == 'Off' and timedifference(otherdevices_lastupdate[v..sc]) > 120) then
-				commandArray['Variable:KitchenMotionOn'] = tostring(0)
-				--if (uservariables['KitchenMotionOff'] < 1) then
-				--	commandArray['Variable:KitchenMotionOff'] = tostring(1)
-				--else 
-					commandArray['Variable:KitchenMotionOff'] = tostring(uservariables['KitchenMotionOff'] + 1)
-				--end
+				commandArray['Variable:FanMotionOff'] = tostring(0)
+				commandArray['Variable:FanMotionOn'] = tostring(uservariables['FanMotionOn'] + 1)
+				if (uservariables['FanMotionOn'] > 3) then
+					commandArray['FanHigh'] = 'On'
+				end
+			elseif (otherdevices[v..sc] == 'Off' and timedifference(otherdevices_lastupdate[v..sc]) > 120 and timedifference(otherdevices_lastupdate[v..sc]) < 1800) then
+				commandArray['Variable:FanMotionOn'] = tostring(0)
+				commandArray['Variable:FanMotionOff'] = tostring(uservariables['FanMotionOff'] + 1)
+				if (uservariables['FanMotionOff'] > 25) then
+					commandArray['FanHigh'] = 'Off'
+				end
 			end
 		elseif (sc == 'Hallway') then
 			sc = 'Hallway'
