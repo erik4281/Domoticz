@@ -55,10 +55,6 @@ for i, v in pairs(otherdevices) do
 	end
 	if (uservariables['WakeUpLightOn'] == 1 and (timenumber == wakeuptime + 30)) then
 		commandArray['Variable:WakeUpLightOn'] = tostring(0)
-		--scriptfolder = "/home/pi/domoticz/scripts/bash/"
-		--scene = scene..'0/1.sh'
-		--print ('Wake-Up light triggered daytime-light: '..scriptfolder..sc..'/'..scene)
-		--os.execute (scriptfolder..sc..'/'..scene)
 		commandArray['SwitchBedroom'] = 'On'
 	end
 end
