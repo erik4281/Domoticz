@@ -131,9 +131,9 @@ for i, v in pairs(otherdevices) do
 				scene = 'Off'
 				scene = scene..'.sh'
 				if (difference < 61) then
-					print ('Backup triggered: '..scriptfolder..sc..'/'..scene)
+					print ('First backup triggered: '..scriptfolder..sc..'/'..scene)
 				else
-					print ('Backup 2 triggered: '..scriptfolder..sc..'/'..scene)
+					print ('Final backup triggered: '..scriptfolder..sc..'/'..scene)
 				end
 				os.execute (scriptfolder..sc..'/'..scene)
 			end
