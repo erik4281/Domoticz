@@ -12,7 +12,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	sl = nil
 	sm = nil
 	wakeuptimer = false
-	print(wakeuptimer)
+	print('Check '..wakeuptimer)
 	if (sc == 'Living') then
 		sc = 'Living'
 		sd = 'Dining'
@@ -42,7 +42,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		sc = 'Bathroom'
 		sd = 'Hallway'
 	end
-	print(wakeuptimer)
+	print('Check '..wakeuptimer)
 	mc = 'Motion'..sc
 	cbr = tonumber(otherdevices_svalues['Brightness'..sc])
 	cbrt = tonumber(uservariables['BrightnessTrigger'..sc])
