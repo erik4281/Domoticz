@@ -127,10 +127,14 @@ for i, v in pairs(otherdevices) do
 			end
 		elseif (otherdevices[ts] == 'Off') then
 			difference = timedifference(otherdevices_lastupdate[ts])
-			if (difference >= 1 and difference < 61) then
+			if (difference >= 1 and difference < 121) then
 				scene = 'Off'
 				scene = scene..'.sh'
-				print ('Backup triggered: '..scriptfolder..sc..'/'..scene)
+				if (difference < 61) then
+					print ('Backup triggered: '..scriptfolder..sc..'/'..scene)
+				else
+					print ('Backup 2 triggered: '..scriptfolder..sc..'/'..scene)
+				end
 				os.execute (scriptfolder..sc..'/'..scene)
 			end
 		end
