@@ -13,7 +13,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	sm = nil
 	wakeuptimer = false
 	print(uservariables['WakeUpLightOn'])
-	if (uservariables['WakeUpLightOn'] == tostring(1)) then
+	if (uservariables['WakeUpLightOn'] == 1) then
 		print ('Check OK')
 	end
 	if (sc == 'Living') then
