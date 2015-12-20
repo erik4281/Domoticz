@@ -91,7 +91,7 @@ for i, v in pairs(otherdevices) do
 				motioncheck = 'On'
 			end
 		end
-		difference = cdifference
+		difference = adifference
 		if (cdifference < difference) then
 			difference = cdifference
 		end
@@ -124,7 +124,6 @@ for i, v in pairs(otherdevices) do
 			timeon = timeon + 75
 		end
 		timewait = timeon * 60
-		print ('Motioncheck '..sc..'; difference: '..difference..'; timewait'..timewait)
 		if (motioncheck == 'Off' and difference >= timewait) then
 			if (otherdevices['Switch'..sc] == 'On') then
 				print (ts..' saw no more motion. Now triggering switch Switch'..sc)
