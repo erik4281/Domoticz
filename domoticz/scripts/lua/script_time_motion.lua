@@ -44,7 +44,7 @@ for i, v in pairs(otherdevices) do
 		elseif (sc == 'Kitchen') then
 			sc = 'Kitchen'
 			sl = 'KitchenExtra'
-			print (otherdevices(v..sc))
+			print (v..sc)
 			print (timedifference(otherdevices_lastupdate[v..sc]))
 			print (uservariables['KitchenMotionOn'])
 			print (uservariables['KitchenMotionOff'])
