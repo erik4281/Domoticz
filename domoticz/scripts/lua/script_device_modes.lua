@@ -19,6 +19,25 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 
+if (ts:sub(1,7) == 'FanHigh') then
+	if (otherdevices['FanHigh'] == 'On') then
+		if (otherdevices['FanMax'] == 'Off') then
+			commandArray['FanMax'] = 'On'
+		end
+		if (otherdevices['FanHome'] == 'On') then
+			commandArray['FanHome'] = 'Off'
+		end
+	end
+	if (otherdevices['FanHigh'] == 'Off') then
+		if (otherdevices['FanMax'] == 'On') then
+			commandArray['FanMax'] = 'Off'
+		end
+		if (otherdevices['FanHome'] == 'Off') then
+			commandArray['FanHome'] = 'On'
+		end
+	end
+end
+
 if (ts:sub(1,6) == 'iPhone') then
 	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
 		if (otherdevices['Phones'] == 'Off') then
@@ -95,16 +114,20 @@ if (ts == 'People') then
 		if (otherdevices['NestAway'] == 'On') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestAway'] = 'Off'
+			commandArray['FanMax'] = 'Off'
+			commandArray['FanHome'] = 'On'
+			commandArray['FanHigh'] = 'Off'
 		end
 		notify ('HOME', 'Home%20mode%20activated', 'Both')
-		--commandArray['SendNotification']='Presence#Activated HOME mode#0#default'
 	elseif (devicechanged[dc] == 'Off') then
 		if (otherdevices['NestAway'] == 'Off') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestAway'] = 'On'
+			commandArray['FanMax'] = 'Off'
+			commandArray['FanHome'] = 'Off'
+			commandArray['FanHigh'] = 'Off'
 		end
 		notify ('HOME', 'Away%20mode%20activated', 'Both')
-		--commandArray['SendNotification']='Presence#Activated AWAY mode#0#default'
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
 			if (v == 'Switch') then
@@ -121,20 +144,16 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On') then
 			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
-			--commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
 		end
 		if (v == 'Motion' and otherdevices[i] == 'Open') then
 			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Both')
-			--commandArray['SendNotification']='ALARM#ALARM: '..i..' is OPEN, but nobody is home!#2#default'
 		end
 		if (v == 'Tamper' and otherdevices[i] == 'On') then
 			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
-			--commandArray['SendNotification']='ALARM#ALARM: '..i..' is ON, but nobody is home!#2#default'
 		end
 	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	notify ('ALARM', 'Alarm%20is%20OFF!', 'Both')
-	--commandArray['SendNotification']='ALARM#Alarm is OFF!#2#default'
 end
 
 return commandArray
