@@ -44,6 +44,11 @@ for i, v in pairs(otherdevices) do
 		elseif (sc == 'Kitchen') then
 			sc = 'Kitchen'
 			sl = 'KitchenExtra'
+			--if (otherdevices(v..sc) == 'On') then
+			--	commandArray['Variable:AlarmTimer'] = tostring(0)
+			--elseif (otherdevices(v..sc) == 'Off) then
+			--	commandArray['Variable:AlarmTimer'] = tostring(0)
+			--end
 		elseif (sc == 'Hallway') then
 			sc = 'Hallway'
 			sd = 'FrontDoor'
