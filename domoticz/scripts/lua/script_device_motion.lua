@@ -11,6 +11,8 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	sf = nil
 	sl = nil
 	sm = nil
+	wakeuptimer = true
+	print('Check '..wakeuptimer)
 	wakeuptimer = false
 	print('Check '..wakeuptimer)
 	if (sc == 'Living') then
