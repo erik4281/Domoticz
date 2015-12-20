@@ -44,11 +44,22 @@ for i, v in pairs(otherdevices) do
 		elseif (sc == 'Kitchen') then
 			sc = 'Kitchen'
 			sl = 'KitchenExtra'
-			--if (otherdevices(v..sc) == 'On') then
-			--	commandArray['Variable:AlarmTimer'] = tostring(0)
-			--elseif (otherdevices(v..sc) == 'Off) then
-			--	commandArray['Variable:AlarmTimer'] = tostring(0)
-			--end
+			print (otherdevices(v..sc)..' - '..timedifference(otherdevices_lastupdate[v..sc])..' - '..uservariables['KitchenMotionOn']..' - '..uservariables['KitchenMotionOff'])
+			if (otherdevices(v..sc) == 'On' or timedifference(otherdevices_lastupdate[v..sc]) < 120) then
+				commandArray['Variable:KitchenMotionOff'] = tostring(0)
+				--if (uservariables['KitchenMotionOn'] < 1) then
+				--	commandArray['Variable:KitchenMotionOn'] = tostring(1)
+				--else 
+					commandArray['Variable:KitchenMotionOn'] = tostring(uservariables['KitchenMotionOn']) + 1
+				--end
+			elseif (otherdevices(v..sc) == 'Off and timedifference(otherdevices_lastupdate[v..sc]) > 120) then
+				commandArray['Variable:KitchenMotionOn'] = tostring(0)
+				--if (uservariables['KitchenMotionOff'] < 1) then
+				--	commandArray['Variable:KitchenMotionOff'] = tostring(1)
+				--else 
+					commandArray['Variable:KitchenMotionOff'] = tostring(uservariables['KitchenMotionOff']) + 1
+				--end
+			end
 		elseif (sc == 'Hallway') then
 			sc = 'Hallway'
 			sd = 'FrontDoor'
