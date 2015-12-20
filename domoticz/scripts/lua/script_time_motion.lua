@@ -53,14 +53,14 @@ for i, v in pairs(otherdevices) do
 				--if (uservariables['KitchenMotionOn'] < 1) then
 				--	commandArray['Variable:KitchenMotionOn'] = tostring(1)
 				--else 
-					commandArray['Variable:KitchenMotionOn'] = tostring(uservariables['KitchenMotionOn']) + 1
+					commandArray['Variable:KitchenMotionOn'] = tostring(uservariables['KitchenMotionOn'] + 1)
 				--end
 			elseif (otherdevices[v..sc] == 'Off' and timedifference(otherdevices_lastupdate[v..sc]) > 120) then
 				commandArray['Variable:KitchenMotionOn'] = tostring(0)
 				--if (uservariables['KitchenMotionOff'] < 1) then
 				--	commandArray['Variable:KitchenMotionOff'] = tostring(1)
 				--else 
-					commandArray['Variable:KitchenMotionOff'] = tostring(uservariables['KitchenMotionOff']) + 1
+					commandArray['Variable:KitchenMotionOff'] = tostring(uservariables['KitchenMotionOff'] + 1)
 				--end
 			end
 		elseif (sc == 'Hallway') then
