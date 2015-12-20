@@ -50,7 +50,7 @@ for i, v in pairs(otherdevices) do
 					looping = 1
 				end
 			end
-			if (difference >= 1 and difference < 61) then
+			if (difference >= 1 and difference < 121) then
 				if (time1) then
 					scene = 0
 				else
@@ -80,7 +80,11 @@ for i, v in pairs(otherdevices) do
 					scene = 9
 				end
 				scene = scene..'.sh'
-				print ('Backup triggered: '..scriptfolder..sc..'/'..scene)
+				if (difference < 61) then
+					print ('First backup triggered: '..scriptfolder..sc..'/'..scene)
+				else
+					print ('Final backup triggered: '..scriptfolder..sc..'/'..scene)
+				end
 				os.execute (scriptfolder..sc..'/'..scene)
 				scene = 1
 			end
