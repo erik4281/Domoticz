@@ -63,6 +63,7 @@ for i, v in pairs(otherdevices) do
 		end
 		ctimeon = uservariables['WaitOff'..sc..sleeping]
 		adifference = timedifference(otherdevices_lastupdate['Switch'..sc])
+		print ('adifference'..adifference)
 		cdifference = timedifference(otherdevices_lastupdate[mc])
 		if (otherdevices[mc] == 'On' or otherdevices[mc] == 'Open') then
 			motioncheck = 'On'
@@ -92,7 +93,7 @@ for i, v in pairs(otherdevices) do
 			end
 		end
 		difference = adifference
-		if (cdifference < difference)) then
+		if (cdifference < difference) then
 			difference = cdifference
 		end
 		if (sd and (ddifference < difference)) then
@@ -124,6 +125,7 @@ for i, v in pairs(otherdevices) do
 			timeon = timeon + 75
 		end
 		timewait = timeon * 60
+		print ('Motioncheck '..sc..'; difference: '..difference..'; timewait'..timewait)
 		if (motioncheck == 'Off' and difference >= timewait) then
 			if (otherdevices['Switch'..sc] == 'On') then
 				print (ts..' saw no more motion. Now triggering switch Switch'..sc)
