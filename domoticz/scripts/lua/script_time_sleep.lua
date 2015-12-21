@@ -47,18 +47,19 @@ for i, v in pairs(otherdevices) do
 			commandArray[switchsleep]='On'
 		end
 	end
-	if (ts == 'SwitchBedroom' and presence == 'On' and sleep == 'On' and wakeup == 'On' and timenumber == wakeuptime and otherdevices['SwitchBedroom'] == 'Off' and (weekday > 0 and weekday < 6)) then
-		commandArray['Variable:WakeUpLightOn'] = tostring(1)
-		scriptfolder = "/home/pi/domoticz/scripts/bash/"
-		sc = 'Bedroom'
-		scene = 'WakeUp.sh'
-		print ('Wake-Up light triggered: '..scriptfolder..sc..'/'..scene)
-		os.execute (scriptfolder..sc..'/'..scene)
-	end
-	if (uservariables['WakeUpLightOn'] == 1 and (timenumber == wakeuptime + 30)) then
-		commandArray['Variable:WakeUpLightOn'] = tostring(0)
-		commandArray['SwitchBedroom'] = 'On'
-	end
+end
+
+if (presence == 'On' and sleep == 'On' and wakeup == 'On' and timenumber == wakeuptime and otherdevices['SwitchBedroom'] == 'Off' and (weekday > 0 and weekday < 6)) then
+	commandArray['Variable:WakeUpLightOn'] = tostring(1)
+	scriptfolder = "/home/pi/domoticz/scripts/bash/"
+	sc = 'Bedroom'
+	scene = 'WakeUp.sh'
+	print ('Wake-Up light triggered: '..scriptfolder..sc..'/'..scene)
+	os.execute (scriptfolder..sc..'/'..scene)
+end
+if (uservariables['WakeUpLightOn'] == 1 and (timenumber == wakeuptime + 30)) then
+	commandArray['Variable:WakeUpLightOn'] = tostring(0)
+	commandArray['SwitchBedroom'] = 'On'
 end
 
 return commandArray
