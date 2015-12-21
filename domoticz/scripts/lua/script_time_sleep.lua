@@ -47,7 +47,7 @@ for i, v in pairs(otherdevices) do
 			commandArray[switchsleep]='On'
 		end
 	end
-	if (ts == 'SwitchBedroom')
+	if (ts == 'SwitchBedroom') then
 		print (presence)
 		print (sleep)
 		print (wakeup)
