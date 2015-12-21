@@ -19,7 +19,7 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 
-if (ts:sub(1,7) == 'FanHigh') then
+if (ts:sub(1,7) == 'FanHigh' and otherdevices['People'] == 'On') then
 	if (otherdevices['FanHigh'] == 'On') then
 		if (otherdevices['FanHome'] == 'On') then
 			commandArray['FanHome'] = 'Off'
@@ -124,8 +124,6 @@ if (ts == 'People') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestAway'] = 'On'
 		end
-		commandArray['FanMax'] = 'Off'
-		commandArray['FanHome'] = 'Off'
 		notify ('HOME', 'Away%20mode%20activated', 'Both')
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
