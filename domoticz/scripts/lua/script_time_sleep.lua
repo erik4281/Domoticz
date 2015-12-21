@@ -60,7 +60,8 @@ for i, v in pairs(otherdevices) do
 	if (presence == 'On' and wakeup == 'On' and timenumber == wakeuptime and otherdevices['SwitchBedroom'] == 'Off' and (weekday > 0 and weekday < 6)) then
 		commandArray['Variable:WakeUpLightOn'] = tostring(1)
 		scriptfolder = "/home/pi/domoticz/scripts/bash/"
-		scene = scene..'0/WakeUp.sh'
+		sc = 'Bedroom'
+		scene = 'WakeUp.sh'
 		print ('Wake-Up light triggered: '..scriptfolder..sc..'/'..scene)
 		os.execute (scriptfolder..sc..'/'..scene)
 	end
