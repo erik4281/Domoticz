@@ -21,6 +21,7 @@ sleepstart = 2200
 sleepstop = 0600
 wakeup = otherdevices['WakeUpLight']
 wakeuptime = tonumber(uservariables['WakeUpLightTime'])
+weekday = tonumber(os.date("%w"))
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
