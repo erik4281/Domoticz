@@ -47,6 +47,13 @@ for i, v in pairs(otherdevices) do
 			commandArray[switchsleep]='On'
 		end
 	end
+	print (presence)
+	print (sleep)
+	print (wakeup)
+	print (timenumber)
+	print (wakeuptime)
+	print (otherdevices['SwitchBedroom'])
+	print (weekday)
 	if (presence == 'On' and sleep == 'On' and wakeup == 'On' and timenumber == wakeuptime and otherdevices['SwitchBedroom'] == 'Off' and (weekday > 0 and weekday < 6)) then
 		commandArray['Variable:WakeUpLightOn'] = tostring(1)
 		scriptfolder = "/home/pi/domoticz/scripts/bash/"
