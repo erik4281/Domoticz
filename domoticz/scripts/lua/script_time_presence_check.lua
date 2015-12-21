@@ -37,6 +37,10 @@ if (door == 'Closed' and difference < timewait) then
 			commandArray['People'] = 'On'
 		end
 	end
+elseif (door == 'Closed' and difference > 1800 and otherdevices['People'] == 'Off' and (otherdevices['FanMax'] == 'On' or otherdevices['FanHome'] == 'On') then
+	commandArray['FanHome'] = 'Off'
+	commandArray['FanMax'] = 'Off'
+	commandArray['FanHigh'] = 'Off'
 end
 
 return commandArray
