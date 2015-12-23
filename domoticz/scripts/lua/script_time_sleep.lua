@@ -62,7 +62,4 @@ if (uservariables['WakeUpLightOn'] == 'On' and (timenumber == wakeuptime + 30)) 
 	commandArray['SwitchBedroom'] = 'On'
 end
 
-commandArray['Variable:WakeUpLightOn'] = 'Off'
-print('Set uservariable to off')
-
 return commandArray
