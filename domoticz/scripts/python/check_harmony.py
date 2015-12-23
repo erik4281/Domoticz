@@ -110,6 +110,13 @@ while 1==1:
   logcurrentstate = str (currentstate - 1)
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Harmony activity running: " + logcurrentstate)
 
+  if currentstate > 1 : 
+   currentstate = 100
+  else :
+   currentstate = 0
+  logcurrentstate = str (currentstate)
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Continue with: " + logcurrentstate)
+
   if currentstate > 1 : lastsuccess=datetime.datetime.now()
   if currentstate > 1 and currentstate != previousstate and lastreported == 1 : 
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, no need to tell domoticz")
