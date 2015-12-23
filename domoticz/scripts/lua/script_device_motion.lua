@@ -32,7 +32,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		if (otherdevices['SleepMode'] == 'On') then
 			commandArray['SleepMode'] = 'Off'
 		end
-	elseif (sc == 'Bedroom' and uservariables['WakeUpLightOn'] == 1) then
+	elseif (sc == 'Bedroom' and uservariables['WakeUpLightOn'] == 'On') then
 		wakeuptimer = 1
 	elseif (sc == 'Toilet') then
 		sc = 'Toilet'
