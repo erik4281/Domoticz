@@ -63,6 +63,6 @@ if (uservariables['WakeUpLightOn'] == 'On' and (timenumber == wakeuptime + 30)) 
 end
 
 commandArray['Variable:WakeUpLightOn'] = 'Off'
-print(Set uservariable to off)
+print('Set uservariable to off')
 
 return commandArray
