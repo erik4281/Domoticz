@@ -20,7 +20,7 @@ timeminute = tonumber(os.date("%M"))
 loopminute = tonumber(uservariables['LoopMinute'])
 weekday = tonumber(os.date("%w"))
 
-if (timedifference(otherdevices_lastupdate['FanHigh']) >= 1 and timedifference(otherdevices_lastupdate['FanHigh']) < 121)
+if (timedifference(otherdevices_lastupdate['FanHigh']) >= 1 and timedifference(otherdevices_lastupdate['FanHigh']) < 121) then
 	if (otherdevices['FanHigh'] == 'On') then
 		if (otherdevices['FanHome'] == 'On') then
 			commandArray['FanHome'] = 'Off'
