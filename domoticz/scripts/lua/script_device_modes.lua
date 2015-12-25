@@ -19,21 +19,25 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 
-if (ts:sub(1,7) == 'FanHigh' and otherdevices['People'] == 'On') then
+if (ts:sub(1,7) == 'FanHigh') then
 	if (otherdevices['FanHigh'] == 'On') then
 		if (otherdevices['FanHome'] == 'On') then
 			commandArray['FanHome'] = 'Off'
 		end
-		if (otherdevices['FanMax'] == 'Off') then
+		if (otherdevices['People'] == 'On' and otherdevices['FanMax'] == 'Off') then
 			commandArray['FanMax'] = 'On'
+		elseif (otherdevices['FanMax'] == 'On') then
+			commandArray['FanMax'] = 'Off'
 		end
 	end
 	if (otherdevices['FanHigh'] == 'Off') then
 		if (otherdevices['FanMax'] == 'On') then
 			commandArray['FanMax'] = 'Off'
 		end
-		if (otherdevices['FanHome'] == 'Off') then
+		if (otherdevices['People'] == 'On' and otherdevices['FanHome'] == 'Off') then
 			commandArray['FanHome'] = 'On'
+		elseif (otherdevices['FanHome'] == 'On') then
+			commandArray['FanHome'] = 'Off'
 		end
 	end
 end
