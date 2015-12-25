@@ -14,6 +14,34 @@ end
 commandArray = {}
 
 time = os.date("*t")
+timenumber = tonumber(os.date("%H")..os.date("%M"))
+timehour = tonumber(os.date("%H"))
+timeminute = tonumber(os.date("%M"))
+loopminute = tonumber(uservariables['LoopMinute'])
+weekday = tonumber(os.date("%w"))
+
+if (timedifference(otherdevices_lastupdate['FanHigh']) >= 1 and timedifference(otherdevices_lastupdate['FanHigh']) < 121)
+	if (otherdevices['FanHigh'] == 'On') then
+		if (otherdevices['FanHome'] == 'On') then
+			commandArray['FanHome'] = 'Off'
+		end
+		if (otherdevices['People'] == 'On' and otherdevices['FanMax'] == 'Off') then
+			commandArray['FanMax'] = 'On'
+		elseif (otherdevices['FanMax'] == 'On') then
+			commandArray['FanMax'] = 'Off'
+		end
+	end
+	if (otherdevices['FanHigh'] == 'Off') then
+		if (otherdevices['FanMax'] == 'On') then
+			commandArray['FanMax'] = 'Off'
+		end
+		if (otherdevices['People'] == 'On' and otherdevices['FanHome'] == 'Off') then
+			commandArray['FanHome'] = 'On'
+		elseif (otherdevices['FanHome'] == 'On') then
+			commandArray['FanHome'] = 'Off'
+		end
+	end
+end
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
@@ -23,11 +51,6 @@ for i, v in pairs(otherdevices) do
 		scriptfolder = "/home/pi/domoticz/scripts/bash/"
 		if (otherdevices[ts] == 'On') then
 			difference = timedifference(otherdevices_lastupdate[ts])
-			timenumber = tonumber(os.date("%H")..os.date("%M"))
-			timehour = tonumber(os.date("%H"))
-			timeminute = tonumber(os.date("%M"))
-			loopminute = tonumber(uservariables['LoopMinute'])
-			weekday = tonumber(os.date("%w"))
 			wk = ''
 			if ((weekday == 0 and timehour < 18) or weekday == 6 or (weekday == 5 and timehour > 18)) then
 				wk = 'Weekend'
