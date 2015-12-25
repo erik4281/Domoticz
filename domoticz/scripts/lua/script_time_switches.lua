@@ -22,12 +22,15 @@ weekday = tonumber(os.date("%w"))
 
 if (timedifference(otherdevices_lastupdate['FanHigh']) >= 1 and timedifference(otherdevices_lastupdate['FanHigh']) < 121) then
 	if (otherdevices['FanHigh'] == 'On' and otherdevices['People'] == 'On') then
+		print('Switching (backup) fan MAX to ON and HOME to OFF, after FanHigh was enabled')
 		commandArray['FanHome'] = 'Off'
 		commandArray['FanMax'] = 'On'
 	elseif (otherdevices['FanHigh'] == 'Off' and otherdevices['People'] == 'On') then
+		print('Switching (backup) fan MAX to OFF and HOME to ON, after FanHigh was disabled')
 		commandArray['FanHome'] = 'On'
 		commandArray['FanMax'] = 'Off'
 	else
+		print('Switching (backup) fan MAX to OFF and HOME to OFF, because nobody is home')
 		commandArray['FanHome'] = 'Off'
 		commandArray['FanMax'] = 'Off'
 	end
