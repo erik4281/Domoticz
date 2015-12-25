@@ -45,10 +45,10 @@ for i, v in pairs(otherdevices) do
 			sc = 'Kitchen'
 			sl = 'KitchenExtra'
 			if (otherdevices[v..sc] == 'On' or timedifference(otherdevices_lastupdate[v..sc]) < 60) then
-				if (otherdevices['FanMax'] == 'Off') then
+				if (otherdevices['FanMax'] == 'Off' or uservariables['FanMotionOn'] > 10) then
 					commandArray['Variable:FanMotionOff'] = tostring(0)
-					commandArray['Variable:FanMotionOn'] = tostring(uservariables['FanMotionOn'] + 1)
 				end
+				commandArray['Variable:FanMotionOn'] = tostring(uservariables['FanMotionOn'] + 1)
 				if (uservariables['FanMotionOn'] > 10 and otherdevices['FanMax'] == 'Off') then
 					commandArray['FanHigh'] = 'On'
 				end
