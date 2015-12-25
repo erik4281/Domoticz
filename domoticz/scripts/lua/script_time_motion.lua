@@ -44,20 +44,28 @@ for i, v in pairs(otherdevices) do
 		elseif (sc == 'Kitchen') then
 			sc = 'Kitchen'
 			sl = 'KitchenExtra'
-			if (otherdevices[v..sc] == 'On' or timedifference(otherdevices_lastupdate[v..sc]) < 60) then
+			if (otherdevices[v..sc] == 'On' or timedifference(otherdevices_lastupdate[v..sc]) < 61) then
 				commandArray['Variable:FanMotionOn'] = tostring(uservariables['FanMotionOn'] + 1)
-				if (otherdevices['FanMax'] == 'Off' or uservariables['FanMotionOn'] > 10) then
+				if (otherdevices['FanMax'] == 'Off' or uservariables['FanMotionOn'] > 5) then
 					commandArray['Variable:FanMotionOff'] = tostring(0)
 				end
-				if (uservariables['FanMotionOn'] > 10 and otherdevices['FanMax'] == 'Off') then
+				if (uservariables['FanMotionOn'] >= 5 and otherdevices['FanMax'] == 'Off' and otherdevices['Pi2Present'] == 'On') then
+					print('Switching fan to HIGH, after '..uservariables['FanMotionOn']..' minutes of movement')
+					commandArray['FanHigh'] = 'On'
+				elseif (uservariables['FanMotionOn'] >= 10 and otherdevices['FanMax'] == 'Off' and otherdevices['Pi2Present'] == 'Off') then
+					print('Switching fan to HIGH, after '..uservariables['FanMotionOn']..' minutes of movement')
 					commandArray['FanHigh'] = 'On'
 				end
-			elseif (otherdevices[v..sc] == 'Off' and timedifference(otherdevices_lastupdate[v..sc]) > 60) then
+			elseif (otherdevices[v..sc] == 'Off' and timedifference(otherdevices_lastupdate[v..sc]) > 61) then
 				commandArray['Variable:FanMotionOn'] = tostring(0)
 				if (otherdevices['FanMax'] == 'On') then
 					commandArray['Variable:FanMotionOff'] = tostring(uservariables['FanMotionOff'] + 1)
 				end
-				if (uservariables['FanMotionOff'] > 15 and otherdevices['FanMax'] == 'On') then
+				if (uservariables['FanMotionOff'] >= 10 and otherdevices['FanMax'] == 'On' and otherdevices['Pi2Present'] == 'Off') then
+					print('Switching fan to NORMAL, after '..uservariables['FanMotionOff']..' minutes of movement')
+					commandArray['FanHigh'] = 'Off'
+				elseif (uservariables['FanMotionOff'] >= 20 and otherdevices['FanMax'] == 'On' and otherdevices['Pi2Present'] == 'On') then
+					print('Switching fan to NORMAL, after '..uservariables['FanMotionOff']..' minutes of movement')
 					commandArray['FanHigh'] = 'Off'
 				end
 			end
