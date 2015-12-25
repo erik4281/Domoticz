@@ -20,9 +20,11 @@ dc = next(devicechanged)
 ts = tostring(dc)
 
 if (ts == 'Pi2Present') then
-	if (otherdevices['Pi2Present'] == 'On') then
+	if (otherdevices['Pi2Present'] == 'On' and otherdevices['FanHigh'] == 'Off' and otherdevices['People'] == 'On') then
 		commandArray['FanHigh'] = 'On'
-	elseif (otherdevices['Pi2Present'] == 'Off') then
+	elseif (otherdevices['Pi2Present'] == 'Off' and otherdevices['FanHigh'] == 'On' and otherdevices['People'] == 'On') then
+		commandArray['FanHigh'] = 'Off'
+	else
 		commandArray['FanHigh'] = 'Off'
 	end
 end
