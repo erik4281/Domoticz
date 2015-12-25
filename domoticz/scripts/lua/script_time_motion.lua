@@ -16,6 +16,8 @@ commandArray = {}
 MbE = otherdevices['MacBookAirErik']
 MbJ = otherdevices['MacBookAirJinHee']
 TvL = otherdevices['TvLiving']
+HaL = otherdevices['HarmonyLiving']
+HaB = otherdevices['HarmonyBedroom']
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
@@ -125,10 +127,13 @@ for i, v in pairs(otherdevices) do
 		if (sf and (ftimeon > timeon)) then
 			timeon = ftimeon
 		end
-		if (sc == 'Living' and (MbE == 'On' or MbJ == 'On' or TvL == 'On')) then
+		if (sc == 'Living' and (MbE == 'On' or MbJ == 'On' or TvL == 'On' of HaL == 'On')) then
 			timeon = timeon + 75
 		end
 		if (sc == 'Study' and (MbE == 'On' or MbJ == 'On')) then
+			timeon = timeon + 75
+		end
+		if (sc == 'Bedroom' and HaB == 'On') then
 			timeon = timeon + 75
 		end
 		timewait = timeon * 60
