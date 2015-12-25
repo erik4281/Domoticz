@@ -19,6 +19,14 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 
+if (ts:sub(1,7) == 'Pi2Present') then
+	if (otherdevices['Pi2Present'] == 'On') then
+		commandArray['FanHigh'] = 'On'
+	elseif (otherdevices['Pi2Present'] == 'Off') then
+		commandArray['FanHigh'] = 'Off'
+	end
+end
+
 if (ts:sub(1,7) == 'FanHigh') then
 	if (otherdevices['FanHigh'] == 'On') then
 		if (otherdevices['FanHome'] == 'On') then
