@@ -19,7 +19,7 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 
-if (ts:sub(1,7) == 'Pi2Present') then
+if (ts == 'Pi2Present') then
 	if (otherdevices['Pi2Present'] == 'On') then
 		commandArray['FanHigh'] = 'On'
 	elseif (otherdevices['Pi2Present'] == 'Off') then
