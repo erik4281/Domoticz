@@ -21,10 +21,13 @@ ts = tostring(dc)
 
 if (ts == 'Pi2Present') then
 	if (otherdevices['Pi2Present'] == 'On' and otherdevices['FanHigh'] == 'Off' and otherdevices['People'] == 'On') then
+		print('Switching fan to HIGH, after Pi2 became present')
 		commandArray['FanHigh'] = 'On'
 	elseif (otherdevices['Pi2Present'] == 'Off' and otherdevices['FanHigh'] == 'On' and otherdevices['People'] == 'On') then
+		print('Switching fan to NORMAL, after Pi2 got lost')
 		commandArray['FanHigh'] = 'Off'
 	else
+		print('Switching fan to LOW, because nobody is home when the Pi2 became present or got lost')
 		commandArray['FanHigh'] = 'Off'
 	end
 end
@@ -32,21 +35,27 @@ end
 if (ts:sub(1,7) == 'FanHigh') then
 	if (otherdevices['FanHigh'] == 'On') then
 		if (otherdevices['FanHome'] == 'On') then
+			print('Switching fan HOME to OFF, after FanHigh was enabled')
 			commandArray['FanHome'] = 'Off'
 		end
 		if (otherdevices['People'] == 'On' and otherdevices['FanMax'] == 'Off') then
+			print('Switching fan MAX to ON, after FanHigh was enabled')
 			commandArray['FanMax'] = 'On'
 		elseif (otherdevices['FanMax'] == 'On') then
+			print('Switching fan MAX to OFF, because nobody is home')
 			commandArray['FanMax'] = 'Off'
 		end
 	end
 	if (otherdevices['FanHigh'] == 'Off') then
 		if (otherdevices['FanMax'] == 'On') then
+			print('Switching fan MAX to OFF, after FanHigh was disabled')
 			commandArray['FanMax'] = 'Off'
 		end
 		if (otherdevices['People'] == 'On' and otherdevices['FanHome'] == 'Off') then
+			print('Switching fan HOME to ON, after FanHigh was disabled')
 			commandArray['FanHome'] = 'On'
 		elseif (otherdevices['FanHome'] == 'On') then
+			print('Switching fan HOME to OFF, because nobody is home')
 			commandArray['FanHome'] = 'Off'
 		end
 	end
