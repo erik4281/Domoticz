@@ -21,25 +21,15 @@ loopminute = tonumber(uservariables['LoopMinute'])
 weekday = tonumber(os.date("%w"))
 
 if (timedifference(otherdevices_lastupdate['FanHigh']) >= 1 and timedifference(otherdevices_lastupdate['FanHigh']) < 121) then
-	if (otherdevices['FanHigh'] == 'On') then
-		if (otherdevices['FanHome'] == 'On') then
---			commandArray['FanHome'] = 'Off'
-		end
-		if (otherdevices['People'] == 'On' and otherdevices['FanMax'] == 'Off') then
---			commandArray['FanMax'] = 'On'
-		elseif (otherdevices['FanMax'] == 'On') then
---			commandArray['FanMax'] = 'Off'
-		end
-	end
-	if (otherdevices['FanHigh'] == 'Off') then
-		if (otherdevices['FanMax'] == 'On') then
---			commandArray['FanMax'] = 'Off'
-		end
-		if (otherdevices['People'] == 'On' and otherdevices['FanHome'] == 'Off') then
---			commandArray['FanHome'] = 'On'
-		elseif (otherdevices['FanHome'] == 'On') then
---			commandArray['FanHome'] = 'Off'
-		end
+	if (otherdevices['FanHigh'] == 'On' and otherdevices['People'] == 'On') then
+		commandArray['FanHome'] = 'Off'
+		commandArray['FanMax'] = 'On'
+	elseif (otherdevices['FanHigh'] == 'Off' and otherdevices['People'] == 'On') then
+		commandArray['FanHome'] = 'On'
+		commandArray['FanMax'] = 'Off'
+	else
+		commandArray['FanHome'] = 'Off'
+		commandArray['FanMax'] = 'Off'
 	end
 end
 
