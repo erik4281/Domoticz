@@ -23,22 +23,22 @@ weekday = tonumber(os.date("%w"))
 if (timedifference(otherdevices_lastupdate['FanHigh']) >= 1 and timedifference(otherdevices_lastupdate['FanHigh']) < 121) then
 	if (otherdevices['FanHigh'] == 'On') then
 		if (otherdevices['FanHome'] == 'On') then
-			commandArray['FanHome'] = 'Off'
+--			commandArray['FanHome'] = 'Off'
 		end
 		if (otherdevices['People'] == 'On' and otherdevices['FanMax'] == 'Off') then
-			commandArray['FanMax'] = 'On'
+--			commandArray['FanMax'] = 'On'
 		elseif (otherdevices['FanMax'] == 'On') then
-			commandArray['FanMax'] = 'Off'
+--			commandArray['FanMax'] = 'Off'
 		end
 	end
 	if (otherdevices['FanHigh'] == 'Off') then
 		if (otherdevices['FanMax'] == 'On') then
-			commandArray['FanMax'] = 'Off'
+--			commandArray['FanMax'] = 'Off'
 		end
 		if (otherdevices['People'] == 'On' and otherdevices['FanHome'] == 'Off') then
-			commandArray['FanHome'] = 'On'
+--			commandArray['FanHome'] = 'On'
 		elseif (otherdevices['FanHome'] == 'On') then
-			commandArray['FanHome'] = 'Off'
+--			commandArray['FanHome'] = 'Off'
 		end
 	end
 end
