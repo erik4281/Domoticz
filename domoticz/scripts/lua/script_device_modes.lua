@@ -20,14 +20,14 @@ dc = next(devicechanged)
 ts = tostring(dc)
 
 if (ts == 'Pi2Present') then
-	if (otherdevices['Pi2Present'] == 'On' and otherdevices['FanHigh'] == 'Off' and otherdevices['People'] == 'On') then
+	if (otherdevices['Pi2Present'] == 'On' and otherdevices['People'] == 'On') then
 		print('Switching fan to HIGH, after Pi2 became present')
 		commandArray['FanHigh'] = 'On'
-	elseif (otherdevices['Pi2Present'] == 'Off' and otherdevices['FanHigh'] == 'On' and otherdevices['People'] == 'On') then
+	elseif (otherdevices['Pi2Present'] == 'Off' and otherdevices['People'] == 'On') then
 		print('Switching fan to NORMAL, after Pi2 got lost')
 		commandArray['FanHigh'] = 'Off'
 	else
-		print('Switching fan to LOW, because nobody is home when the Pi2 became present or got lost')
+		print('Switching fan to LOW, because nobody is home when Pi2 became present or got lost')
 		commandArray['FanHigh'] = 'Off'
 	end
 end
