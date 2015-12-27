@@ -20,44 +20,44 @@ dc = next(devicechanged)
 ts = tostring(dc)
 
 if (ts == 'Pi2Present') then
-	if (otherdevices['Pi2Present'] == 'On' and otherdevices['People'] == 'On') then
-		print('Switching fan to HIGH, after Pi2 became present')
-		commandArray['FanHigh'] = 'On'
-	elseif (otherdevices['Pi2Present'] == 'Off' and otherdevices['People'] == 'On') then
-		print('Switching fan to NORMAL, after Pi2 got lost')
-		commandArray['FanHigh'] = 'Off'
+	if (otherdevices['People'] == 'On') then
+		if (otherdevices['Pi2Present'] == 'On') then
+			print('Switching FanHigh to ON, after Pi2 became present')
+			commandArray['FanHigh'] = 'On'
+		elseif (otherdevices['Pi2Present'] == 'Off') then
+			print('Switching FanHigh to OFF, after Pi2 got lost')
+			commandArray['FanHigh'] = 'Off'
+		end
 	else
-		print('Switching fan to LOW, because nobody is home when Pi2 became present or got lost')
+		print('Switching FanHigh to OFF, because nobody is home when Pi2 became present or got lost')
 		commandArray['FanHigh'] = 'Off'
 	end
 end
 
 if (ts:sub(1,7) == 'FanHigh') then
-	if (otherdevices['FanHigh'] == 'On') then
-		if (otherdevices['FanHome'] == 'On') then
-			print('Switching fan HOME to OFF, after FanHigh was enabled')
-			commandArray['FanHome'] = 'Off'
+	if (otherdevices['People'] == 'On') then
+		if (otherdevices['FanHigh'] == 'On') then
+			if (otherdevices['FanHome'] == 'On') then
+				print('Switching FanHome to OFF, after FanHigh was enabled')
+				commandArray['FanHome'] = 'Off'
+			end
+			if (otherdevices['FanMax'] == 'Off') then
+				print('Switching FanMax to ON, after FanHigh was enabled')
+				commandArray['FanMax'] = 'On'
+			end
+		if (otherdevices['FanHigh'] == 'Off') then
+			if (otherdevices['FanMax'] == 'On') then
+				print('Switching FanMax to OFF, after FanHigh was disabled')
+				commandArray['FanMax'] = 'Off'
+			end
+			if (otherdevices['FanHome'] == 'Off') then
+				print('Switching FanHome to ON, after FanHigh was disabled')
+				commandArray['FanHome'] = 'On'
 		end
-		if (otherdevices['People'] == 'On' and otherdevices['FanMax'] == 'Off') then
-			print('Switching fan MAX to ON, after FanHigh was enabled')
-			commandArray['FanMax'] = 'On'
-		elseif (otherdevices['FanMax'] == 'On') then
-			print('Switching fan MAX to OFF, because nobody is home')
-			commandArray['FanMax'] = 'Off'
-		end
-	end
-	if (otherdevices['FanHigh'] == 'Off') then
-		if (otherdevices['FanMax'] == 'On') then
-			print('Switching fan MAX to OFF, after FanHigh was disabled')
-			commandArray['FanMax'] = 'Off'
-		end
-		if (otherdevices['People'] == 'On' and otherdevices['FanHome'] == 'Off') then
-			print('Switching fan HOME to ON, after FanHigh was disabled')
-			commandArray['FanHome'] = 'On'
-		elseif (otherdevices['FanHome'] == 'On') then
-			print('Switching fan HOME to OFF, because nobody is home')
-			commandArray['FanHome'] = 'Off'
-		end
+	else
+		print('Switching FanHome and FanMax to OFF, because nobody is home')
+		commandArray['FanHome'] = 'Off'
+		commandArray['FanMax'] = 'Off'
 	end
 end
 
@@ -159,29 +159,22 @@ if (ts == 'People') then
 	end
 end
 
-if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'Off') then
+if (ts == 'ALARM' and devicechanged[dc] == 'On') then
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
-		if (v == 'Motion' and otherdevices[i] == 'On') then
+		if (v == 'Motion' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
 			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
-		end
-		if (v == 'Motion' and otherdevices[i] == 'Open') then
-			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Both')
-		end
-		if (v == 'Tamper' and otherdevices[i] == 'On') then
-			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
-		end
-	end
-elseif (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'On') then
-	for i, v in pairs(otherdevices) do
-		v = i:sub(1,6)
-		if (v == 'Motion' and otherdevices[i] == 'On') then
+		elseif (v == 'Motion' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
 			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
 		end
-		if (v == 'Motion' and otherdevices[i] == 'Open') then
+		if (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'Off') then
+			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Both')
+		elseif (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'On') then
 			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Erik')
 		end
-		if (v == 'Tamper' and otherdevices[i] == 'On') then
+		if (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
+			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
+		elseif (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
 			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
 		end
 	end
