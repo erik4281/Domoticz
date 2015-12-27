@@ -172,6 +172,19 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'O
 			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
 		end
 	end
+elseif (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['People'] == 'On') then
+	for i, v in pairs(otherdevices) do
+		v = i:sub(1,6)
+		if (v == 'Motion' and otherdevices[i] == 'On') then
+			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
+		end
+		if (v == 'Motion' and otherdevices[i] == 'Open') then
+			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Erik')
+		end
+		if (v == 'Tamper' and otherdevices[i] == 'On') then
+			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
+		end
+	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	notify ('ALARM', 'Alarm%20is%20OFF!', 'Both')
 end
