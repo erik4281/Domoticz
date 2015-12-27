@@ -45,6 +45,7 @@ if (ts:sub(1,7) == 'FanHigh') then
 				print('Switching FanMax to ON, after FanHigh was enabled')
 				commandArray['FanMax'] = 'On'
 			end
+		end
 		if (otherdevices['FanHigh'] == 'Off') then
 			if (otherdevices['FanMax'] == 'On') then
 				print('Switching FanMax to OFF, after FanHigh was disabled')
