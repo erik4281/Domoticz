@@ -20,16 +20,6 @@ timeminute = tonumber(os.date("%M"))
 loopminute = tonumber(uservariables['LoopMinute'])
 weekday = tonumber(os.date("%w"))
 
-if (timedifference(otherdevices_lastupdate['FanSwitch3']) >= 1 and timedifference(otherdevices_lastupdate['FanSwitch3']) < 121) then
-	if (otherdevices['FanSwitch3'] == 'On' and otherdevices['People'] == 'On') then
-		commandArray['FanSwitch3'] = 'On'
-	elseif (otherdevices['FanSwitch3'] == 'Off' and otherdevices['People'] == 'On') then
-		commandArray['FanSwitch3'] = 'Off'
-	else
-		commandArray['FanSwitch3'] = 'Off'
-	end
-end
-
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	v = i:sub(1,6)
