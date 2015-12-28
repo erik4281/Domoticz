@@ -20,19 +20,13 @@ timeminute = tonumber(os.date("%M"))
 loopminute = tonumber(uservariables['LoopMinute'])
 weekday = tonumber(os.date("%w"))
 
-if (timedifference(otherdevices_lastupdate['FanHigh']) >= 1 and timedifference(otherdevices_lastupdate['FanHigh']) < 121) then
-	if (otherdevices['FanHigh'] == 'On' and otherdevices['People'] == 'On') then
-		print('Switching (backup) FanMax to ON and FanHome to OFF, after FanHigh was enabled')
-		commandArray['FanHome'] = 'Off'
-		commandArray['FanMax'] = 'On'
-	elseif (otherdevices['FanHigh'] == 'Off' and otherdevices['People'] == 'On') then
-		print('Switching (backup) FanMax to OFF and FanHome to ON, after FanHigh was disabled')
-		commandArray['FanHome'] = 'On'
-		commandArray['FanMax'] = 'Off'
+if (timedifference(otherdevices_lastupdate['FanSwitch3']) >= 1 and timedifference(otherdevices_lastupdate['FanSwitch3']) < 121) then
+	if (otherdevices['FanSwitch3'] == 'On' and otherdevices['People'] == 'On') then
+		commandArray['FanSwitch3'] = 'On'
+	elseif (otherdevices['FanSwitch3'] == 'Off' and otherdevices['People'] == 'On') then
+		commandArray['FanSwitch3'] = 'Off'
 	else
-		print('Switching (backup) FanMax to OFF and FanHome to OFF, because nobody is home')
-		commandArray['FanHome'] = 'Off'
-		commandArray['FanMax'] = 'Off'
+		commandArray['FanSwitch3'] = 'Off'
 	end
 end
 
