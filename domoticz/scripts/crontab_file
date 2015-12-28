@@ -9,6 +9,5 @@
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.125 126 60 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.126 127 60 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.109 130 10 120
-*/1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.116 143 5 30
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_harmony.py 10.0.1.107 136 60 180
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_harmony.py 10.0.1.108 137 60 180
