@@ -22,8 +22,14 @@ ts = tostring(dc)
 if (ts == 'FanSwitch2') then
 	if (otherdevices['People'] == 'On' and otherdevices['FanSwitch2'] == 'Off') then
 		commandArray['FanSwitch2'] = 'On'
-	elseif (otherdevices['People'] == 'Off') then
+	elseif (otherdevices['People'] == 'Off' and otherdevices['FanSwitch2'] == 'On') then
 		commandArray['FanSwitch2'] = 'Off'
+	end
+end
+
+if (ts == 'FanSwitch3') then
+	if (otherdevices['People'] == 'Off' and otherdevices['FanSwitch3'] == 'On') then
+		commandArray['FanSwitch3'] = 'Off'
 	end
 end
 
