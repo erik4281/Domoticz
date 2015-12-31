@@ -7,7 +7,7 @@ function notify(notSubject, notMessage, notPeople)
 		notJinHee = 'VJsRPzgoPD'
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notJinHee.."/"..notSubject.."/"..notMessage.."'")
 	else
-		notErik = 'uIlZfdCTm3'
+		notErik = '4JqWlAvUge'
 		notJinHee = 'VJsRPzgoPD'
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notJinHee.."/"..notSubject.."/"..notMessage.."'")
