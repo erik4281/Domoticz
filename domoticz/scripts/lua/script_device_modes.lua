@@ -1,7 +1,7 @@
 function notify(notSubject, notMessage, notPeople)
 	print ('Function triggered! '..notSubject..' - '..notMessage..' - '..notPeople)
 	if (notPeople == 'Erik') then
-		notErik = 'uIlZfdCTm3'
+		notErik = '4JqWlAvUge'
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
 	elseif (notPeople == 'JinHee') then
 		notJinHee = 'VJsRPzgoPD'
