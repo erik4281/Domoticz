@@ -55,7 +55,9 @@ for i, v in pairs(otherdevices) do
 					commandArray['FanSwitch3'] = 'On'
 				end
 			elseif (otherdevices[v..sc] == 'Off' and timedifference(otherdevices_lastupdate[v..sc]) > 61) then
-				commandArray['Variable:FanMotionOn'] = tostring(0)
+				if (uservariables['FanMotionOn'] > 0) then
+					commandArray['Variable:FanMotionOn'] = tostring(0)
+				end
 				if (otherdevices['FanSwitch3'] == 'On') then
 					commandArray['Variable:FanMotionOff'] = tostring(uservariables['FanMotionOff'] + 1)
 				end
