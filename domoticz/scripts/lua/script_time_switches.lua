@@ -45,7 +45,7 @@ for i, v in pairs(otherdevices) do
 					print ('Colorloop triggered: '..scriptfolder..sc..'/'..scene)
 					os.execute (scriptfolder..sc..'/'..scene)
 					looping = 1
-				elseif (timeminute == loopminute + 1) then
+				elseif ((timeminute == loopminute + 1) or (timeminute == loopminute + 2)) then
 					difference = 30
 					looping = 1
 				end
