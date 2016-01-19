@@ -34,6 +34,11 @@ if (ts == 'FanSwitch3') then
 end
 
 if (ts:sub(1,6) == 'iPhone') then
+	if (devicechanged[dc] == 'On') then
+		notify ('PHONE', dc..'%20has%20arrived', 'Erik')
+	elseif (devicechanged[dc] == 'Off') then
+		notify ('PHONE', dc..'%20has%20departed', 'Erik')
+	end
 	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
 		if (otherdevices['Phones'] == 'Off') then
 			commandArray['Phones'] = 'On'
@@ -135,18 +140,18 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On') then
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
 			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
-		elseif (v == 'Motion' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
-			notify ('WARNING', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
+		--elseif (v == 'Motion' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
+		--	notify ('WARNING', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
 		end
 		if (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'Off') then
 			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Both')
-		elseif (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'On') then
-			notify ('WARNING', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Erik')
+		--elseif (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'On') then
+		--	notify ('WARNING', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Erik')
 		end
 		if (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
 			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
-		elseif (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
-			notify ('WARNING', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
+		--elseif (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
+		--	notify ('WARNING', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
 		end
 	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
