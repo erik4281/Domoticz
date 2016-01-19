@@ -36,10 +36,10 @@ end
 if (ts:sub(1,6) == 'iPhone') then
 	if (devicechanged[dc] == 'On') then
 		ph = ts:sub(7)
-		notify ('PHONE', ph..'%20has%20arrived', 'Erik')
+		notify ('PEOPLE', ph..'%20has%20arrived', 'Both')
 	elseif (devicechanged[dc] == 'Off') then
 		ph = ts:sub(7)
-		notify ('PHONE', ph..'%20has%20departed', 'Erik')
+		notify ('PEOPLE', ph..'%20has%20departed', 'Both')
 	end
 	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
 		if (otherdevices['Phones'] == 'Off') then
