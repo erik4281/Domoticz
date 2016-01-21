@@ -34,10 +34,11 @@ if (ts == 'FanSwitch3') then
 end
 
 if (ts:sub(1,6) == 'iPhone') then
-	if (devicechanged[dc] == 'On' and tonumber(otherdevices_lastupdate[dc]) > '5') then
+	print(tonumber(otherdevices_lastupdate[dc]))
+	if (d<devicechanged[dc] == 'On') then
 		ph = ts:sub(7)
 		notify ('PEOPLE', ph..'%20has%20arrived', 'Both')
-	elseif (devicechanged[dc] == 'Off' and tonumber(otherdevices_lastupdate[dc]) > '5') then
+	elseif (devicechanged[dc] == 'Off') then
 		ph = ts:sub(7)
 		notify ('PEOPLE', ph..'%20has%20departed', 'Both')
 	end
