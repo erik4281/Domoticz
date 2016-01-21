@@ -35,7 +35,7 @@ end
 
 if (ts:sub(1,6) == 'iPhone') then
 	print((otherdevices_lastupdate[dc]))
-	if (d<devicechanged[dc] == 'On') then
+	if (devicechanged[dc] == 'On') then
 		ph = ts:sub(7)
 		notify ('PEOPLE', ph..'%20has%20arrived', 'Both')
 	elseif (devicechanged[dc] == 'Off') then
