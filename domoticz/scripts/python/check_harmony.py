@@ -22,7 +22,7 @@ domoticzpassword = ""
  
 # If enabled. The script will log to the file _.log
 # Logging to file only happens after the check for other instances, before that it only prints to screen.
-log_to_file = False
+log_to_file = True
  
 # The script supports two types to check if another instance of the script is running.
 # One will use the ps command, but this does not work on all machine (Synology has problems)
@@ -30,7 +30,7 @@ log_to_file = False
 # every interval. If a new instance of the script spawns it will check the age of the pid file.
 # If the file doesn't exist or it is older then 3 * Interval it will keep running, otherwise is stops.
 # Please chose the option you want to use "ps" or "pid", if this option is kept empty it will not check and just run.
-check_for_instances = "pid"
+check_for_instances = "ps"
  
  
  
