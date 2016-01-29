@@ -114,16 +114,16 @@ end
 
 if (ts == 'People') then
 	if (devicechanged[dc] == 'On') then
-		if (otherdevices['NestAway'] == 'On') then
+		if (otherdevices['NestActive'] == 'Off') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
-			commandArray['NestAway'] = 'Off'
+			commandArray['NestActive'] = 'On'
 		end
 		commandArray['FanSwitch2'] = 'On'
 		notify ('HOME', 'HOME%20mode%20activated', 'Both')
 	elseif (devicechanged[dc] == 'Off') then
-		if (otherdevices['NestAway'] == 'Off') then
+		if (otherdevices['NestActive'] == 'On') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
-			commandArray['NestAway'] = 'On'
+			commandArray['NestActive'] = 'Off'
 		end
 		commandArray['FanSwitch3'] = 'Off'
 		notify ('HOME', 'AWAY%20mode%20activated', 'Both')
@@ -135,6 +135,14 @@ if (ts == 'People') then
 				end
 			end
 		end
+	end
+end
+
+If (ts == 'NestActive') then
+	if (devicechanged[dc] == 'On') then
+		commandArray['NestAway'] = 'Off'
+	elseif (devicechanged[dc] == 'Off) then
+		commandArray['NestAway'] = 'On'
 	end
 end
 
