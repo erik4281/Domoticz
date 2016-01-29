@@ -163,7 +163,7 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On') then
 		--	notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
 		--elseif (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
 		--	notify ('WARNING', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
-		end
+		--end
 	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	notify ('ALARM', 'Alarm%20is%20OFF!', 'Both')
