@@ -159,8 +159,8 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On') then
 		--elseif (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'On') then
 		--	notify ('WARNING', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Erik')
 		end
-		if (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
-			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
+		--if (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
+		--	notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
 		--elseif (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
 		--	notify ('WARNING', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
 		end
