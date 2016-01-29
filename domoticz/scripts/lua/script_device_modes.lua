@@ -141,7 +141,7 @@ end
 if (ts == 'NestActive') then
 	if (devicechanged[dc] == 'On') then
 		commandArray['NestAway'] = 'Off'
-	elseif (devicechanged[dc] == 'Off) then
+	elseif (devicechanged[dc] == 'Off') then
 		commandArray['NestAway'] = 'On'
 	end
 end
