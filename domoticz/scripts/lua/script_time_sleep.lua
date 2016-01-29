@@ -19,6 +19,8 @@ switchsleep = 'SleepMode'
 presence = otherdevices['People']
 sleepstart = 2200
 sleepstop = 0600
+wakeup = otherdevices['WakeUpLight']
+wakeuptime = tonumber(uservariables['WakeUpLightTime'])
 weekday = tonumber(os.date("%w"))
 
 for i, v in pairs(otherdevices) do
@@ -47,4 +49,18 @@ for i, v in pairs(otherdevices) do
 	end
 end
 
+if (presence == 'On' and wakeup == 'On' and timenumber == wakeuptime and otherdevices['SwitchBedroom'] == 'Off' and (weekday > 0 and weekday < 6)) then
+	commandArray['Variable:WakeUpLightOn'] = 'On'
+	scriptfolder = "/home/pi/domoticz/scripts/bash/"
+	sc = 'Bedroom'
+	scene = 'WakeUp.sh'
+	print ('Wake-Up light triggered: '..scriptfolder..sc..'/'..scene)
+	os.execute (scriptfolder..sc..'/'..scene)
+end
+
+if (uservariables['WakeUpLightOn'] == 'On' and (timenumber == wakeuptime + 30)) then
+	commandArray['Variable:WakeUpLightOn'] = 'Off'
+	commandArray['SwitchBedroom'] = 'On'
+end
+	
 return commandArray
