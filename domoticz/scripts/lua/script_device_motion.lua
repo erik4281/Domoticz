@@ -116,14 +116,14 @@ elseif (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 
 	end
 end
 
-if (ts:sub(1,6) == 'Tamper' and devicechanged[dc] == 'On') then
-	if (otherdevices['ALARM'] == 'Off') then
-		commandArray['ALARM'] = 'On'
-	end
-elseif (ts:sub(1,6) == 'Tamper' and devicechanged[dc] == 'Off') then
-	if (otherdevices['ALARM'] == 'On') then
-		commandArray['ALARM'] = 'Off'
-	end
-end
+--if (ts:sub(1,6) == 'Tamper' and devicechanged[dc] == 'On') then
+--	if (otherdevices['ALARM'] == 'Off') then
+--		commandArray['ALARM'] = 'On'
+--	end
+--elseif (ts:sub(1,6) == 'Tamper' and devicechanged[dc] == 'Off') then
+--	if (otherdevices['ALARM'] == 'On') then
+--		commandArray['ALARM'] = 'Off'
+--	end
+--end
 
 return commandArray
