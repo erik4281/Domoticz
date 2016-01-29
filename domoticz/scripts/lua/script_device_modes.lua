@@ -138,7 +138,7 @@ if (ts == 'People') then
 	end
 end
 
-If (ts == 'NestActive') then
+if (ts == 'NestActive') then
 	if (devicechanged[dc] == 'On') then
 		commandArray['NestAway'] = 'Off'
 	elseif (devicechanged[dc] == 'Off) then
