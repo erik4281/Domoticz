@@ -1,14 +1,12 @@
 function notify(notSubject, notMessage, notPeople)
 	print ('Function triggered! '..notSubject..' - '..notMessage..' - '..notPeople)
+	notErik = '4JqWlAvUge'
+	notJinHee = 'VJsRPzgoPD'
 	if (notPeople == 'Erik') then
-		notErik = '4JqWlAvUge'
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
 	elseif (notPeople == 'JinHee') then
-		notJinHee = 'VJsRPzgoPD'
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notJinHee.."/"..notSubject.."/"..notMessage.."'")
 	else
-		notErik = '4JqWlAvUge'
-		notJinHee = 'VJsRPzgoPD'
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
 		result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notJinHee.."/"..notSubject.."/"..notMessage.."'")
 	end
@@ -151,19 +149,10 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On') then
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
 			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
-		--elseif (v == 'Motion' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
-		--	notify ('WARNING', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
 		end
 		if (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'Off') then
 			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Both')
-		--elseif (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'On') then
-		--	notify ('WARNING', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Erik')
 		end
-		--if (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
-		--	notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
-		--elseif (v == 'Tamper' and otherdevices[i] == 'On' and otherdevices['People'] == 'On') then
-		--	notify ('WARNING', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Erik')
-		--end
 	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
 	notify ('ALARM', 'Alarm%20is%20OFF!', 'Both')
