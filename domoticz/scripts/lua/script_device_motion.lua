@@ -11,7 +11,6 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	sf = nil
 	sl = nil
 	sm = nil
-	wakeuptimer = 0
 	if (sc == 'Living') then
 		sc = 'Living'
 		sd = 'Dining'
@@ -32,8 +31,6 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		if (otherdevices['SleepMode'] == 'On') then
 			commandArray['SleepMode'] = 'Off'
 		end
-	elseif (sc == 'Bedroom' and uservariables['WakeUpLightOn'] == 'On') then
-		wakeuptimer = 1
 	elseif (sc == 'Toilet') then
 		sc = 'Toilet'
 		sd = 'Hallway'
@@ -58,7 +55,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	if (se) then
 		me = 'Motion'..se
 	end
-	if ((otherdevices[mc] == 'On' or otherdevices[md] == 'On' or otherdevices[me] == 'On' or otherdevices[mc] == 'Open' or otherdevices[md] == 'Open' or otherdevices[me] == 'Open') and wakeuptimer == 0) then
+	if (otherdevices[mc] == 'On' or otherdevices[md] == 'On' or otherdevices[me] == 'On' or otherdevices[mc] == 'Open' or otherdevices[md] == 'Open' or otherdevices[me] == 'Open') then
 		if (cbr < cbrt) then
 			if (otherdevices['Switch'..sc] == 'Off') then
 				print (ts..' saw motion. Now triggering switch Switch'..sc)
@@ -115,15 +112,5 @@ elseif (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 
 		commandArray['ALARM'] = 'Off'
 	end
 end
-
---if (ts:sub(1,6) == 'Tamper' and devicechanged[dc] == 'On') then
---	if (otherdevices['ALARM'] == 'Off') then
---		commandArray['ALARM'] = 'On'
---	end
---elseif (ts:sub(1,6) == 'Tamper' and devicechanged[dc] == 'Off') then
---	if (otherdevices['ALARM'] == 'On') then
---		commandArray['ALARM'] = 'Off'
---	end
---end
 
 return commandArray
