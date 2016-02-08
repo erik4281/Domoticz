@@ -1,16 +1,32 @@
 {
-       "platforms": [
-              {
-                     "platform": "PhilipsHue",
-                     "name": "Philips Hue",
-                     "ip_address": "10.0.1.102",
-                     "username": "erikvennink"
-              },
-              {
-                     "platform": "Nest",
-                     "name": "Nest",
-                     "username" : "jinheeanderik@gmail.com",
-                     "password" : "Tilburg5042!"
-              }
-       ]
+    "bridge": {
+        "name": "Homebridge",
+        "username": "CC:21:3E:E4:DE:33",
+        "port": 51826,
+        "pin": "031-45-154"
+    },
+    "description": "Configuration file for (e)xtended Domoticz platform.",
+    "platforms": [
+        {
+            "platform": "eDomoticz",
+            "name": "eDomoticz",
+            "server": "127.0.0.1",
+            "port": "8080",
+            "ssl": 0,
+            "roomid": 0
+        },
+        {
+            "platform": "PhilipsHue",
+            "name": "Philips Hue",
+            "ip_address": "10.0.1.102",
+            "username": "erikvennink"
+        },
+        {
+            "platform": "Nest",
+            "name": "Nest",
+            "username" : "jinheeanderik@gmail.com",
+            "password" : "Tilburg5042!"
+        }
+    ],
+    "accessories": []
 }
