@@ -1,11 +1,4 @@
 {
-    "bridge": {
-        "name": "Homebridge",
-        "username": "erikvennink",
-        "port": 51826,
-        "pin": "031-45-154"
-    },
-    "description": "Configuration file for (e)xtended Domoticz platform.",
     "platforms": [
         {
             "platform": "PhilipsHue",
@@ -19,6 +12,5 @@
             "username" : "jinheeanderik@gmail.com",
             "password" : "Tilburg5042!"
         }
-    ],
-    "accessories": []
+    ]
 }
