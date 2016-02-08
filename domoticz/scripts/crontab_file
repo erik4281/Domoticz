@@ -1,11 +1,13 @@
 ## RASPBERRY PI DOMOTICZ
 @reboot sudo /home/pi/domoticz/scripts/bash/git_update.sh
 0 * * * * sudo /home/pi/domoticz/scripts/bash/git_update.sh
+0 4 0 0 0 sudo /home/pi/domoticz/scripts/bash/auto_update.sh
 */1 * * * * sudo /home/pi/domoticz/scripts/bash/check_domoticz_online.sh 2>&1 >> /dev/null
 
 ## RASPBERRY PI SUPPORT
 @reboot sudo /home/pi/domoticz/scripts/bash/git_update.sh
 0 * * * * sudo /home/pi/domoticz/scripts/bash/git_update.sh
+0 4 0 0 0 sudo /home/pi/domoticz/scripts/bash/auto_update.sh
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_bluetooth.py DC:9B:9C:BE:D5:08 113 60 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_bluetooth.py F0:24:75:D0:AF:C2 114 60 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.125 126 60 300
