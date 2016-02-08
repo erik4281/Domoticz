@@ -12,8 +12,6 @@
             "name": "eDomoticz",
             "server": "erikvennink:Ev!3745!@10.0.1.120",
             "port": "8080",
-            "ssl": 0,
-            "roomid": 12
         },
         {
             "platform": "PhilipsHue",
