@@ -11,6 +11,14 @@
             "name": "Nest",
             "username" : "jinheeanderik@gmail.com",
             "password" : "Tilburg5042!"
+        },
+        {
+            "platform": "eDomoticz",
+            "name": "eDomoticz",
+            "server": "10.0.1.120",
+            "port": "8080",
+            "ssl": 0,
+            "roomid": 12
         }
     ]
 }
