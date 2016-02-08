@@ -10,7 +10,7 @@
         {
             "platform": "eDomoticz",
             "name": "eDomoticz",
-            "server": "127.0.0.1",
+            "server": "erikvennink:Ev!3745!@127.0.0.1",
             "port": "8080",
             "ssl": 0,
             "roomid": 0
