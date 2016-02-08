@@ -8,10 +8,16 @@
     "description": "Configuration file for (e)xtended Domoticz platform.",
     "platforms": [
         {
-            "platform": "eDomoticz",
-            "name": "eDomoticz",
-            "server": "10.0.1.120",
-            "port": "8080",
+            "platform": "PhilipsHue",
+            "name": "Philips Hue",
+            "ip_address": "10.0.1.102",
+            "username": "erikvennink"
+        },
+        {
+            "platform": "Nest",
+            "name": "Nest",
+            "username" : "jinheeanderik@gmail.com",
+            "password" : "Tilburg5042!"
         }
     ],
     "accessories": []
