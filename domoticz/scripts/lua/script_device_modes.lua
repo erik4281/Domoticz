@@ -21,7 +21,7 @@ if (ts:sub(1,6) == 'iPhone') then
 	print((otherdevices_lastupdate[dc]))
 	if (devicechanged[dc] == 'On') then
 		ph = ts:sub(7)
-		commandArray['SendNotification']='PEOPLE#'..ph..' has arrived#0'
+		commandArray['SendNotification']='PEOPLE#'..ph..' has arrived#0#Bike'
 	elseif (devicechanged[dc] == 'Off') then
 		ph = ts:sub(7)
 		commandArray['SendNotification']='PEOPLE#'..ph..' has departed#0'
