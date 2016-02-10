@@ -21,7 +21,7 @@ if (ts:sub(1,6) == 'iPhone') then
 	print((otherdevices_lastupdate[dc]))
 	if (devicechanged[dc] == 'On') then
 		ph = ts:sub(7)
-		commandArray['SendNotification']='PEOPLE#'..ph..' has arrived#0#Bike'
+		commandArray['SendNotification']='PEOPLE#'..ph..' has arrived#0#bike'
 	elseif (devicechanged[dc] == 'Off') then
 		ph = ts:sub(7)
 		commandArray['SendNotification']='PEOPLE#'..ph..' has departed#0#bike'
@@ -103,14 +103,14 @@ if (ts == 'People') then
 			commandArray['NestActive'] = 'On'
 		end
 		commandArray['FanSwitch2'] = 'On'
-		commandArray['SendNotification']='HOME#HOME mode activated#1'
+		commandArray['SendNotification']='HOME#HOME mode activated#1#intermission'
 	elseif (devicechanged[dc] == 'Off') then
 		if (otherdevices['NestActive'] == 'On') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestActive'] = 'Off'
 		end
 		commandArray['FanSwitch3'] = 'Off'
-		commandArray['SendNotification']='HOME#AWAY mode activated#1'
+		commandArray['SendNotification']='HOME#AWAY mode activated#1#intermission'
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
 			if (v == 'Switch') then
@@ -134,13 +134,13 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On') then
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On') then
-			commandArray['SendNotification']='ALARM#'..i..' is ON!#2'
+			commandArray['SendNotification']='ALARM#'..i..' is ON!#2#siren'
 		elseif (v == 'Motion' and otherdevices[i] == 'Open') then
-			commandArray['SendNotification']='ALARM#'..i..' is OPEN!#2'
+			commandArray['SendNotification']='ALARM#'..i..' is OPEN!#2#siren'
 		end
 	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off') then
-	commandArray['SendNotification']='ALARM#Alarm is OFF#1'
+	commandArray['SendNotification']='ALARM#Alarm is OFF#1#siren'
 end
 
 return commandArray
