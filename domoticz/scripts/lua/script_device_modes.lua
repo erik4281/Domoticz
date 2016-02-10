@@ -139,7 +139,7 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On') then
 			commandArray['SendNotification']='ALARM#'..i..' is OPEN!#2'
 		end
 	end
-elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
+elseif (ts == 'ALARM' and devicechanged[dc] == 'Off') then
 	commandArray['SendNotification']='ALARM#Alarm is OFF#1'
 end
 
