@@ -38,10 +38,10 @@ if (ts:sub(1,6) == 'iPhone') then
 	print((otherdevices_lastupdate[dc]))
 	if (devicechanged[dc] == 'On') then
 		ph = ts:sub(7)
-		notify ('PEOPLE', ph..'%20has%20arrived', 'Both')
+		commandArray['SendNotification']='PEOPLE#'..ph..' has arrived#0'
 	elseif (devicechanged[dc] == 'Off') then
 		ph = ts:sub(7)
-		notify ('PEOPLE', ph..'%20has%20departed', 'Both')
+		commandArray['SendNotification']='PEOPLE#'..ph..' has departed#0'
 	end
 	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
 		if (otherdevices['Phones'] == 'Off') then
@@ -120,14 +120,14 @@ if (ts == 'People') then
 			commandArray['NestActive'] = 'On'
 		end
 		commandArray['FanSwitch2'] = 'On'
-		notify ('HOME', 'HOME%20mode%20activated', 'Both')
+		commandArray['SendNotification']='HOME#HOME mode activated#1'
 	elseif (devicechanged[dc] == 'Off') then
 		if (otherdevices['NestActive'] == 'On') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestActive'] = 'Off'
 		end
 		commandArray['FanSwitch3'] = 'Off'
-		notify ('HOME', 'AWAY%20mode%20activated', 'Both')
+		commandArray['SendNotification']='HOME#AWAY mode activated#1'
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
 			if (v == 'Switch') then
@@ -151,13 +151,14 @@ if (ts == 'ALARM' and devicechanged[dc] == 'On') then
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
-			notify ('ALARM', i..'%20is%20ON,%20but%20nobody%20is%20home!', 'Both')
+			commandArray['SendNotification']='ALARM#'..i..' is ON, but nobody is home!!!#2'
 		end
 		if (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'Off') then
-			notify ('ALARM', i..'%20is%20OPEN,%20but%20nobody%20is%20home!', 'Both')
+			commandArray['SendNotification']='ALARM#'..i..' is OPEN, but nobody is home!!!#2'
 		end
 	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
+	commandArray['SendNotification']='ALARM#Alarm is OFF#1'
 	notify ('ALARM', 'Alarm%20is%20OFF!', 'Both')
 end
 
