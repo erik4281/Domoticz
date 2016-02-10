@@ -11,7 +11,7 @@ function notify(notSubject, notMessage, notPeople)
 	else
 		--result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notErik.."/"..notSubject.."/"..notMessage.."'")
 		--result = io.popen("curl -k 'https://api.pilot.patrickferreira.com/"..notJinHee.."/"..notSubject.."/"..notMessage.."'")
-                commandArray['SendNotification']=..notSubject..#..notMessage..#-1
+                commandArray['SendNotification']=notSubject#notMessage#-1
 	end
 end
 
