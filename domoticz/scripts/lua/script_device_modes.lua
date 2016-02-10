@@ -103,14 +103,14 @@ if (ts == 'People') then
 			commandArray['NestActive'] = 'On'
 		end
 		commandArray['FanSwitch2'] = 'On'
-		commandArray['SendNotification']='HOME#HOME mode activated#1#intermission'
+		commandArray['SendNotification']='HOME#HOME mode activated#0#intermission'
 	elseif (devicechanged[dc] == 'Off') then
 		if (otherdevices['NestActive'] == 'On') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestActive'] = 'Off'
 		end
 		commandArray['FanSwitch3'] = 'Off'
-		commandArray['SendNotification']='HOME#AWAY mode activated#1#intermission'
+		commandArray['SendNotification']='HOME#AWAY mode activated#0#intermission'
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
 			if (v == 'Switch') then
