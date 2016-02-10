@@ -24,7 +24,7 @@ if (ts:sub(1,6) == 'iPhone') then
 		commandArray['SendNotification']='PEOPLE#'..ph..' has arrived#0#Bike'
 	elseif (devicechanged[dc] == 'Off') then
 		ph = ts:sub(7)
-		commandArray['SendNotification']='PEOPLE#'..ph..' has departed#0'
+		commandArray['SendNotification']='PEOPLE#'..ph..' has departed#0#bike'
 	end
 	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
 		if (otherdevices['Phones'] == 'Off') then
