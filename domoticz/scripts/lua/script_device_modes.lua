@@ -133,11 +133,10 @@ end
 if (ts == 'ALARM' and devicechanged[dc] == 'On') then
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
-		if (v == 'Motion' and otherdevices[i] == 'On' and otherdevices['People'] == 'Off') then
-			commandArray['SendNotification']='ALARM#'..i..' is ON, but nobody is home!!!#2'
-		end
-		if (v == 'Motion' and otherdevices[i] == 'Open' and otherdevices['People'] == 'Off') then
-			commandArray['SendNotification']='ALARM#'..i..' is OPEN, but nobody is home!!!#2'
+		if (v == 'Motion' and otherdevices[i] == 'On') then
+			commandArray['SendNotification']='ALARM#'..i..' is ON!#2'
+		elseif (v == 'Motion' and otherdevices[i] == 'Open') then
+			commandArray['SendNotification']='ALARM#'..i..' is OPEN!#2'
 		end
 	end
 elseif (ts == 'ALARM' and devicechanged[dc] == 'Off' and otherdevices['People'] == 'Off') then
