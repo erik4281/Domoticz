@@ -24,6 +24,13 @@ FanOff = 10
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	v = i:sub(1,6)
+	if (ts == 'MotionBedroom' and otherdevices['SleepMode'] == 'Off') then
+		if (otherdevices['MotionBedroom'] == 'On' and otherdevices['Bedroom Humidifier'] == 'Off') then
+			commandArray['Bedroom Humidifier'] = 'On'
+		elseif (otherdevices['MotionBedroom'] == 'Off' and otherdevices['Bedroom Humidifier'] == 'On') then
+			commandArray['Bedroom Humidifier'] = 'Off'
+		end
+	end
 	if (v == 'Motion') then
 		sc = i:sub(7)
 		sd = nil
