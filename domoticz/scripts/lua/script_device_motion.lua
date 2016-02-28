@@ -4,6 +4,14 @@ dc = next(devicechanged)
 ts = tostring(dc)
 presence = otherdevices['People']
 
+if (ts == 'MotionBedroom' and otherdevices['SleepMode'] == 'Off') then
+	if (otherdevices['MotionBedroom'] == 'On') then
+		commandArray['Bedroom Humidifier'] = 'On'
+	else
+		commandArray['Bedroom Humidifier'] = 'Off'
+	end
+end
+
 if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	sc = ts:sub(7)
 	sd = nil
