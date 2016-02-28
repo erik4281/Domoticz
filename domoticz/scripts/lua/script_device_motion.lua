@@ -5,9 +5,9 @@ ts = tostring(dc)
 presence = otherdevices['People']
 
 if (ts == 'MotionBedroom' and otherdevices['SleepMode'] == 'Off') then
-	if (otherdevices['MotionBedroom'] == 'On') then
+	if (otherdevices['MotionBedroom'] == 'On' and otherdevices['Bedroom Humidifier'] == 'Off') then
 		commandArray['Bedroom Humidifier'] = 'On'
-	else
+	elseif (otherdevices['MotionBedroom'] == 'Off' and otherdevices['Bedroom Humidifier'] == 'On') then
 		commandArray['Bedroom Humidifier'] = 'Off'
 	end
 end
