@@ -77,7 +77,7 @@ for i, v in pairs(otherdevices) do
 			sf = 'Bathroom'
 		elseif (sc == 'Bedroom') then
 			sc = 'Bedroom'
-			if (otherdevices['SleepMode] == 'Off') then
+			if (otherdevices['SleepMode'] == 'Off') then
 				sd = 'Humidifier'
 			end
 		end
