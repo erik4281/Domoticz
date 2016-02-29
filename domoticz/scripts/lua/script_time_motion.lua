@@ -78,7 +78,7 @@ for i, v in pairs(otherdevices) do
 		elseif (sc == 'Bedroom') then
 			sc = 'Bedroom'
 			if (otherdevices['SleepMode'] == 'Off') then
-				sd = 'Humidifier'
+				sl = 'Humidifier'
 			end
 		end
 		motioncheck = 'Off'
