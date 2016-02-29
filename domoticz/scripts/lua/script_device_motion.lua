@@ -4,13 +4,13 @@ dc = next(devicechanged)
 ts = tostring(dc)
 presence = otherdevices['People']
 
-if (ts == 'MotionBedroom' and otherdevices['SleepMode'] == 'Off') then
-	if (otherdevices['MotionBedroom'] == 'On' and otherdevices['Bedroom Humidifier'] == 'Off') then
-		commandArray['Bedroom Humidifier'] = 'On'
-	elseif (otherdevices['MotionBedroom'] == 'Off' and otherdevices['Bedroom Humidifier'] == 'On') then
-		commandArray['Bedroom Humidifier'] = 'Off'
-	end
-end
+--if (ts == 'MotionBedroom' and otherdevices['SleepMode'] == 'Off') then
+--	if (otherdevices['MotionBedroom'] == 'On' and otherdevices['Bedroom Humidifier'] == 'Off') then
+--		commandArray['Bedroom Humidifier'] = 'On'
+--	elseif (otherdevices['MotionBedroom'] == 'Off' and otherdevices['Bedroom Humidifier'] == 'On') then
+--		commandArray['Bedroom Humidifier'] = 'Off'
+--	end
+--end
 
 if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	sc = ts:sub(7)
@@ -39,6 +39,9 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		if (otherdevices['SleepMode'] == 'On') then
 			commandArray['SleepMode'] = 'Off'
 		end
+	elseif (sc == 'Bedroom') then
+		sc = 'Bedroom'
+		sl = 'Humidifier'
 	elseif (sc == 'Toilet') then
 		sc = 'Toilet'
 		sd = 'Hallway'
