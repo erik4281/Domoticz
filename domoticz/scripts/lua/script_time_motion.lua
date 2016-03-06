@@ -20,11 +20,9 @@ HaL = otherdevices['HarmonyLiving']
 HaB = otherdevices['HarmonyBedroom']
 
 if (uservariables['FanMotionOverrideHigh'] == 0) then
-	print('Normal motion timing')
 	FanOn = uservariables['WaitOnFan']
 	FanOff = uservariables['WaitOffFan']
 else
-	print('Extended motion timing')
 	FanOn = uservariables['WaitOnFanExtra']
 	FanOff = uservariables['WaitOffFanExtra']
 end
