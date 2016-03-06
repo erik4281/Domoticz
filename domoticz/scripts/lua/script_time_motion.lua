@@ -59,7 +59,7 @@ for i, v in pairs(otherdevices) do
 				end
 				if (uservariables['FanMotionOn'] >= FanOn and otherdevices['FanSwitch3'] == 'Off' and timedifference(otherdevices_lastupdate['FanSwitch3']) > (FanOn * 60)) then
 					commandArray['FanSwitch3'] = 'On'
-					commandArray['Variable:FanMotionAuto'] = 1
+					commandArray['Variable:FanMotionAuto'] = '1'
 				end
 			elseif (otherdevices[v..sc] == 'Off' and timedifference(otherdevices_lastupdate[v..sc]) > 61) then
 				if (uservariables['FanMotionOn'] > 0) then
@@ -70,7 +70,7 @@ for i, v in pairs(otherdevices) do
 				end
 				if (uservariables['FanMotionOff'] >= FanOff and otherdevices['FanSwitch3'] == 'On' and timedifference(otherdevices_lastupdate['FanSwitch3']) > (FanOff * 60)) then
 					commandArray['FanSwitch3'] = 'Off'
-					commandArray['Variable:FanMotionAuto'] = 1
+					commandArray['Variable:FanMotionAuto'] = '1'
 				end
 			end
 		elseif (sc == 'Hallway') then
