@@ -28,6 +28,7 @@ if (ts == 'FanSwitch3') then
 			commandArray['Variable:FanMotionOverrideHigh'] = tostring(1)
 		end	
 	end
+	commandArray['Variable:FanMotionAutoTrigger'] = tostring(0)
 end
 
 if (ts:sub(1,6) == 'iPhone') then
