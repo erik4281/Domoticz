@@ -6,17 +6,18 @@ ts = tostring(dc)
 if (ts == 'FanSwitch2') then
 	if (otherdevices['People'] == 'On' and otherdevices['FanSwitch2'] == 'Off') then
 		commandArray['FanSwitch2'] = 'On'
-		commandArray['Variable:FanMotionAuto'] = '0'
 	elseif (otherdevices['People'] == 'Off' and otherdevices['FanSwitch2'] == 'On') then
 		commandArray['FanSwitch2'] = 'Off'
-		commandArray['Variable:FanMotionAuto'] = '0'
 	end
 end
 
 if (ts == 'FanSwitch3') then
 	if (otherdevices['People'] == 'Off' and otherdevices['FanSwitch3'] == 'On') then
 		commandArray['FanSwitch3'] = 'Off'
-		commandArray['Variable:FanMotionAuto'] = '0'
+	elseif (otherdevices['People'] == 'On' and otherdevices['FanSwitch3'] == 'On') then
+		commandArray['Variable:FanMotionAuto'] = 0
+	elseif (otherdevices['People'] == 'On' and otherdevices['FanSwitch3'] == 'Off') then
+		commandArray['Variable:FanMotionAuto'] = 0
 	end
 end
 
