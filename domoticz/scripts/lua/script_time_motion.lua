@@ -19,7 +19,7 @@ TvL = otherdevices['TvLiving']
 HaL = otherdevices['HarmonyLiving']
 HaB = otherdevices['HarmonyBedroom']
 
-If (uservariables['FanMotionAuto'] == 1) then
+if (uservariables['FanMotionAuto'] == 1) then
 	FanOn = uservariables['WaitOnFan']
 	FanOff = uservariables['WaitOffFan']
 else
