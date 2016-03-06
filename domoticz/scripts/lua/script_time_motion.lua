@@ -19,10 +19,12 @@ TvL = otherdevices['TvLiving']
 HaL = otherdevices['HarmonyLiving']
 HaB = otherdevices['HarmonyBedroom']
 
-if (uservariables['FanMotionAuto'] == 1) then
+if (uservariables['FanMotionOverrideHigh'] < '3') then
+	print('Normal motion timing')
 	FanOn = uservariables['WaitOnFan']
 	FanOff = uservariables['WaitOffFan']
 else
+	print('Extended motion timing')
 	FanOn = uservariables['WaitOnFanExtra']
 	FanOff = uservariables['WaitOffFanExtra']
 end
@@ -52,6 +54,7 @@ for i, v in pairs(otherdevices) do
 		elseif (sc == 'Kitchen') then
 			sc = 'Kitchen'
 			sl = 'KitchenExtra'
+			commandArray['Variable:FanMotionAutoTrigger'] = '1'
 			if (otherdevices[v..sc] == 'On' or timedifference(otherdevices_lastupdate[v..sc]) < 61) then
 				commandArray['Variable:FanMotionOn'] = tostring(uservariables['FanMotionOn'] + 1)
 				if (otherdevices['FanSwitch3'] == 'Off' or uservariables['FanMotionOn'] > 5) then
@@ -59,7 +62,6 @@ for i, v in pairs(otherdevices) do
 				end
 				if (uservariables['FanMotionOn'] >= FanOn and otherdevices['FanSwitch3'] == 'Off' and timedifference(otherdevices_lastupdate['FanSwitch3']) > (FanOn * 60)) then
 					commandArray['FanSwitch3'] = 'On'
-					commandArray['Variable:FanMotionAuto'] = '1'
 				end
 			elseif (otherdevices[v..sc] == 'Off' and timedifference(otherdevices_lastupdate[v..sc]) > 61) then
 				if (uservariables['FanMotionOn'] > 0) then
@@ -70,9 +72,9 @@ for i, v in pairs(otherdevices) do
 				end
 				if (uservariables['FanMotionOff'] >= FanOff and otherdevices['FanSwitch3'] == 'On' and timedifference(otherdevices_lastupdate['FanSwitch3']) > (FanOff * 60)) then
 					commandArray['FanSwitch3'] = 'Off'
-					commandArray['Variable:FanMotionAuto'] = '1'
 				end
 			end
+			commandArray['Variable:FanMotionAutoTrigger'] = '0'
 		elseif (sc == 'Hallway') then
 			sc = 'Hallway'
 			sd = 'FrontDoor'
