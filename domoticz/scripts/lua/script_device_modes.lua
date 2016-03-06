@@ -4,20 +4,35 @@ dc = next(devicechanged)
 ts = tostring(dc)
 
 if (ts == 'FanSwitch2') then
-	if (otherdevices['People'] == 'On' and otherdevices['FanSwitch2'] == 'Off') then
-		commandArray['FanSwitch2'] = 'On'
-	elseif (otherdevices['People'] == 'Off' and otherdevices['FanSwitch2'] == 'On') then
-		commandArray['FanSwitch2'] = 'Off'
+	if (otherdevices['FanSwitch2'] == 'Off') then
+		if (otherdevices['People'] == 'On') then
+			commandArray['FanSwitch2'] = 'On'
+		end	
+		if (uservariables['FanMotionAutoTrigger'] == '0') then
+			commandArray['Variable:FanMotionOverrideHigh'] = '1'
+		end	
+	elseif (otherdevices['FanSwitch2'] == 'On') then
+		if (otherdevices['People'] == 'Off') then
+			commandArray['FanSwitch2'] = 'Off'
+		end	
+		if (uservariables['FanMotionAutoTrigger'] == '0') then
+			commandArray['Variable:FanMotionOverrideHigh'] = '2'
+		end	
 	end
 end
 
 if (ts == 'FanSwitch3') then
-	if (otherdevices['People'] == 'Off' and otherdevices['FanSwitch3'] == 'On') then
-		commandArray['FanSwitch3'] = 'Off'
-	elseif (otherdevices['People'] == 'On' and otherdevices['FanSwitch3'] == 'On') then
-		commandArray['Variable:FanMotionAuto'] = '0'
-	elseif (otherdevices['People'] == 'On' and otherdevices['FanSwitch3'] == 'Off') then
-		commandArray['Variable:FanMotionAuto'] = '0'
+	if (otherdevices['FanSwitch3'] == 'Off') then
+		if (uservariables['FanMotionAutoTrigger'] == '0') then
+			commandArray['Variable:FanMotionOverrideHigh'] = '1'
+		end	
+	elseif (otherdevices['FanSwitch3'] == 'On') then
+		if (otherdevices['People'] == 'Off') then
+			commandArray['FanSwitch3'] = 'Off'
+		end	
+		if (uservariables['FanMotionAutoTrigger'] == '0') then
+			commandArray['Variable:FanMotionOverrideHigh'] = '3'
+		end	
 	end
 end
 
