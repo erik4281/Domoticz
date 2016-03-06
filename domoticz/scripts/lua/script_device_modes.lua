@@ -15,9 +15,9 @@ if (ts == 'FanSwitch3') then
 	if (otherdevices['People'] == 'Off' and otherdevices['FanSwitch3'] == 'On') then
 		commandArray['FanSwitch3'] = 'Off'
 	elseif (otherdevices['People'] == 'On' and otherdevices['FanSwitch3'] == 'On') then
-		commandArray['Variable:FanMotionAuto'] = 0
+		commandArray['Variable:FanMotionAuto'] = '0'
 	elseif (otherdevices['People'] == 'On' and otherdevices['FanSwitch3'] == 'Off') then
-		commandArray['Variable:FanMotionAuto'] = 0
+		commandArray['Variable:FanMotionAuto'] = '0'
 	end
 end
 
