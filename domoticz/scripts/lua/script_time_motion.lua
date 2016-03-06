@@ -19,7 +19,7 @@ TvL = otherdevices['TvLiving']
 HaL = otherdevices['HarmonyLiving']
 HaB = otherdevices['HarmonyBedroom']
 
-if (uservariables['FanMotionOverrideHigh'] < 3) then
+if (uservariables['FanMotionOverrideHigh'] == 0) then
 	print('Normal motion timing')
 	FanOn = uservariables['WaitOnFan']
 	FanOff = uservariables['WaitOffFan']
