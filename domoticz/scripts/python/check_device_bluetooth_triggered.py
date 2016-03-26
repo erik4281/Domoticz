@@ -35,14 +35,15 @@ check_for_instances = "ps"
  
  
 # DO NOT CHANGE BEYOND THIS LINE
-if len(sys.argv) != 5 :
-  print ("Not enough parameters. Needs %Host %Switchid %Interval %Cooldownperiod.")
+if len(sys.argv) != 6 :
+  print ("Not enough parameters. Needs %Host %Switchid %Interval %Cooldownperiod %TriggerId.")
   sys.exit(0)
  
 device=sys.argv[1]
 switchid=sys.argv[2]
 interval=sys.argv[3]
 cooldownperiod=sys.argv[4]
+switchid=sys.argv[5]
 previousstate=-1
 lastsuccess=datetime.datetime.now()
 lastreported=-1
@@ -90,6 +91,22 @@ def domoticzstatus ():
   if switchfound == False: print (datetime.datetime.now().strftime("%H:%M:%S") + "- Error. Could not find switch idx in Domoticz response. Defaulting to switch off.")
   return status
  
+def domoticztrigger ():
+  json_object = json.loads(domoticzrequest(domoticzurl))
+  trigger = 0
+  triggerfound = False
+ 
+  if json_object["trigger"] == "OK":
+    for i, v in enumerate(json_object["result"]):
+      if json_object["result"][i]["idx"] == triggerid and "Lighting" in json_object["result"][i]["Type"] :
+        triggerfound = True
+        if json_object["result"][i]["Status"] == "On": 
+          trigger = 1
+        if json_object["result"][i]["Status"] == "Off": 
+          trigger = 0
+  if triggerfound == False: print (datetime.datetime.now().strftime("%H:%M:%S") + "- Error. Could not find switch idx in Domoticz response. Defaulting to switch off.")
+  return trigger
+ 
 def domoticzrequest (url):
   request = urllib2.Request(url)
   request.add_header("Authorization", "Basic %s" % base64string)
@@ -104,8 +121,14 @@ if lastreported == 1 :
 if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
  
+checktrigger = domoticztrigger()
+if checktrigger == 1 :
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was recently opened")
+if checktrigger == 0 :
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was not recently opened")
+ 
 while 1==1:
-  currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
+  if checktrigger == 1 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
 
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
