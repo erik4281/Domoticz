@@ -96,7 +96,7 @@ def domoticztrigger ():
   trigger = 0
   triggerfound = False
  
-  if json_object["trigger"] == "OK":
+  if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       if json_object["result"][i]["idx"] == triggerid and "Lighting" in json_object["result"][i]["Type"] :
         triggerfound = True
