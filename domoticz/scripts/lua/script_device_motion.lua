@@ -31,6 +31,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		if (otherdevices['SleepMode'] == 'On') then
 			commandArray['SleepMode'] = 'Off'
 		end
+		sl = 'DoorOpened'
 	elseif (sc == 'Bedroom') then
 		sc = 'Bedroom'
 		sl = 'Humidifier'
@@ -105,6 +106,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'On'
 		commandArray['People'] = 'On'
 		commandArray['Variable:AlarmTimer'] = tostring(10)
 		commandArray['Variable:PeopleTimer'] = tostring(0)
+		commandArray['SwitchDoorOpened'] = 'On'
 	else
 		if (otherdevices['ALARM'] == 'Off') then
 			commandArray['ALARM'] = 'On'
