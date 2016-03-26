@@ -93,19 +93,19 @@ def domoticzstatus ():
  
 def domoticztrigger ():
   json_object = json.loads(domoticzrequest(domoticzurl))
-  trigger = 0
-  triggerfound = False
+  status = 0
+  switchfound = False
  
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       if json_object["result"][i]["idx"] == triggerid and "Lighting" in json_object["result"][i]["Type"] :
-        triggerfound = True
+        switchfound = True
         if json_object["result"][i]["Status"] == "On": 
-          trigger = 1
+          status = 1
         if json_object["result"][i]["Status"] == "Off": 
-          trigger = 0
-  if triggerfound == False: print (datetime.datetime.now().strftime("%H:%M:%S") + "- Error. Could not find switch idx in Domoticz response. Defaulting to switch off.")
-  return trigger
+          status = 0
+  if switchfound == False: print (datetime.datetime.now().strftime("%H:%M:%S") + "- Error. Could not find trigger idx in Domoticz response. Defaulting to trigger off.")
+  return status
  
 def domoticzrequest (url):
   request = urllib2.Request(url)
@@ -116,14 +116,12 @@ def domoticzrequest (url):
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- script started.")
  
 lastreported = domoticzstatus()
-log "now checking status"
 if lastreported == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is online")
 if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
  
 checktrigger = domoticztrigger()
-log "now checking trigger"
 if checktrigger == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was recently opened")
 if checktrigger == 0 :
