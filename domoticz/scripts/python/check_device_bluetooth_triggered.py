@@ -42,7 +42,7 @@ if len(sys.argv) != 6 :
 device=sys.argv[1]
 switchid=sys.argv[2]
 # interval=sys.argv[3]
-interval=15
+interval="15"
 cooldownperiod=sys.argv[4]
 triggerid=sys.argv[5]
 previousstate=-1
@@ -157,7 +157,7 @@ while 1==1:
   if checktrigger == 0 : 
     currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- 2nd part still working...")
-  # log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds................")
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds................")
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 1 done...") 
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
