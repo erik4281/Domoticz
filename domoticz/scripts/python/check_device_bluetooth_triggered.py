@@ -49,8 +49,8 @@ lastsuccess=datetime.datetime.now()
 lastreported=-1
 base64string = base64.encodestring('%s:%s' % (domoticzusername, domoticzpassword)).replace('\n', '')
 domoticzurl = 'http://'+domoticzserver+'/json.htm?type=devices&filter=all&used=true&order=Name'
- 
-# log ("Settings used: " + device + " - " + switchid + " - " + interval + " - " + cooldownperiod + " - " + triggerid)
+
+log ("Settings used: " + device + " - " + switchid + " - " + interval + " - " + cooldownperiod + " - " + triggerid)
 
 if check_for_instances.lower() == "pid":
   pidfile = sys.argv[0] + '_' + sys.argv[1] + '.pid'
@@ -81,14 +81,14 @@ def domoticzstatus ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
   switchfound = False
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 1 - " + json_object["status"])
+  # log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 1 - " + json_object["status"])
 
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       # if json_object["result"][i]["idx"] == switchid and "Lighting" in json_object["result"][i]["Type"] :
       if json_object["result"][i]["idx"] == switchid :
         switchfound = True
-        log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 3 - " + json_object["result"][i]["Status"])
+        # log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 3 - " + json_object["result"][i]["Status"])
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
@@ -100,14 +100,14 @@ def domoticztrigger ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
   switchfound = False
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 1 - " + json_object["status"])
+  # log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 1 - " + json_object["status"])
  
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       # if json_object["result"][i]["idx"] == switchid and "Lighting" in json_object["result"][i]["Type"] :
       if json_object["result"][i]["idx"] == switchid :
         switchfound = True
-        log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 3 - " + json_object["result"][i]["Status"])
+        # log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 3 - " + json_object["result"][i]["Status"])
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
