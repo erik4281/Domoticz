@@ -115,17 +115,19 @@ def domoticzrequest (url):
  
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- script started.")
  
-checktrigger = domoticztrigger()
-if checktrigger == 1 :
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was recently opened")
-if checktrigger == 0 :
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was not recently opened")
- 
 lastreported = domoticzstatus()
+log "checking status now"
 if lastreported == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is online")
 if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
+ 
+checktrigger = domoticztrigger()
+log "checking trigger now"
+if checktrigger == 1 :
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was recently opened")
+if checktrigger == 0 :
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was not recently opened")
  
 while 1==1:
   if checktrigger == 1 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
