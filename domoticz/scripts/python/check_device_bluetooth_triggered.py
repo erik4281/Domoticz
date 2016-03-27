@@ -130,14 +130,14 @@ if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
 # log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status done")
  
-checktrigger = domoticztrigger()
+# checktrigger = domoticztrigger()
 # log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger now")
-if checktrigger == 1 :
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
-if checktrigger == 0 :
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
+# if checktrigger == 1 :
+#   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
+# if checktrigger == 0 :
+#   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
 # log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done")
- 
+#  
 # log (datetime.datetime.now().strftime("%H:%M:%S") + "- now performing first BT-ping!")
  
 currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
