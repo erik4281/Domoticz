@@ -137,9 +137,11 @@ if checktrigger == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done")
  
-log (datetime.datetime.now().strftime("%H:%M:%S") + "- now starting loop!")
+log (datetime.datetime.now().strftime("%H:%M:%S") + "- now performing first BT-ping!")
  
 currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
+ 
+log (datetime.datetime.now().strftime("%H:%M:%S") + "- now starting loop!")
  
 while 1==1:
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Now triggering BT-ping with trigger state " + checktrigger)
