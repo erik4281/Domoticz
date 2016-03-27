@@ -51,8 +51,6 @@ lastreported=-1
 base64string = base64.encodestring('%s:%s' % (domoticzusername, domoticzpassword)).replace('\n', '')
 domoticzurl = 'http://'+domoticzserver+'/json.htm?type=devices&filter=all&used=true&order=Name'
 
-# log ("Settings used: " + device + " - " + switchid + " - " + interval + " - " + cooldownperiod + " - " + triggerid)
-
 if check_for_instances.lower() == "pid":
   pidfile = sys.argv[0] + '_' + sys.argv[1] + '.pid'
   if os.path.isfile( pidfile ):
@@ -82,13 +80,11 @@ def domoticzstatus ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
   switchfound = False
-  # log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 1 - " + json_object["status"])
 
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       if json_object["result"][i]["idx"] == switchid :
         switchfound = True
-        # log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 2 - " + json_object["result"][i]["Status"])
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
@@ -100,13 +96,11 @@ def domoticztrigger ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
   switchfound = False
-  # log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 1 - " + json_object["status"])
  
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       if json_object["result"][i]["idx"] == triggerid :
         switchfound = True
-        # log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 2 - " + json_object["result"][i]["Status"])
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
@@ -123,46 +117,26 @@ def domoticzrequest (url):
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- script started...........................................")
  
 lastreported = domoticzstatus()
-# log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status now")
 if lastreported == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is online")
 if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
-# log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status done")
- 
-# checktrigger = domoticztrigger()
-# log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger now")
-# if checktrigger == 1 :
-#   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
-# if checktrigger == 0 :
-#   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
-# log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done")
-#  
-# log (datetime.datetime.now().strftime("%H:%M:%S") + "- now performing first BT-ping!")
  
 currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
- 
-log (datetime.datetime.now().strftime("%H:%M:%S") + "- now starting loop!")
  
 while 1==1:
   checktrigger = domoticztrigger()
   if checktrigger == 1 :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
+    currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
   if checktrigger == 0 :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Now triggering BT-ping in loop...")
-  if checktrigger == 1 : 
-    currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- 1st part still working...")
-  if checktrigger == 0 : 
-    currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- 2nd part still working...")
+    currentstate = currentstate
+
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds................")
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 1 done...") 
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, no need to tell domoticz")
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 2 done...") 
   if currentstate == 0 and currentstate != previousstate and lastreported != 1 :
     if domoticzstatus() == 0 :
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, tell domoticz it's back")
@@ -170,10 +144,9 @@ while 1==1:
     else:
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, but domoticz already knew")
     lastreported=1
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 3 done...") 
+
   if currentstate == 1 and currentstate != previousstate :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " offline, waiting for it to come back")
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 4 done...")  
   if currentstate == 1 and (datetime.datetime.now()-lastsuccess).total_seconds() > float(cooldownperiod) and lastreported != 0 :
     if domoticzstatus() == 1 :
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " offline, tell domoticz it's gone")
@@ -181,8 +154,8 @@ while 1==1:
     else:
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " offline, but domoticz already knew")
     lastreported=0
+
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Waiting for " + interval + " seconds.")
   time.sleep (float(interval))
   previousstate=currentstate
   if check_for_instances.lower() == "pid": open(pidfile, 'w').close()
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 5 done...") 
