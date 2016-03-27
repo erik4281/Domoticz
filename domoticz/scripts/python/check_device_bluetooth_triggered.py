@@ -130,10 +130,12 @@ while 1==1:
     currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
   if checktrigger == 0 :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed. No further actions.")
-    currentstate = currentstate
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Ping result: " + currentstate)
+    if lastreported == 1 : currentstate = currentstate
+    if lastreported == 0 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
 
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds................")
+  if currentstate == 1 : log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " ONline with ping")
+  if currentstate == 0 : log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " OFFline with ping")
+
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, no need to tell domoticz")
