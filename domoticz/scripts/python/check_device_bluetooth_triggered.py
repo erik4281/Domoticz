@@ -85,8 +85,8 @@ def domoticzstatus ():
 
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
-      log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 2 - " + json_object["result"][i]["Type"])
-      if json_object["result"][i]["idx"] == switchid and "Lighting" in json_object["result"][i]["Type"] :
+      # if json_object["result"][i]["idx"] == switchid and "Lighting" in json_object["result"][i]["Type"] :
+      if json_object["result"][i]["idx"] == switchid :
         switchfound = True
         log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 3 - " + json_object["result"][i]["Status"])
         if json_object["result"][i]["Status"] == "On": 
@@ -104,8 +104,8 @@ def domoticztrigger ():
  
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
-      log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 2 - " + json_object["result"][i]["Type"])
-      if json_object["result"][i]["idx"] == triggerid and "Lighting" in json_object["result"][i]["Type"] :
+      # if json_object["result"][i]["idx"] == switchid and "Lighting" in json_object["result"][i]["Type"] :
+      if json_object["result"][i]["idx"] == switchid :
         switchfound = True
         log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 3 - " + json_object["result"][i]["Status"])
         if json_object["result"][i]["Status"] == "On": 
