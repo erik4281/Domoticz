@@ -150,10 +150,13 @@ while 1==1:
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
   if checktrigger == 0 :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
-  
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Now triggering BT-ping in loop...")
-  if checktrigger == 1 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
-  if checktrigger == 0 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
+  if checktrigger == 1 : 
+    currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- 1st part still working...")
+  if checktrigger == 0 : 
+    currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- 2nd part still working...")
 
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds................")
 
