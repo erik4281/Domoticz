@@ -129,7 +129,7 @@ while 1==1:
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened. Now pinging!!!")
     currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
   if checktrigger == 0 :
-    log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
+    log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed. No further actions.")
     currentstate = currentstate
 
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds................")
