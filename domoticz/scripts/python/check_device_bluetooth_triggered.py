@@ -138,7 +138,10 @@ if checktrigger == 0 :
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done")
  
 while 1==1:
+  log ("Now triggering (or not) BT-ping")
   if checktrigger == 1 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
+  if checktrigger == 0 : currentstate = currentstate
+  log ("Done triggering (or not) BT-ping")
 
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
