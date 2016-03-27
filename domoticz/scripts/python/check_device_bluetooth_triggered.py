@@ -79,11 +79,13 @@ def domoticzstatus ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
   switchfound = False
- 
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- part 1")
+
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       if json_object["result"][i]["idx"] == switchid and "Lighting" in json_object["result"][i]["Type"] :
         switchfound = True
+        log (datetime.datetime.now().strftime("%H:%M:%S") + "- part 2")
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
@@ -95,11 +97,13 @@ def domoticztrigger ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
   switchfound = False
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- part 1")
  
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       if json_object["result"][i]["idx"] == triggerid and "Lighting" in json_object["result"][i]["Type"] :
         switchfound = True
+        log (datetime.datetime.now().strftime("%H:%M:%S") + "- part 2")
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
@@ -116,19 +120,20 @@ def domoticzrequest (url):
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- script started.")
  
 lastreported = domoticzstatus()
-log (datetime.datetime.now().strftime("%H:%M:%S") + "checking status now")
+log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status now")
 if lastreported == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is online")
 if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
-log (datetime.datetime.now().strftime("%H:%M:%S") + "checking status done")
+log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status done")
  
 checktrigger = domoticztrigger()
-log (datetime.datetime.now().strftime("%H:%M:%S") + "checking trigger now")
+log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger now")
 if checktrigger == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was recently opened")
 if checktrigger == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was not recently opened")
+log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done")
  
 while 1==1:
   if checktrigger == 1 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
