@@ -100,14 +100,13 @@ def domoticztrigger ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
   switchfound = False
-  # log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 1 - " + json_object["status"])
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 1 - " + json_object["status"])
  
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
-      # if json_object["result"][i]["idx"] == switchid and "Lighting" in json_object["result"][i]["Type"] :
       if json_object["result"][i]["idx"] == switchid :
         switchfound = True
-        # log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 3 - " + json_object["result"][i]["Status"])
+        log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 2 - " + json_object["result"][i]["Status"])
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
