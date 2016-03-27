@@ -132,16 +132,14 @@ log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status done")
 checktrigger = domoticztrigger()
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger now")
 if checktrigger == 1 :
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was recently opened")
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
 if checktrigger == 0 :
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was not recently opened")
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done")
  
 while 1==1:
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Now triggering BT-ping with trigger state " + checktrigger)
   if checktrigger == 1 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
-  if checktrigger == 0 : currentstate = currentstate
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Done triggering (or not) BT-ping")
 
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
@@ -165,6 +163,7 @@ while 1==1:
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " offline, but domoticz already knew")
     lastreported=0
  
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Waiting for " + interval + " seconds.")
   time.sleep (float(interval))
  
   previousstate=currentstate
