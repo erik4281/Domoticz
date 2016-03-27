@@ -142,7 +142,7 @@ log (datetime.datetime.now().strftime("%H:%M:%S") + "- now starting loop!")
 while 1==1:
   # log (datetime.datetime.now().strftime("%H:%M:%S") + "- Now triggering BT-ping with trigger state " + checktrigger)
   # if checktrigger == 1 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds.")
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds................")
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
   if currentstate == 0 and currentstate != previousstate and lastreported == 1 : 
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, no need to tell domoticz")
@@ -153,10 +153,10 @@ while 1==1:
     else:
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " online, but domoticz already knew")
     lastreported=1
- 
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 1 done...") 
   if currentstate == 1 and currentstate != previousstate :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " offline, waiting for it to come back")
- 
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 2 done...")  
   if currentstate == 1 and (datetime.datetime.now()-lastsuccess).total_seconds() > float(cooldownperiod) and lastreported != 0 :
     if domoticzstatus() == 1 :
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " offline, tell domoticz it's gone")
@@ -164,9 +164,10 @@ while 1==1:
     else:
       log (datetime.datetime.now().strftime("%H:%M:%S") + "- " + device + " offline, but domoticz already knew")
     lastreported=0
- 
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 3 done...") 
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Waiting for " + interval + " seconds.")
   time.sleep (float(interval))
  
   previousstate=currentstate
   if check_for_instances.lower() == "pid": open(pidfile, 'w').close()
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Part 4 done...") 
