@@ -131,6 +131,7 @@ while 1==1:
   if checktrigger == 0 :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed. No further actions.")
     currentstate = currentstate
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- Ping result: " + currentstate)
 
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds................")
   if currentstate == 0 : lastsuccess=datetime.datetime.now()
