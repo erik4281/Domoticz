@@ -41,8 +41,7 @@ if len(sys.argv) != 6 :
  
 device=sys.argv[1]
 switchid=sys.argv[2]
-# interval=sys.argv[3]
-interval="15"
+interval=sys.argv[3]
 cooldownperiod=sys.argv[4]
 triggerid=sys.argv[5]
 previousstate=-1
@@ -114,20 +113,20 @@ def domoticzrequest (url):
   response = urllib2.urlopen(request)
   return response.read()
  
-log (datetime.datetime.now().strftime("%H:%M:%S") + "- script started...........................................")
- 
-lastreported = domoticzstatus()
-if lastreported == 1 :
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is online")
-if lastreported == 0 :
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
+log (datetime.datetime.now().strftime("%H:%M:%S") + "- script started, performing first ping...............................")
  
 currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
  
 while 1==1:
+  lastreported = domoticzstatus()
+  if lastreported == 1 :
+    log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is online")
+  if lastreported == 0 :
+    log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
+
   checktrigger = domoticztrigger()
   if checktrigger == 1 :
-    log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
+    log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened. Now pinging!!!")
     currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
   if checktrigger == 0 :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
