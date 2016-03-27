@@ -82,13 +82,13 @@ def domoticzstatus ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
   switchfound = False
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 1 - " + json_object["status"])
+  # log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 1 - " + json_object["status"])
 
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       if json_object["result"][i]["idx"] == switchid :
         switchfound = True
-        log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 2 - " + json_object["result"][i]["Status"])
+        # log (datetime.datetime.now().strftime("%H:%M:%S") + "- status part 2 - " + json_object["result"][i]["Status"])
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
@@ -100,13 +100,13 @@ def domoticztrigger ():
   json_object = json.loads(domoticzrequest(domoticzurl))
   status = 0
   switchfound = False
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 1 - " + json_object["status"])
+  # log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 1 - " + json_object["status"])
  
   if json_object["status"] == "OK":
     for i, v in enumerate(json_object["result"]):
       if json_object["result"][i]["idx"] == triggerid :
         switchfound = True
-        log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 2 - " + json_object["result"][i]["Status"])
+        # log (datetime.datetime.now().strftime("%H:%M:%S") + "- trigger part 2 - " + json_object["result"][i]["Status"])
         if json_object["result"][i]["Status"] == "On": 
           status = 1
         if json_object["result"][i]["Status"] == "Off": 
@@ -123,22 +123,22 @@ def domoticzrequest (url):
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- script started...........................................")
  
 lastreported = domoticzstatus()
-log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status now")
+# log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status now")
 if lastreported == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is online")
 if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
-log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status done")
+# log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking status done")
  
 checktrigger = domoticztrigger()
-log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger now")
+# log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger now")
 if checktrigger == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
 if checktrigger == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
-log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done")
+# log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done")
  
-log (datetime.datetime.now().strftime("%H:%M:%S") + "- now performing first BT-ping!")
+# log (datetime.datetime.now().strftime("%H:%M:%S") + "- now performing first BT-ping!")
  
 currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
  
@@ -146,13 +146,11 @@ log (datetime.datetime.now().strftime("%H:%M:%S") + "- now starting loop!")
  
 while 1==1:
   checktrigger = domoticztrigger()
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger now")
   if checktrigger == 1 :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
   if checktrigger == 0 :
     log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
-
-  log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done: " + checktrigger)
+  
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Now triggering BT-ping in loop...")
   if checktrigger == 1 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
   if checktrigger == 0 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
