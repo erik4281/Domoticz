@@ -114,16 +114,18 @@ def domoticzrequest (url):
   return response.read()
  
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- script started.")
+
+log "checking status now"
  
 lastreported = domoticzstatus()
-  log "checking status now"
 if lastreported == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is online")
 if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
  
+log "checking trigger now"
+
 checktrigger = domoticztrigger()
-  log "checking trigger now"
 if checktrigger == 1 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was recently opened")
 if checktrigger == 0 :
