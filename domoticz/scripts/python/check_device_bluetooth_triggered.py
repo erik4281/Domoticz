@@ -41,7 +41,8 @@ if len(sys.argv) != 6 :
  
 device=sys.argv[1]
 switchid=sys.argv[2]
-interval=sys.argv[3]
+# interval=sys.argv[3]
+interval=15
 cooldownperiod=sys.argv[4]
 triggerid=sys.argv[5]
 previousstate=-1
@@ -144,6 +145,13 @@ currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', she
 log (datetime.datetime.now().strftime("%H:%M:%S") + "- now starting loop!")
  
 while 1==1:
+  checktrigger = domoticztrigger()
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger now")
+  if checktrigger == 1 :
+    log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was opened")
+  if checktrigger == 0 :
+    log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, door was closed")
+  log (datetime.datetime.now().strftime("%H:%M:%S") + "- checking trigger done")
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Now triggering BT-ping in loop...")
   if checktrigger == 1 : currentstate = subprocess.call('sudo l2ping -c 1 '+ device + ' > /dev/null', shell=True)
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Will run with interval of " + interval + " seconds................")
