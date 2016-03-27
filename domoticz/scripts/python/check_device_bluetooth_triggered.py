@@ -50,6 +50,8 @@ lastreported=-1
 base64string = base64.encodestring('%s:%s' % (domoticzusername, domoticzpassword)).replace('\n', '')
 domoticzurl = 'http://'+domoticzserver+'/json.htm?type=devices&filter=all&used=true&order=Name'
  
+log ("Settings used: " + device + " - " + switchid + " - " + interval + " - " + cooldownperiod + " - " + triggerid)
+
 if check_for_instances.lower() == "pid":
   pidfile = sys.argv[0] + '_' + sys.argv[1] + '.pid'
   if os.path.isfile( pidfile ):
