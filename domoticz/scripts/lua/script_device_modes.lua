@@ -67,7 +67,7 @@ if (ts:sub(1,4) == 'Mode') then
 
 end
 
-if (ts == 'SleepMode') then
+if (ts == 'ModeSleep') then
 	if (devicechanged[dc] == 'On') then
 		commandArray['SwitchHumidifier'] = 'On'
 		commandArray[1] = {['UpdateDevice'] = "41|0|18"}
