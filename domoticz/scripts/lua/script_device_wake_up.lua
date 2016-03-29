@@ -3,7 +3,7 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 sleep = otherdevices['ModeSleep']
-switchsleep = 'ModeSleep'
+switchawake = 'ModeStandard'
 presence = otherdevices['People']
 
 if (ts:sub(1,6) == 'Motion' and presence == 'On' and sleep == 'On') then
@@ -14,7 +14,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On' and sleep == 'On') then
 		sc = ts:sub(7)
 		if (sc == 'Living' or sc == 'Dining' or sc == 'Kitchen') then
 			print ("Waking up")
-			commandArray[switchsleep] = 'Off'
+			commandArray[switchawake] = 'On'
 		end
 	end
 end
