@@ -78,8 +78,7 @@ if (ts:sub(1,4) == 'Mode') then
 			w = j:sub(1,4)
 			if (w == 'Mode') then
 				print('NOW running this because '..dc..' was switched on!')
-				sd = j:sub(5)
-				if (sd == sc) then
+				if (dc == j) then
 					print('NOW I would NOT be switching off '..j)
 				else
 					print('NOW I would INDEED be switching off '..j)
@@ -87,39 +86,7 @@ if (ts:sub(1,4) == 'Mode') then
 			end
 		end
 	end
-
---	for i, v in pairs(otherdevices) do
---		v = i:sub(1,4)
---		if (v == 'Mode' and otherdevices[dc] == 'On') then
---			print('NOW running this because '..dc..' was switched on!')
---			if (i:sub(5) ~= sc and otherdevices[i] == 'On') then
---				print('NOW this was swithed: '..sc)
---				print('NOW I would be switching off '..i)
---				-- commandArray[i] = 'Off'
---			end
---		end
---	end
 end
-
---if (ts == 'ModeSleep') then
---	if (devicechanged[dc] == 'On') then
---		commandArray['SwitchHumidifier'] = 'On'
---		commandArray[1] = {['UpdateDevice'] = "41|0|18"}
---	elseif (devicechanged[dc] == 'Off') then
---		commandArray['SwitchHumidifier'] = 'Off'
---		commandArray[1] = {['UpdateDevice'] = "41|0|22"}
---	end
---	for i, v in pairs(otherdevices) do
---		v = i:sub(1,6)
---		if (v == 'Switch') then
---			sc = i:sub(7)
---			scriptfolder = "/home/pi/domoticz/scripts/bash/"
---			if (otherdevices[i] == 'On') then
---				commandArray[i] = 'On'
---			end
---		end
---	end
---end
 
 if (ts == 'People') then
 	if (devicechanged[dc] == 'On') then
