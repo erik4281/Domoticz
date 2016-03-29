@@ -55,6 +55,18 @@ if (ts:sub(1,6) == 'iPhone') then
 	end
 end
 
+if (ts:sub(1,4) == 'Mode') then
+	for i, v in pairs(otherdevices) do
+		v = i:sub(1,4)
+		if (v == 'Mode' and otherdevices[i] == 'On' and otherdevices['OverrideMode'] == 'Off') then
+			commandArray['OverrideMode'] = 'On'
+		elseif (otherdevices['OverrideMode'] == 'On') then
+			commandArray['OverrideMode'] = 'Off'
+		end
+	end
+
+end
+
 if (ts == 'SleepMode') then
 	if (devicechanged[dc] == 'On') then
 		commandArray['SwitchHumidifier'] = 'On'
