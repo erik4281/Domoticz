@@ -73,10 +73,10 @@ if (ts:sub(1,4) == 'Mode') then
 				commandArray[i] = 'On'
 			end
 		end
-		if (i:sub(1,4) == 'Mode' and i:sub(5) == sc and otherdevices[dc] == 'On') then
-		elseif (i:sub(1,4) == 'Mode') then
+		if (i:sub(1,4) == 'Mode' and i:sub(5) ~= sc and otherdevices[i] == 'On') then
 			print('Now I would be switching off '..i)
 			commandArray[i] = 'Off'
+--		elseif (i:sub(1,4) == 'Mode') then
 		end
 	end
 end
