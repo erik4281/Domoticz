@@ -57,33 +57,36 @@ end
 
 if (ts:sub(1,4) == 'Mode') then
 	sc = ts:sub(5)
-	if (sc == 'Sleep' and devicechanged[dc] == 'On') then
-		commandArray['SwitchHumidifier'] = 'On'
-		commandArray[1] = {['UpdateDevice'] = "41|0|18"}
-	elseif (sc == 'Sleep' and devicechanged[dc] == 'Off') then
-		commandArray['SwitchHumidifier'] = 'Off'
-		commandArray[1] = {['UpdateDevice'] = "41|0|22"}
-	end
-	for i, v in pairs(otherdevices) do
-		v = i:sub(1,6)
-		if (v == 'Switch') then
-			sc = i:sub(7)
-			if (otherdevices[i] == 'On') then
-				commandArray[i] = 'On'
+	if (devicechanged[dc] == 'On') then
+		if (sc == 'Sleep') then
+			commandArray['SwitchHumidifier'] = 'On'
+			commandArray[1] = {['UpdateDevice'] = "41|0|18"}
+		end
+		for i, v in pairs(otherdevices) do
+			v = i:sub(1,6)
+			if (v == 'Switch') then
+				sc = i:sub(7)
+				if (otherdevices[i] == 'On') then
+					commandArray[i] = 'On'
+				end
 			end
 		end
-	end
-	if (otherdevices[dc] == 'On') then
 		for j, w in pairs(otherdevices) do
 			w = j:sub(1,4)
 			if (w == 'Mode') then
 				print('NOW running this because '..dc..' was switched on!')
-				if (dc == j) then
+				if (dc == j and otherdevices[j] == 'On') then
 					print('NOW I would NOT be switching off '..j)
 				else
 					print('NOW I would INDEED be switching off '..j)
+					commandArray[j] = 'Off'
 				end
 			end
+		end
+	else (devicechanged[dc] == 'Off') then
+		if (sc == 'Sleep') then
+			commandArray['SwitchHumidifier'] = 'Off'
+			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 		end
 	end
 end
