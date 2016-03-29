@@ -68,7 +68,6 @@ if (ts:sub(1,4) == 'Mode') then
 		v = i:sub(1,6)
 		if (v == 'Switch') then
 			sc = i:sub(7)
-			--scriptfolder = "/home/pi/domoticz/scripts/bash/"
 			if (otherdevices[i] == 'On') then
 				commandArray[i] = 'On'
 			end
@@ -76,9 +75,11 @@ if (ts:sub(1,4) == 'Mode') then
 	end
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,4)
-		if (v == 'Mode' and i:sub(5) ~= sc and otherdevices[i] == 'On' and otherdevices[dc] == 'On') then
-			print('Now I would be switching off '..i)
-			-- commandArray[i] = 'Off'
+		if (v == 'Mode' and otherdevices[dc] == 'On') then
+			if (i:sub(5) ~= sc and otherdevices[i] == 'On') then
+				print('Now I would be switching off '..i)
+				-- commandArray[i] = 'Off'
+			end
 		end
 	end
 end
