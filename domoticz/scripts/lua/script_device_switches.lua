@@ -46,7 +46,7 @@ if (ts:sub(1,6) == 'Switch') then
 		if (otherdevices['ModeSleep'] == 'On') then
 			scene = 9
 		end
-		if (otherdevices['ModeMovie'] == 'On' and (sc == 'Living' or sc == 'LivingExtra') then
+		if (otherdevices['ModeMovie'] == 'On' and (sc == 'Living' or sc == 'LivingExtra')) then
 			scene = 'Movie'
 		end
 	else
