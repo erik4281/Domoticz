@@ -73,17 +73,30 @@ if (ts:sub(1,4) == 'Mode') then
 			end
 		end
 	end
-	for i, v in pairs(otherdevices) do
-		v = i:sub(1,4)
-		if (v == 'Mode' and otherdevices[dc] == 'On') then
-			print('NOW running this because '..dc..' was switched on!')
-			if (i:sub(5) ~= sc and otherdevices[i] == 'On') then
-				print('NOW this was swithed: '..sc)
-				print('NOW I would be switching off '..i)
-				-- commandArray[i] = 'Off'
+	if (otherdevices[dc] == 'On) then
+		for j, w in pairs(otherdevices) do
+			w = j:sub(1,4)
+			if (w == 'Mode') then
+				print('NOW running this because '..dc..' was switched on!')
+				sd = j:sub(5)
+				if (sd ~= sc) then
+					print('NOW I would be switching off '..j)
+				end
 			end
 		end
 	end
+
+--	for i, v in pairs(otherdevices) do
+--		v = i:sub(1,4)
+--		if (v == 'Mode' and otherdevices[dc] == 'On') then
+--			print('NOW running this because '..dc..' was switched on!')
+--			if (i:sub(5) ~= sc and otherdevices[i] == 'On') then
+--				print('NOW this was swithed: '..sc)
+--				print('NOW I would be switching off '..i)
+--				-- commandArray[i] = 'Off'
+--			end
+--		end
+--	end
 end
 
 --if (ts == 'ModeSleep') then
