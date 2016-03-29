@@ -31,6 +31,9 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		if (otherdevices['SleepMode'] == 'On') then
 			commandArray['SleepMode'] = 'Off'
 		end
+		if (otherdevices['ModeSleep'] == 'On') then
+			commandArray['ModeSleep'] = 'Off'
+		end
 		sl = 'DoorOpened'
 	elseif (sc == 'Bedroom') then
 		sc = 'Bedroom'
