@@ -74,11 +74,8 @@ if (ts:sub(1,4) == 'Mode') then
 		for j, w in pairs(otherdevices) do
 			w = j:sub(1,4)
 			if (w == 'Mode') then
-				print('NOW running this because '..dc..' was switched on!')
 				if (dc == j and otherdevices[j] == 'On') then
-					print('NOW I would NOT be switching off '..j)
 				else
-					print('NOW I would INDEED be switching off '..j)
 					commandArray[j] = 'Off'
 				end
 			end
