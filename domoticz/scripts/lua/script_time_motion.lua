@@ -86,14 +86,14 @@ for i, v in pairs(otherdevices) do
 			sl = 'DoorOpened'
 		elseif (sc == 'Bedroom') then
 			sc = 'Bedroom'
-			if (otherdevices['SleepMode'] == 'Off') then
+			if (otherdevices['ModeSleep'] == 'Off') then
 				sl = 'Humidifier'
 			end
 		end
 		motioncheck = 'Off'
 		mc = 'Motion'..sc
 		sleeping = ''
-		if (otherdevices['SleepMode'] == 'On') then
+		if (otherdevices['ModeSleep'] == 'On') then
 			sleeping = 'Sleep'
 		end
 		ctimeon = uservariables['WaitOff'..sc..sleeping]
