@@ -79,6 +79,9 @@ for i, v in pairs(otherdevices) do
 				if (otherdevices['ModeSleep'] == 'On') then
 					scene = 9
 				end
+				if (otherdevices['ModeMovie'] == 'On' and (sc == 'Living' or sc == 'LivingExtra')) then
+					scene = 'Movie'
+				end
 				scene = scene..'.sh'
 				if (difference < 61) then
 					print ('First backup triggered: '..scriptfolder..sc..'/'..scene)
