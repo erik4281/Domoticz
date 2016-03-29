@@ -43,12 +43,9 @@ if (ts:sub(1,6) == 'Switch') then
 				scene = 4
 			end
 		end
-		if (otherdevices['SleepMode'] == 'On') then
+		if (otherdevices['ModeSleep'] == 'On') then
 			scene = 9
 		end
-		--if (otherdevices['ModeSleep'] == 'On') then
-		--	scene = 'Sleep'
-		--end
 	else
 		scene = 'Off'
 	end
