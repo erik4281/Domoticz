@@ -76,7 +76,7 @@ for i, v in pairs(otherdevices) do
 						scene = 4
 					end
 				end
-				if (otherdevices['SleepMode'] == 'On') then
+				if (otherdevices['ModeSleep'] == 'On') then
 					scene = 9
 				end
 				scene = scene..'.sh'
