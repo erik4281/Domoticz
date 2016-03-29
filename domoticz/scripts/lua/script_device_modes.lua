@@ -73,6 +73,10 @@ if (ts:sub(1,4) == 'Mode') then
 				commandArray[i] = 'On'
 			end
 		end
+		if (i:sub(1,4) == 'Mode' and i:sub(5) == sc) then
+		else
+			commandArray[i] = 'Off'
+		end
 	end
 end
 
