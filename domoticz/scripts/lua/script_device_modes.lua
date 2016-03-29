@@ -79,8 +79,10 @@ if (ts:sub(1,4) == 'Mode') then
 			if (w == 'Mode') then
 				print('NOW running this because '..dc..' was switched on!')
 				sd = j:sub(5)
-				if (sd ~= sc) then
-					print('NOW I would be switching off '..j)
+				if (sd == sc) then
+					print('NOW I would NOT be switching off '..j)
+				else
+					print('NOW I would INDEED be switching off '..j)
 				end
 			end
 		end
