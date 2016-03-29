@@ -73,7 +73,7 @@ if (ts:sub(1,4) == 'Mode') then
 			end
 		end
 	end
-	if (otherdevices[dc] == 'On) then
+	if (otherdevices[dc] == 'On') then
 		for j, w in pairs(otherdevices) do
 			w = j:sub(1,4)
 			if (w == 'Mode') then
