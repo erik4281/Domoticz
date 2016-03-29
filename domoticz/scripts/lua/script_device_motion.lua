@@ -28,9 +28,6 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		sd = 'FrontDoor'
 		commandArray['Variable:AlarmTimer'] = tostring(0)
 		commandArray['Variable:PeopleTimer'] = tostring(10)
-		if (otherdevices['SleepMode'] == 'On') then
-			commandArray['SleepMode'] = 'Off'
-		end
 		if (otherdevices['ModeSleep'] == 'On') then
 			commandArray['ModeSleep'] = 'Off'
 		end
