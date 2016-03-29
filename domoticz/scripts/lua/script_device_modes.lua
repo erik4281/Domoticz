@@ -56,22 +56,11 @@ if (ts:sub(1,6) == 'iPhone') then
 end
 
 if (ts:sub(1,4) == 'Mode') then
-	for i, v in pairs(otherdevices) do
-		v = i:sub(1,4)
-		if (v == 'Mode' and otherdevices[i] == 'On' and otherdevices['OverrideMode'] == 'Off') then
-			commandArray['OverrideMode'] = 'On'
-		elseif (otherdevices['OverrideMode'] == 'On') then
-			commandArray['OverrideMode'] = 'Off'
-		end
-	end
-
-end
-
-if (ts == 'ModeSleep') then
-	if (devicechanged[dc] == 'On') then
+	sc = ts:sub(5)
+	if (sc == 'Sleep' and devicechanged[dc] == 'On') then
 		commandArray['SwitchHumidifier'] = 'On'
 		commandArray[1] = {['UpdateDevice'] = "41|0|18"}
-	elseif (devicechanged[dc] == 'Off') then
+	elseif (sc == 'Sleep' and devicechanged[dc] == 'Off') then
 		commandArray['SwitchHumidifier'] = 'Off'
 		commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 	end
@@ -86,6 +75,26 @@ if (ts == 'ModeSleep') then
 		end
 	end
 end
+
+--if (ts == 'ModeSleep') then
+--	if (devicechanged[dc] == 'On') then
+--		commandArray['SwitchHumidifier'] = 'On'
+--		commandArray[1] = {['UpdateDevice'] = "41|0|18"}
+--	elseif (devicechanged[dc] == 'Off') then
+--		commandArray['SwitchHumidifier'] = 'Off'
+--		commandArray[1] = {['UpdateDevice'] = "41|0|22"}
+--	end
+--	for i, v in pairs(otherdevices) do
+--		v = i:sub(1,6)
+--		if (v == 'Switch') then
+--			sc = i:sub(7)
+--			scriptfolder = "/home/pi/domoticz/scripts/bash/"
+--			if (otherdevices[i] == 'On') then
+--				commandArray[i] = 'On'
+--			end
+--		end
+--	end
+--end
 
 if (ts == 'People') then
 	if (devicechanged[dc] == 'On') then
