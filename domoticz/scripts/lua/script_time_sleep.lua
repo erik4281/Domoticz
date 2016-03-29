@@ -14,8 +14,8 @@ end
 commandArray = {}
 
 timenumber = tonumber(os.date("%H")..os.date("%M"))
-sleep = otherdevices['SleepMode']
-switchsleep = 'SleepMode'
+sleep = otherdevices['ModeSleep']
+switchsleep = 'ModeSleep'
 presence = otherdevices['People']
 sleepstart = 2200
 sleepstop = 0600
