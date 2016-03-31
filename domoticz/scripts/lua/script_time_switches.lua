@@ -139,6 +139,12 @@ for i, v in pairs(otherdevices) do
 			difference = timedifference(otherdevices_lastupdate[ts])
 			if (difference >= 1 and difference < 121) then
 				scene = 'Off'
+				if (otherdevices['ModeDimming'] == 'On') then
+					scene = 'Dimming'
+				end
+				if (otherdevices['ModeBright'] == 'On') then
+					scene = 'Bright'
+				end
 				scene = scene..'.sh'
 				if (difference < 61) then
 					print ('First backup triggered: '..scriptfolder..sc..'/'..scene)
