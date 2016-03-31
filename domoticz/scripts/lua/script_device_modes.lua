@@ -74,8 +74,7 @@ if (ts:sub(1,4) == 'Mode') then
 		for j, w in pairs(otherdevices) do
 			w = j:sub(1,4)
 			if (w == 'Mode') then
-				if (dc == j and otherdevices[j] == 'On') then
-				else
+				if (dc ~= j and otherdevices[j] == 'On') then
 					commandArray[j] = 'Off'
 				end
 			end
