@@ -54,6 +54,12 @@ if (ts:sub(1,6) == 'Switch') then
 		end
 	else
 		scene = 'Off'
+		if (otherdevices['ModeDimming'] == 'On') then
+			scene = 'Dimming'
+		end
+		if (otherdevices['ModeBright'] == 'On') then
+			scene = 'Bright'
+		end
 	end
 	scene = scene..'.sh'
 	print ('Switch triggered: '..scriptfolder..sc..'/'..scene)
