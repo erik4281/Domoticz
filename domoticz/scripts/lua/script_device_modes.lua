@@ -69,6 +69,9 @@ if (ts:sub(1,4) == 'Mode') then
 				if (otherdevices[i] == 'On') then
 					commandArray[i] = 'On'
 				end
+				if (otherdevices[i] == 'Off') then
+					commandArray[i] = 'Off'
+				end
 			end
 		end
 		for j, w in pairs(otherdevices) do
