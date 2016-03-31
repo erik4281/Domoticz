@@ -95,6 +95,7 @@ if (ts == 'People') then
 		end
 		commandArray['FanSwitch2'] = 'On'
 		commandArray['SendNotification']='HOME#HOME mode activated#0#intermission'
+		commandArray['ModeStandard'] = 'On'
 	elseif (devicechanged[dc] == 'Off') then
 		if (otherdevices['NestActive'] == 'On') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
@@ -107,6 +108,14 @@ if (ts == 'People') then
 			if (v == 'Switch') then
 				if (otherdevices[i] == 'On') then
 					commandArray[i] = 'Off'
+				end
+			end
+		end
+		for j, w in pairs(otherdevices) do
+			w = j:sub(1,4)
+			if (w == 'Mode') then
+				if (otherdevices[j] == 'On') then
+					commandArray[j] = 'Off'
 				end
 			end
 		end
