@@ -54,10 +54,26 @@ if (ts:sub(1,6) == 'Switch') then
 		end
 	else
 		scene = 'Off'
-		if (otherdevices['ModeDimming'] == 'On') then
+		checkbright = sc
+		if (sc == 'LivingExtra') then
+			checkbright = 'Living'
+		elseif (sc == 'KitchenExtra') then
+			checkbright = 'Kitchen'
+		end
+		cbr = tonumber(otherdevices_svalues['Brightness'..checkbright])
+		cbrt = tonumber(uservariables['BrightnessTrigger'..checkbright])
+		if (cbr) then
+		else
+			cbr = 1
+		end
+		if (cbrt) then
+		else
+			cbrt = 250
+		end
+		if (otherdevices['ModeDimming'] == 'On' and cbr > (cbrt + 50)) then
 			scene = 'Dimming'
 		end
-		if (otherdevices['ModeBright'] == 'On') then
+		if (otherdevices['ModeBright'] == 'On' and cbr > (cbrt + 50)) then
 			scene = 'Bright'
 		end
 	end
