@@ -37,9 +37,17 @@ if (door == 'Closed' and difference < timewait) then
 			commandArray['People'] = 'On'
 		end
 	end
-elseif (door == 'Closed' and difference > 900 and otherdevices['People'] == 'Off' and (otherdevices['FanSwitch2'] == 'On' or otherdevices['FanSwitch3'] == 'On')) then
-	commandArray['FanSwitch2'] = 'Off'
-	commandArray['FanSwitch3'] = 'Off'
+elseif (door == 'Closed' and difference > 900 and otherdevices['People'] == 'Off') then
+	if (otherdevices['FanSwitch2'] == 'On' or otherdevices['FanSwitch3'] == 'On') then
+		commandArray['FanSwitch2'] = 'Off'
+		commandArray['FanSwitch3'] = 'Off'
+	end
+	for i, v in pairs(otherdevices) do
+		v = i:sub(1,6)
+		if (v == 'Switch') then
+			commandArray[i] = 'Off'
+		end
+	end
 end
 
 return commandArray
