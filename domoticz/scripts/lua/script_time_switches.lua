@@ -77,7 +77,10 @@ for i, v in pairs(otherdevices) do
 					end
 				end
 				if (otherdevices['ModeSleep'] == 'On') then
-					scene = 9
+					scene = 'Sleep'
+				end
+				if (otherdevices['ModeBright'] == 'On') then
+					scene = 'Bright'
 				end
 				if (otherdevices['ModeMovie'] == 'On' and (sc == 'Living' or sc == 'LivingExtra')) then
 					scene = 'Movie'
