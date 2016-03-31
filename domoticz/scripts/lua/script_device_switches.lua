@@ -70,10 +70,10 @@ if (ts:sub(1,6) == 'Switch') then
 		else
 			cbrt = 250
 		end
-		if (otherdevices['ModeDimming'] == 'On' and cbr > (cbrt + 50)) then
+		if (otherdevices['ModeDimming'] == 'On' and cbr < cbrt) then
 			scene = 'Dimming'
 		end
-		if (otherdevices['ModeBright'] == 'On' and cbr > (cbrt + 50)) then
+		if (otherdevices['ModeBright'] == 'On' and cbr < cbrt) then
 			scene = 'Bright'
 		end
 	end
