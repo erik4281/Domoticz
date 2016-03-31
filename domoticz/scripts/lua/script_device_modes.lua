@@ -62,6 +62,14 @@ if (ts:sub(1,4) == 'Mode') then
 			commandArray['SwitchHumidifier'] = 'On'
 			commandArray[1] = {['UpdateDevice'] = "41|0|18"}
 		end
+		for j, w in pairs(otherdevices) do
+			w = j:sub(1,4)
+			if (w == 'Mode') then
+				if (dc ~= j and otherdevices[j] == 'On') then
+					commandArray[j] = 'Off'
+				end
+			end
+		end
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
 			if (v == 'Switch') then
@@ -71,14 +79,6 @@ if (ts:sub(1,4) == 'Mode') then
 				end
 				if (otherdevices[i] == 'Off') then
 					commandArray[i] = 'Off'
-				end
-			end
-		end
-		for j, w in pairs(otherdevices) do
-			w = j:sub(1,4)
-			if (w == 'Mode') then
-				if (dc ~= j and otherdevices[j] == 'On') then
-					commandArray[j] = 'Off'
 				end
 			end
 		end
