@@ -44,7 +44,7 @@ elseif (door == 'Closed' and difference > 900 and otherdevices['People'] == 'Off
 	end
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
-		if (v == 'Switch') then
+		if (v == 'Switch' and otherdevices[i] == 'On') then
 			commandArray[i] = 'Off'
 		end
 	end
