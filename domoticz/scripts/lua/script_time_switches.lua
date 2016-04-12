@@ -23,7 +23,7 @@ weekday = tonumber(os.date("%w"))
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	v = i:sub(1,6)
-	if (v == 'Switch') then
+	if (v == 'Switch' and i ~= 'SwitchDoorOpened') then
 		sc = i:sub(7)
 		scriptfolder = "/home/pi/domoticz/scripts/bash/"
 		if (otherdevices[ts] == 'On') then
