@@ -130,7 +130,7 @@ for i, v in pairs(otherdevices) do
 				end
 			end
 			scene = scene..'.sh'
-			if (looping == 0 and execute == 1) then
+			if (looping == 0 and execute == 1 and otherdevices['ModeStandard'] == 'On') then
 				print ('Time triggered: '..scriptfolder..sc..'/'..scene)
 				os.execute (scriptfolder..sc..'/'..scene)
 				execute = 0
