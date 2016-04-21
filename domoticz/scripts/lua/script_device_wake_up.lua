@@ -8,7 +8,7 @@ presence = otherdevices['People']
 
 if (ts:sub(1,6) == 'Motion' and presence == 'On' and sleep == 'On') then
 	timenumber = tonumber(os.date("%H")..os.date("%M"))
-	wakestart = 0600
+	wakestart = 0400
 	wakestop = 1200
 	if (timenumber >= wakestart and timenumber < wakestop) then
 		sc = ts:sub(7)
