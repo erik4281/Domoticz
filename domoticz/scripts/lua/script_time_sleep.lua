@@ -18,7 +18,9 @@ sleep = otherdevices['ModeSleep']
 switchsleep = 'ModeSleep'
 presence = otherdevices['People']
 sleepstart = 2200
-sleepstop = 0600
+sleepstop = 0400
+wakestart = 0400
+wakestop = 1200
 weekday = tonumber(os.date("%w"))
 
 for i, v in pairs(otherdevices) do
@@ -43,6 +45,21 @@ for i, v in pairs(otherdevices) do
 		timewait = timeon * 60
 		if (otherdevices[sc] == 'Off' and otherdevices[sd] == 'Off' and otherdevices[se] == 'Closed' and difference >= timewait and sleep == 'Off') then
 			commandArray[switchsleep]='On'
+		end
+	end
+	if (presence == 'On' and sleep == 'On' and (ts == 'SwitchLiving' or ts == 'SwitchKitchen') and (timenumber >= wakestart or timenumber < wakestop)) then
+		sc = 'SwitchLiving'
+		sd = 'SwitchKitchen'
+		timeon = uservariables['WakeTimer']
+		cdifference = timedifference(otherdevices_lastupdate[sc])
+		ddifference = timedifference(otherdevices_lastupdate[sd])
+		difference = cdifference
+		if (ddifference < difference) then
+			difference = ddifference
+		end
+		timewait = timeon * 60
+		if (otherdevices[sc] == 'On' and otherdevices[sd] == 'On' and difference >= timewait and sleep == 'On') then
+			commandArray['ModeStandard']='On'
 		end
 	end
 end
