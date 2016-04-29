@@ -72,7 +72,7 @@ if (ts:sub(1,4) == 'Mode') then
 		end
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
-			if (v == 'Switch') then
+			if (v == 'Switch' and i ~= 'Modesleep') then
 				sc = i:sub(7)
 				if (otherdevices[i] == 'On') then
 					commandArray[i] = 'On'
