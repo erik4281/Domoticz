@@ -182,13 +182,13 @@ for i, v in pairs(otherdevices) do
 		print (otherdevices['Room Setpoint'])
 		if (otherdevices['TemperatureLiving'] > otherdevices['TempHumBar']:sub(1,4) and otherdevices['TemperatureLiving'] > otherdevices['Room Setpoint']) then
 			print ('Living is hotter than outside and hotter than setpoint, fan is low and will be set to high')
-			commmandArray['FanSwitch3'] = 'On'
-			commmandArray['HighTempCooling'] = 'On'
+			commandArray['FanSwitch3'] = 'On'
+			commandArray['HighTempCooling'] = 'On'
 		end
 		if (otherdevices['TemperatureLiving'] < otherdevices['TempHumBar']:sub(1,4) and otherdevices['TemperatureLiving'] > otherdevices['Room Setpoint']) then
 			print ('Living is colder than outside and hotter than setpoint, fan is high and will be set to low')
-			commmandArray['FanSwitch3'] = 'Off'
-			commmandArray['HighTempCooling'] = 'Off'
+			commandArray['FanSwitch3'] = 'Off'
+			commandArray['HighTempCooling'] = 'Off'
 		end
 	end
 end
