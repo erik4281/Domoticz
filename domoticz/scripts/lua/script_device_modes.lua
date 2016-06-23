@@ -107,6 +107,8 @@ if (ts == 'People') then
 			commandArray['NestActive'] = 'Off'
 		end
 		commandArray['FanSwitch3'] = 'Off'
+		commandArray['Variable:FanExhaust'] = '0'
+		commandArray['Variable:FanCooling'] = '0'
 		commandArray['SendNotification']='HOME#AWAY mode activated#0#intermission'
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
