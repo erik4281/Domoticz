@@ -176,9 +176,7 @@ end
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	if (ts == 'FanSwitch3' and otherdevices['People'] == 'On' and uservariables['FanExhaust'] == 0) then
-		print ('Fan is '..otherdevices['FanSwitch3']..' and Exhaust is '..uservariables['FanExhaust'])
-		print ('Living is '..otherdevices['TemperatureLiving']..' and outside is '..otherdevices['TempHumBar']:sub(1,4)..'. Setpoint is '..otherdevices['Room Setpoint'])
-		if (otherdevices[ts] == 'Off' and otherdevices['TemperatureLiving'] > otherdevices['TempHumBar']:sub(1,4) and otherdevices['TemperatureLiving'] > otherdevices['Room Setpoint']) then
+		if (otherdevices[ts] == 'Off' and otherdevices['TemperatureLiving'] > otherdevices['TempHumBar']:sub(1,4) and (otherdevices['TemperatureLiving'] - 1) > 22) then
 			print ('Living is hotter than outside and hotter than setpoint, fan is low and will be set to high')
 			commandArray['FanSwitch3'] = 'On'
 		end
