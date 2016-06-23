@@ -19,7 +19,7 @@ if (ts == 'FanSwitch3') then
 	if (otherdevices['FanSwitch3'] == 'Off') then
 		if (uservariables['FanMotionAutoTrigger'] == 0) then
 			commandArray['Variable:FanMotionOverrideHigh'] = tostring(0)
-			commandArray['Variable:FanExhaust'] = '0'
+			commandArray['Variable:FanExhaust'] = tostring(0)
 		end
 	elseif (otherdevices['FanSwitch3'] == 'On') then
 		if (otherdevices['People'] == 'Off') then
@@ -27,7 +27,7 @@ if (ts == 'FanSwitch3') then
 		end	
 		if (uservariables['FanMotionAutoTrigger'] == 0) then
 			commandArray['Variable:FanMotionOverrideHigh'] = tostring(1)
-			commandArray['Variable:FanExhaust'] = '1'
+			commandArray['Variable:FanExhaust'] = tostring(1)
 		end
 	end
 	commandArray['Variable:FanMotionAutoTrigger'] = tostring(0)
