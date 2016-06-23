@@ -176,10 +176,10 @@ end
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	if (ts == 'FanSwitch3' and otherdevices['People'] == 'On') then
-		print otherdevices[ts]
-		print otherdevices['TemperatureLiving']
-		print otherdevices['TempHumBar']
-		print otherdevices['Roomt Setpoint']
+		print (otherdevices[ts])
+		print (otherdevices['TemperatureLiving'])
+		print (otherdevices['TempHumBar'])
+		print (otherdevices['Roomt Setpoint'])
 		if (otherdevices[ts] == 'Off' and otherdevices['TemperatureLiving'] > otherdevices['TempHumBar'] and otherdevices['TemperatureLiving'] > otherdevices['Room Setpoint']) then
 			print ('Living is hotter than outside and hotter than setpoint, fan is low and will be set to high')
 			commmandArray['FanSwitch3'] = 'On'
