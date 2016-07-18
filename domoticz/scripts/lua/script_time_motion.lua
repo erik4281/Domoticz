@@ -18,14 +18,8 @@ MbJ = otherdevices['MacBookAirJinHee']
 TvL = otherdevices['TvLiving']
 HaL = otherdevices['HarmonyLiving']
 HaB = otherdevices['HarmonyBedroom']
-
-if (uservariables['FanMotionOverrideHigh'] == 0) then
-	FanOn = uservariables['WaitOnFan']
-	FanOff = uservariables['WaitOffFan']
-else
-	FanOn = uservariables['WaitOnFanExtra']
-	FanOff = uservariables['WaitOffFanExtra']
-end
+FanOn = uservariables['WaitOnFan']
+FanOff = uservariables['WaitOffFan']
 
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
@@ -58,7 +52,6 @@ for i, v in pairs(otherdevices) do
 					commandArray['Variable:FanMotionOff'] = tostring(0)
 				end
 				if (uservariables['FanMotionOn'] >= FanOn and otherdevices['FanSwitch3'] == 'Off' and timedifference(otherdevices_lastupdate['FanSwitch3']) > (FanOn * 60) and otherdevices['ALARM'] == 'Off') then
-					commandArray['Variable:FanMotionAutoTrigger'] = tostring(1)
 					commandArray['FanSwitch3'] = 'On'
 				end
 			elseif (otherdevices[v..sc] == 'Off' and timedifference(otherdevices_lastupdate[v..sc]) > 61) then
@@ -69,7 +62,6 @@ for i, v in pairs(otherdevices) do
 					commandArray['Variable:FanMotionOff'] = tostring(uservariables['FanMotionOff'] + 1)
 				end
 				if (uservariables['FanMotionOff'] >= FanOff and otherdevices['FanSwitch3'] == 'On' and timedifference(otherdevices_lastupdate['FanSwitch3']) > (FanOff * 60)) then
-					commandArray['Variable:FanMotionAutoTrigger'] = tostring(1)
 					commandArray['FanSwitch3'] = 'Off'
 				end
 			end
