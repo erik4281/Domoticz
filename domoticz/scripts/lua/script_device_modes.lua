@@ -16,19 +16,11 @@ if (ts == 'FanSwitch2') then
 end
 
 if (ts == 'FanSwitch3') then
-	if (otherdevices['FanSwitch3'] == 'Off') then
-		if (uservariables['FanMotionAutoTrigger'] == 0) then
-			commandArray['Variable:FanMotionOverrideHigh'] = tostring(0)
-		end
-	elseif (otherdevices['FanSwitch3'] == 'On') then
+	if (otherdevices['FanSwitch3'] == 'On') then
 		if (otherdevices['People'] == 'Off') then
 			commandArray['FanSwitch3'] = 'Off'
 		end	
-		if (uservariables['FanMotionAutoTrigger'] == 0) then
-			commandArray['Variable:FanMotionOverrideHigh'] = tostring(1)
-		end
 	end
-	commandArray['Variable:FanMotionAutoTrigger'] = tostring(0)
 end
 
 if (ts:sub(1,6) == 'iPhone') then
