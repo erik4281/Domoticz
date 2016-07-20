@@ -176,12 +176,12 @@ end
 for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	if (ts == 'FanSwitch3' and otherdevices['People'] == 'On') then
-		if (otherdevices[ts] == 'Off' and otherdevices['TemperatureLiving'] + 5 > otherdevices['TempHumBar']:sub(1,4) + 1 and (otherdevices['TemperatureLiving'] - 1) > 23) then
+		if (otherdevices[ts] == 'Off' and otherdevices['TemperatureLiving'] > otherdevices['TempHumBar']:sub(1,4) and (otherdevices['TemperatureLiving'] - 1) > 23) then
 			print ('Living is hotter than outside and hotter than setpoint, fan is low and will be set to high')
 			commandArray['FanSwitch3'] = 'On'
 			commandArray['Variable:CoolingMode'] = tostring(1)
 		end
-		if (otherdevices[ts] == 'On' and otherdevices['TemperatureLiving'] + 5 < otherdevices['TempHumBar']:sub(1,4)) + 1 then
+		if (otherdevices[ts] == 'On' and otherdevices['TemperatureLiving'] < otherdevices['TempHumBar']:sub(1,4)) then
 			print ('Living is colder than outside and hotter than setpoint, fan is high and will be set to normal')
 			commandArray['FanSwitch3'] = 'Off'
 			commandArray['Variable:CoolingMode'] = tostring(0)
