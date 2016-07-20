@@ -61,7 +61,7 @@ for i, v in pairs(otherdevices) do
 				if (otherdevices['FanSwitch3'] == 'On') then
 					commandArray['Variable:FanMotionOff'] = tostring(uservariables['FanMotionOff'] + 1)
 				end
-				if (uservariables['FanMotionOff'] >= FanOff and otherdevices['FanSwitch3'] == 'On' and timedifference(otherdevices_lastupdate['FanSwitch3']) > (FanOff * 60) and uservariables['CoolingMode'] = 0) then
+				if (uservariables['FanMotionOff'] >= FanOff and otherdevices['FanSwitch3'] == 'On' and timedifference(otherdevices_lastupdate['FanSwitch3']) > (FanOff * 60) and uservariables['CoolingMode'] == 0) then
 					commandArray['FanSwitch3'] = 'Off'
 				end
 			end
