@@ -183,7 +183,7 @@ for i, v in pairs(otherdevices) do
 			commandArray['FanSwitch3'] = 'On'
 			commandArray['Variable:CoolingMode'] = tostring(1)
 		end
-		if (otherdevices[ts] == 'On' and ((LivingTemp < OutsideTemp) or (LivingTemp < 27)) and uservariable['CoolingMode'] == 0) then
+		if (otherdevices[ts] == 'On' and ((LivingTemp < OutsideTemp) or (LivingTemp < 27)) and uservariables['CoolingMode'] == 1) then
 			print ('Living is colder than outside or colder than setpoint, fan is high and will be set to normal')
 			commandArray['FanSwitch3'] = 'Off'
 			commandArray['Variable:CoolingMode'] = tostring(0)
