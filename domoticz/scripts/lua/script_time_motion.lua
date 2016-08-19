@@ -142,10 +142,10 @@ for i, v in pairs(otherdevices) do
 			timeon = ftimeon
 		end
 		if (sc == 'Living' and (MbE == 'On' or MbJ == 'On' or TvL == 'On')) then
-			timeon = timeon + 75
+			timeon = timeon + 15
 		end
 		if (sc == 'Study' and (MbE == 'On' or MbJ == 'On')) then
-			timeon = timeon + 75
+			timeon = timeon + 45
 		end
 		timewait = timeon * 60
 		if (motioncheck == 'Off' and difference >= timewait) then
