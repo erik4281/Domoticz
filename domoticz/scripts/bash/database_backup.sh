@@ -21,7 +21,7 @@ gzip -9 /tmp/$BACKUPFILE
 
 ### Send to Network disk through FTP
 
-curl -s --disable-epsv -v -T"/tmp/$BACKUPFILEGZ" -u"$USERNAME:$PASSWORD" "ftp://$SERVER/media/hdd/Domoticz_backup/"				
+curl -s --disable-epsv -v -T"/tmp/$BACKUPFILEGZ" -u"$USERNAME:$PASSWORD" "ftp://$SERVER/erik/Domoticz/"				
 
 ### Remove temp backup file
 
