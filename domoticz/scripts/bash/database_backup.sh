@@ -1,7 +1,7 @@
 #!/bin/bash
 # LOCAL/FTP/SCP/MAIL PARAMETERS
 
-SERVER="10.0.1.200"      # IP of Network disk, used for ftp
+SERVER="10.0.1.200:4281"      # IP of Network disk, used for ftp
 USERNAME="admin"         # FTP username of Network disk used for ftp
 PASSWORD="WdMyCloud4TB"  # FTP password of Network disk used for ftp
 DESTDIR="/erik/Domoticz"    # used for temorarily storage
