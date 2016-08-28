@@ -1,6 +1,6 @@
 #!/bin/sh
 # check domoticz
-status=`curl -s -i -H "Accept: application/json" "http://10.0.1.120:8080/json.htm?type=devices&rid=1" | grep "status"| awk -F: '{print $2}'|sed 's/,//'| sed 's/\"//g'`
+status=`curl -s -i -H "Accept: application/json" "http://10.0.1.101:8080/json.htm?type=devices&rid=1" | grep "status"| awk -F: '{print $2}'|sed 's/,//'| sed 's/\"//g'`
 if [ $status ]
 then
 echo "Domoticz is al gestart"
