@@ -1,11 +1,11 @@
 #!/bin/bash
 # LOCAL/FTP/SCP/MAIL PARAMETERS
 
-SERVER="10.0.1.200:4281"      # IP of Network disk, used for ftp
+SERVER="10.0.1.111:4281" # IP of Network disk, used for ftp
 USERNAME="admin"         # FTP username of Network disk used for ftp
 PASSWORD="WdMyCloud4TB"  # FTP password of Network disk used for ftp
-DESTDIR="/erik/"    # used for temorarily storage
-DOMO_IP="10.0.1.120"     # Domoticz IP 
+DESTDIR="/erik/"         # used for temorarily storage
+DOMO_IP="10.0.1.101"     # Domoticz IP 
 DOMO_PORT="8080"         # Domoticz port 
 
 ### END OF USER CONFIGURABLE PARAMETERS
