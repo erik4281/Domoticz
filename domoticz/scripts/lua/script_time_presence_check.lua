@@ -28,7 +28,7 @@ if (door == 'Closed' and difference < timewait) then
 			end
 		end
 		print ('Motion: '..motion)
-		if (motion = 1) then
+		if (motion == 1) then
 			commandArray['Variable:AlarmTimer'] = tostring(0)
 		else
 			commandArray['Variable:AlarmTimer'] = tostring(uservariables['AlarmTimer'] + 1)
