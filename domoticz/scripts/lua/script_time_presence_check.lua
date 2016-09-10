@@ -21,11 +21,11 @@ timewait = ((timeon + 2) * 60)
 --if (door == 'Closed' and difference < timewait) then
 if (door == 'Closed') then
 	if (otherdevices['People'] == 'On') then
-		motion = 1
+		motion = 0
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
-			if (v == 'Motion' and otherdevices[i] == 'Off' and timedifference(otherdevices_lastupdate[i]) > 60) then
-				motion = 0
+			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 60)) then
+				motion = 1
 			end
 		end
 		print ('Motion: '..motion)
