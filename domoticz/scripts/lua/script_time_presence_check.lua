@@ -18,8 +18,8 @@ timeon = uservariables['DepartTimer']
 difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 timewait = ((timeon + 2) * 60)
 
---if (door == 'Closed' and difference < timewait) then
-if (door == 'Closed') then
+if (door == 'Closed' and difference < timewait) then
+--if (door == 'Closed') then
 	if (otherdevices['People'] == 'On') then
 		motion = 0
 		for i, v in pairs(otherdevices) do
