@@ -55,7 +55,7 @@ if (door == 'Closed' and difference < timewait) then
 --	else
 --		if (otherdevices['Phones'] == 'On') then
 --			commandArray['People'] = 'On'
-		end
+--		end
 	end
 elseif (door == 'Closed' and difference > 900 and otherdevices['People'] == 'Off') then
 	if (otherdevices['FanSwitch2'] == 'On' or otherdevices['FanSwitch3'] == 'On') then
