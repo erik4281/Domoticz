@@ -10,7 +10,7 @@
         {
             "platform": "eDomoticz",
             "name": "eDomoticz",
-            "server": "10.0.1.120",
+            "server": "10.0.1.101",
             "port": "8080",
         },
         {
