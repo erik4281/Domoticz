@@ -20,7 +20,15 @@ timewait = ((timeon + 2) * 60)
 
 if (door == 'Closed' and difference < timewait) then
 	if (otherdevices['People'] == 'On') then
-		if (otherdevices['Phones'] == 'On') then
+		motion = 1
+		for i, v in pairs(otherdevices) do
+			v = i:sub(1,6)
+			if (v == 'Motion' and otherdevices[i] == 'Off' and timedifference(otherdevices_lastupdate[i] > 60) then
+				motion = 0
+			end
+		end
+		print motion
+		if (motion = 1) then
 			commandArray['Variable:AlarmTimer'] = tostring(0)
 		else
 			commandArray['Variable:AlarmTimer'] = tostring(uservariables['AlarmTimer'] + 1)
@@ -32,9 +40,21 @@ if (door == 'Closed' and difference < timewait) then
 				commandArray['ALARM'] = 'On'
 			end
 		end
-	else
-		if (otherdevices['Phones'] == 'On') then
-			commandArray['People'] = 'On'
+--		if (otherdevices['Phones'] == 'On') then
+--			commandArray['Variable:AlarmTimer'] = tostring(0)
+--		else
+--			commandArray['Variable:AlarmTimer'] = tostring(uservariables['AlarmTimer'] + 1)
+--			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
+--			if (uservariables['PeopleTimer'] > 12) then
+--				commandArray['People'] = 'Off'
+--			end
+--			if (uservariables['AlarmTimer'] > 12) then
+--				commandArray['ALARM'] = 'On'
+--			end
+--		end
+--	else
+--		if (otherdevices['Phones'] == 'On') then
+--			commandArray['People'] = 'On'
 		end
 	end
 elseif (door == 'Closed' and difference > 900 and otherdevices['People'] == 'Off') then
