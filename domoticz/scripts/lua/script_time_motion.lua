@@ -75,7 +75,7 @@ for i, v in pairs(otherdevices) do
 			sd = 'FrontDoor'
 			se = 'Toilet'
 			sf = 'Bathroom'
-			sl = 'DoorOpened'
+			--sl = 'DoorOpened'
 		elseif (sc == 'Bedroom') then
 			sc = 'Bedroom'
 			if (otherdevices['ModeSleep'] == 'Off') then
