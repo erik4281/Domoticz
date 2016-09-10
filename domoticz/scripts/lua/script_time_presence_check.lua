@@ -23,7 +23,7 @@ if (door == 'Closed' and difference < timewait) then
 		motion = 1
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
-			if (v == 'Motion' and otherdevices[i] == 'Off' and timedifference(otherdevices_lastupdate[i] > 60) then
+			if (v == 'Motion' and otherdevices[i] == 'Off' and timedifference(otherdevices_lastupdate[i]) > 60) then
 				motion = 0
 			end
 		end
