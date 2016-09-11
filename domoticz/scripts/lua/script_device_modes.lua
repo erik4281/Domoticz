@@ -3,30 +3,6 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 
---if (ts:sub(1,6) == 'iPhone') then
---	print((otherdevices_lastupdate[dc]))
---	if (devicechanged[dc] == 'On') then
---		ph = ts:sub(7)
---		commandArray['SendNotification']='PEOPLE#'..ph..' has arrived#0#bike'
---	elseif (devicechanged[dc] == 'Off') then
---		ph = ts:sub(7)
---		commandArray['SendNotification']='PEOPLE#'..ph..' has departed#0#bike'
---	end
---	if (otherdevices['iPhoneErik'] == 'On' or otherdevices['iPhoneJinHee'] == 'On') then
---		if (otherdevices['Phones'] == 'Off') then
---			commandArray['Phones'] = 'On'
---		end
---		if (otherdevices['People'] == 'Off') then
---			commandArray['People'] = 'On'
---		end
---	end
---	if (otherdevices['iPhoneErik'] == 'Off' and otherdevices['iPhoneJinHee'] == 'Off') then
---		if (otherdevices['Phones'] == 'On') then
---			commandArray['Phones'] = 'Off'
---		end
---	end
---end
-
 if (ts:sub(1,4) == 'Mode') then
 	sc = ts:sub(5)
 	if (devicechanged[dc] == 'On') then
