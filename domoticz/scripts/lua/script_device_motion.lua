@@ -26,12 +26,10 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	elseif (sc == 'FrontDoor') then
 		sc = 'Hallway'
 		sd = 'FrontDoor'
---		commandArray['Variable:AlarmTimer'] = tostring(0)
 		commandArray['Variable:PeopleTimer'] = tostring(10)
 		if (otherdevices['ModeSleep'] == 'On') then
 			commandArray['ModeStandard'] = 'On'
 		end
---		sl = 'DoorOpened'
 	elseif (sc == 'Bedroom') then
 		sc = 'Bedroom'
 		sl = 'Humidifier'
@@ -104,16 +102,12 @@ if (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'On'
 		print ('Motion in the hallway, people are present, switching on light and setting mode to present')
 		commandArray['SwitchHallway'] = 'On'
 		commandArray['People'] = 'On'
---		commandArray['Variable:AlarmTimer'] = tostring(10)
 		commandArray['Variable:PeopleTimer'] = tostring(0)
---		commandArray['SwitchDoorOpened'] = 'On'
 	elseif (sc == 'Bedroom') then
 		print ('Motion in the bedroom, people are present, switching on light and setting mode to present')
 		commandArray['SwitchBedroom'] = 'On'
 		commandArray['People'] = 'On'
---		commandArray['Variable:AlarmTimer'] = tostring(10)
 		commandArray['Variable:PeopleTimer'] = tostring(0)
---		commandArray['SwitchDoorOpened'] = 'On'
 	else
 		if (otherdevices['ALARM'] == 'Off') then
 			commandArray['ALARM'] = 'On'
