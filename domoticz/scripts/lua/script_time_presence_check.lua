@@ -19,44 +19,27 @@ difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 timewait = ((timeon + 2) * 60)
 
 if (door == 'Closed' and difference < timewait) then
---if (door == 'Closed') then
 	if (otherdevices['People'] == 'On') then
 		motion = 0
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
-			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 60)) then
+			if (v == 'Motion' and timedifference(otherdevices_lastupdate[i]) < 60) then
 				motion = 1
 			end
+			if (v == 'Motion' and difference > 60 and otherdevices[i] == 'On') then
+				motion = 2
+			end
 		end
---		print ('Motion: '..motion)
-		if (motion == 1) then
-			commandArray['Variable:AlarmTimer'] = tostring(0)
-		else
-			commandArray['Variable:AlarmTimer'] = tostring(uservariables['AlarmTimer'] + 1)
+		if (motion == 0) then
 			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
 			if (uservariables['PeopleTimer'] > 12) then
 				commandArray['People'] = 'Off'
 			end
-			if (uservariables['AlarmTimer'] > 12) then
-				commandArray['ALARM'] = 'On'
-			end
+		elseif (motion == 1) then
+			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'])
+		elseif (motion == 2) then
+			commandArray['Variable:PeopleTimer'] = tostring(0)
 		end
---		if (otherdevices['Phones'] == 'On') then
---			commandArray['Variable:AlarmTimer'] = tostring(0)
---		else
---			commandArray['Variable:AlarmTimer'] = tostring(uservariables['AlarmTimer'] + 1)
---			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
---			if (uservariables['PeopleTimer'] > 12) then
---				commandArray['People'] = 'Off'
---			end
---			if (uservariables['AlarmTimer'] > 12) then
---				commandArray['ALARM'] = 'On'
---			end
---		end
---	else
---		if (otherdevices['Phones'] == 'On') then
---			commandArray['People'] = 'On'
---		end
 	end
 elseif (door == 'Closed' and difference > 900 and otherdevices['People'] == 'Off') then
 	if (otherdevices['FanSwitch2'] == 'On' or otherdevices['FanSwitch3'] == 'On') then
