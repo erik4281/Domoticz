@@ -3,7 +3,7 @@ commandArray = {}
 dc = next(devicechanged)
 ts = tostring(dc)
 
-if (ts:sub(1,6) == 'Switch' and ts ~= 'SwitchDoorOpened') then
+if (ts:sub(1,6) == 'Switch') then
 	sc = ts:sub(7)
 	scriptfolder = "/home/pi/domoticz/scripts/bash/"
 	if (devicechanged[dc] == 'On') then
