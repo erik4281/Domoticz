@@ -26,7 +26,7 @@ if (door == 'Closed' and difference < timewait) then
 			if (v == 'Motion' and timedifference(otherdevices_lastupdate[i]) < 60) then
 				motion = 1
 			end
-			if (v == 'Motion' and difference > 60 and otherdevices[i] == 'On') then
+			if (v == 'Motion' and difference > 60 and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30)) then
 				motion = 2
 			end
 		end
