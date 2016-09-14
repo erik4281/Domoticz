@@ -32,7 +32,7 @@ if (door == 'Closed' and difference < timewait) then
 		end
 		if (motion == 0) then
 			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
-			if (uservariables['PeopleTimer'] > 12) then
+			if (uservariables['PeopleTimer'] > 15) then
 				commandArray['People'] = 'Off'
 			end
 		elseif (motion == 1) then
