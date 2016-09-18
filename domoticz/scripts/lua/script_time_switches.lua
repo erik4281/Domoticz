@@ -177,8 +177,8 @@ for i, v in pairs(otherdevices) do
 	ts = tostring(i)
 	LivingTemp = (otherdevices['TemperatureLiving'] + 1)
 	OutsideTemp = (otherdevices['TempHumBar']:sub(1,4) + 6)
-	print ('Living temp:'..LivingTemp..', OutsideTemp:'..OutsideTemp)
 	if (ts == 'FanSwitch3' and otherdevices['People'] == 'On') then
+		print ('Living temp:'..LivingTemp..', OutsideTemp:'..OutsideTemp)
 		if (otherdevices[ts] == 'Off' and ((LivingTemp > OutsideTemp) and (LivingTemp >= 26)) and uservariables['CoolingMode'] == 0) then
 			print ('Living is hotter than outside and hotter than setpoint, fan is low and will be set to high')
 			commandArray['FanSwitch3'] = 'On'
