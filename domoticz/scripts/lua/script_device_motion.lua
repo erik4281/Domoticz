@@ -18,11 +18,16 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	elseif (sc == 'Dining') then
 		sc = 'Living'
 		sd = 'Dining'
+		se = 'Kitchen'
 		sl = 'LivingExtra'
 	elseif (sc == 'Kitchen') then
 		sc = 'Kitchen'
 		sl = 'LivingExtra'
 		sm = 'KitchenExtra'
+	elseif (sc == 'Hallway' and otherdevices['SwitchLiving'] == 'Off') then
+		sc = 'Living'
+		sl = 'LivingExtra'
+		sm = 'Hallway'
 	elseif (sc == 'FrontDoor') then
 		sc = 'Hallway'
 		sd = 'FrontDoor'
