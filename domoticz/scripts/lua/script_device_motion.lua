@@ -18,7 +18,6 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	elseif (sc == 'Dining') then
 		sc = 'Living'
 		sd = 'Dining'
-		se = 'Kitchen'
 		sl = 'LivingExtra'
 	elseif (sc == 'Kitchen') then
 		sc = 'Kitchen'
