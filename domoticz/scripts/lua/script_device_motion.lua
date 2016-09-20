@@ -24,9 +24,10 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		sl = 'LivingExtra'
 		sm = 'KitchenExtra'
 	elseif (sc == 'Hallway') then
+		sb = 'Hallway'
 		sc = 'Living'
 		sl = 'LivingExtra'
-		sm = 'Hallway'
+		print (ts..' saw motion. Now triggering more switches!!!)
 	elseif (sc == 'FrontDoor') then
 		sc = 'Hallway'
 		sd = 'FrontDoor'
@@ -55,13 +56,16 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	else
 		cbrt = 250
 	end
+	if (sb) then
+		mb = 'Motion'..sb
+	end
 	if (sd) then
 		md = 'Motion'..sd
 	end
 	if (se) then
 		me = 'Motion'..se
 	end
-	if (otherdevices[mc] == 'On' or otherdevices[md] == 'On' or otherdevices[me] == 'On' or otherdevices[mc] == 'Open' or otherdevices[md] == 'Open' or otherdevices[me] == 'Open') then
+	if (otherdevices[mb] == 'On' or otherdevices[mc] == 'On' or otherdevices[md] == 'On' or otherdevices[me] == 'On' or otherdevices[mc] == 'Open' or otherdevices[md] == 'Open' or otherdevices[me] == 'Open') then
 		if (cbr < cbrt) then
 			if (otherdevices['Switch'..sc] == 'Off') then
 				print (ts..' saw motion. Now triggering switch Switch'..sc)
@@ -88,6 +92,10 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 				print (ts..' saw motion. Now triggering switch Switch'..se)
 				commandArray['Switch'..se] = 'Off'
 			end
+		end
+		if (sb and otherdevices['Switch'..sb] == 'Off') then
+			print (ts..' saw motion. Now triggering switch Switch'..sb)
+			commandArray['Switch'..sb] = 'On'
 		end
 		if (sl and otherdevices['Switch'..sl] == 'Off') then
 			print (ts..' saw motion. Now triggering switch Switch'..sl)
