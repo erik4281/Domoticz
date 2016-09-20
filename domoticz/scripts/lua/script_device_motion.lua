@@ -27,7 +27,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 		sb = 'Hallway'
 		sc = 'Living'
 		sl = 'LivingExtra'
-		print (ts..' saw motion. Now triggering more switches!!!)
+		print (ts..' saw motion. Now triggering more switches!!!')
 	elseif (sc == 'FrontDoor') then
 		sc = 'Hallway'
 		sd = 'FrontDoor'
