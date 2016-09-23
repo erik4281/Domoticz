@@ -17,6 +17,7 @@ if (ts == 'People') then
 			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestActive'] = 'Off'
 		end
+		commandArray['ALARM'] = 'Off'
 		commandArray['FanSwitch3'] = 'Off'
 		commandArray['Variable:CoolingMode'] = tostring(0)
 		commandArray['SendNotification']='HOME#AWAY mode activated#0#intermission'
