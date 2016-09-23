@@ -59,7 +59,7 @@ elseif (door == 'Closed' and difference > 900 and otherdevices['People'] == 'Off
 	end
 end
 
-if (otherdevices['ALARM'] == 'On' and otherdevices['SECURITY'] == 'On' and timedifference(otherdevices_lastupdate['ALARM'] > 60) then
+if (otherdevices['ALARM'] == 'On' and otherdevices['SECURITY'] == 'On' and timedifference(otherdevices_lastupdate['ALARM']) > 60) then
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
 		if (v == 'Motion' and otherdevices[i] == 'On') then
