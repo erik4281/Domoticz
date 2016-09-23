@@ -31,7 +31,7 @@ if (ts == 'NestActive') then
 	end
 end
 
---if (ts == 'ALARM' and devicechanged[dc] == 'On') then
+--if (ts == 'ALARM' and devicechanged[dc] == 'On' and otherdevices['SECURITY'] == 'On') then
 --	for i, v in pairs(otherdevices) do
 --		v = i:sub(1,6)
 --		if (v == 'Motion' and otherdevices[i] == 'On') then
