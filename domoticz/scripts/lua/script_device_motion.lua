@@ -110,14 +110,9 @@ end
 
 if (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
 	sc = ts:sub(7)
-	if (sc == 'FrontDoor' or sc == 'Hallway') then
-		print ('Motion in the hallway, people are present, switching on light and setting mode to present')
-		commandArray['SwitchHallway'] = 'On'
-		commandArray['People'] = 'On'
-		commandArray['Variable:PeopleTimer'] = tostring(0)
-	elseif (sc == 'Bedroom') then
-		print ('Motion in the bedroom, people are present, switching on light and setting mode to present')
-		commandArray['SwitchBedroom'] = 'On'
+	if (sc == 'FrontDoor' or sc == 'Hallway' or sc == 'Bedroom' or sc == 'Toilet' or sc == 'Bathroom') then
+		print ('Motion in the '..sc..', people are present, switching on light and setting mode to present')
+		commandArray['Switch'..sc] = 'On'
 		commandArray['People'] = 'On'
 		commandArray['Variable:PeopleTimer'] = tostring(0)
 	else
