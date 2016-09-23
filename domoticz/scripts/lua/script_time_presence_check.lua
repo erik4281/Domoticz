@@ -17,7 +17,7 @@ door = otherdevices['MotionFrontDoor']
 difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 timewait = 900
 
-if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == 'On')) then
+if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == 'On'))) then
 	if (otherdevices['People'] == 'On') then
 		motion = 0
 		for i, v in pairs(otherdevices) do
