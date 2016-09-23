@@ -108,7 +108,7 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 	end
 end
 
-if (ts:sub(1,6) == 'Motion' and presence == 'Off' and otherdevices['SECURITY'] == 'Off' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
+if (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
 	sc = ts:sub(7)
 	if (sc == 'FrontDoor') then
 	else
@@ -125,35 +125,23 @@ if (ts:sub(1,6) == 'Motion' and presence == 'Off' and otherdevices['SECURITY'] =
 	commandArray['Switch'..sc] = 'On'
 	commandArray['People'] = 'On'
 	commandArray['Variable:PeopleTimer'] = tostring(0)
-end
 
-if (ts:sub(1,6) == 'Motion' and presence == 'Off' and otherdevices['SECURITY'] == 'On' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
-	sc = ts:sub(7)
-	if (sc == 'FrontDoor') then
-	else
-		commandArray['SendNotification']='MOTION#Motion'..sc..' was active#0#bike'
-		commandArray['ALARM'] = 'On'
-	end
-	print ('Motion in '..sc..', people are present, switching on light and setting mode to present')
-	commandArray['SendNotification']='MOTION#Motion'..sc..' was active#0#bike'
-	commandArray['Switch'..sc] = 'On'
-	commandArray['People'] = 'On'
-	commandArray['Variable:PeopleTimer'] = tostring(0)
+	if (otherdevices['SECURITY'] == 'On') then
+		local ping={}
 
-	local ping={}
+		ping[1]={'B8:53:AC:17:47:D4'}   -- Erik
+		ping[2]={'F0:24:75:D0:AF:C2'}   -- JinHee
 
-	ping[1]={'B8:53:AC:17:47:D4'}   -- Erik
-	ping[2]={'F0:24:75:D0:AF:C2'}   -- JinHee
-
-	for ip = 1, #ping do
-		f = assert (io.popen ("hcitool names "..ping[ip][1]))
-		bt = f:read()
-		if bt==nil then
-			commandArray['ALARM'] = 'On'
-		else
-			commandArray['ALARM'] = 'Off'
+		for ip = 1, #ping do
+			f = assert (io.popen ("hcitool names "..ping[ip][1]))
+			bt = f:read()
+			if bt==nil then
+				commandArray['ALARM'] = 'On'
+			else
+				commandArray['ALARM'] = 'Off'
+			end
+			f:close()
 		end
-		f:close()
 	end
 end
 
