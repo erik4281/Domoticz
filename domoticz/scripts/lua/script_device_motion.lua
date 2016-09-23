@@ -110,20 +110,21 @@ end
 
 if (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
 	sc = ts:sub(7)
-	if (sc == 'FrontDoor' or sc == 'Hallway' or sc == 'Bedroom' or sc == 'Toilet' or sc == 'Bathroom') then
-		print ('Motion in the '..sc..', people are present, switching on light and setting mode to present')
-		commandArray['Switch'..sc] = 'On'
-		commandArray['People'] = 'On'
-		commandArray['Variable:PeopleTimer'] = tostring(0)
+	if (sc == 'FrontDoor') then
 	else
-		if (otherdevices['ALARM'] == 'Off') then
-			commandArray['ALARM'] = 'On'
-		end
+		commandArray['SendNotification']='MOTION#Motion'..sc..' was active#0#bike'
 	end
-elseif (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'Off' or devicechanged[dc] == 'Closed')) then
-	if (otherdevices['ALARM'] == 'On') then
-		commandArray['ALARM'] = 'Off'
+	print ('Motion in '..sc..', people are present, switching on light and setting mode to present')
+	if (sc == 'Dining') then
+		sc = 'Living'
 	end
+	if (sc == 'FrontDoor') then
+		sc = 'Hallway'
+	end
+	commandArray['Switch'..sc] = 'On'
+	commandArray['People'] = 'On'
+	commandArray['ALARM'] = 'On'
+	commandArray['Variable:PeopleTimer'] = tostring(0)
 end
 
 return commandArray
