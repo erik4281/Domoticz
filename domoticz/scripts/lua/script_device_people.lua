@@ -8,7 +8,7 @@ if (ts == 'People') then
 	if (devicechanged[dc] == 'On') then
 		print ('People is now ON')
 		if (otherdevices['NestActive'] == 'Off') then
-			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
+			--commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestActive'] = 'On'
 		end
 		print ('Nest activated')
@@ -21,7 +21,7 @@ if (ts == 'People') then
 	elseif (devicechanged[dc] == 'Off') then
 		print ('People is now OFF')
 		if (otherdevices['NestActive'] == 'On') then
-			commandArray[1] = {['UpdateDevice'] = "41|0|22"}
+			--commandArray[1] = {['UpdateDevice'] = "41|0|22"}
 			commandArray['NestActive'] = 'Off'
 		end
 		print ('Nest deactivated')
