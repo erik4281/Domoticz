@@ -32,6 +32,7 @@ if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == '
 				motion = 2
 			end
 		end
+		print ('Motion is set to '..motion)
 		if (motion == 0) then
 			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
 			if (uservariables['PeopleTimer'] > 15) then
