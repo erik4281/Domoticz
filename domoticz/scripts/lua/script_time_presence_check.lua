@@ -18,7 +18,6 @@ difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 timewait = 900
 
 if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == 'On'))) then
-	print ('Door closed and happened recently, or ALARM is still ON')
 	if (otherdevices['People'] == 'On') then
 		motion = 0
 		for i, v in pairs(otherdevices) do
@@ -33,7 +32,6 @@ if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == '
 				motion = 2
 			end
 		end
-		print ('Motion is set to '..motion)
 		if (motion == 0) then
 			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
 			if (uservariables['PeopleTimer'] > 15) then
@@ -58,6 +56,23 @@ elseif (door == 'Closed' and difference > 900 and otherdevices['People'] == 'Off
 		if (v == 'Switch' and otherdevices[i] == 'On') then
 			commandArray[i] = 'Off'
 		end
+	end
+end
+
+if (otherdevices['ALARM'] == 'On') then
+	local ping={}
+
+	ping[1]={'B8:53:AC:17:47:D4'}   -- Erik
+	ping[2]={'F0:24:75:D0:AF:C2'}   -- JinHee
+
+	for ip = 1, #ping do
+		f = assert (io.popen ("hcitool names "..ping[ip][1]))
+		bt = f:read()
+		if bt==nil then
+		else
+			commandArray['ALARM'] = 'Off'
+		end
+		f:close()
 	end
 end
 
