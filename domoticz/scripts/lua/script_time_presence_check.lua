@@ -25,15 +25,15 @@ print ('Motion = 0')
 			v = i:sub(1,6)
 			if (v == 'Motion' and timedifference(otherdevices_lastupdate[i]) < 60) then
 				motion = 1
-print ('Motion'..sc..' = 1, motionsensor updated in the last 60 seconds')
+print ('Motion'..i..' = 1, motionsensor updated in the last 60 seconds')
 			end
 			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and difference < timewait and difference > 60) then
 				motion = 2
-print ('Motion'..sc..' = 2, motionsensor ON or updated in the last 30 seconds. Only valid within 900 seconds, but out of first 60 seconds of opening/closing door.')
+print ('Motion'..i..' = 2, motionsensor ON or updated in the last 30 seconds. Only valid within 900 seconds, but out of first 60 seconds of opening/closing door.')
 			end
 			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and otherdevices['ALARM'] == 'On' and timedifference(otherdevices_lastupdate['ALARM']) > 60) then
 				motion = 2
-print ('Motion'..sc..' = 2, motionsensor ON or updated in the last 30 seconds. Only valid with ALARM ON, but out of first 60 seconds of ALARM being switched.')
+print ('Motion'..i..' = 2, motionsensor ON or updated in the last 30 seconds. Only valid with ALARM ON, but out of first 60 seconds of ALARM being switched.')
 			end
 		end
 print ('PeopleTimer: '..tostring(uservariables['PeopleTimer'])..', Motion: '..motion)
