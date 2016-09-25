@@ -79,9 +79,9 @@ end
 if (otherdevices['ALARM'] == 'On' and otherdevices['SECURITY'] == 'On' and timedifference(otherdevices_lastupdate['ALARM']) > 60) then
 	for i, v in pairs(otherdevices) do
 		v = i:sub(1,6)
-		if (v == 'Motion' and otherdevices[i] == 'On') then
+		if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30)) then
 			commandArray['SendNotification']='ALARM#'..i..' is ON!#1#siren'
-		elseif (v == 'Motion' and otherdevices[i] == 'Open') then
+		elseif (v == 'Motion' and (otherdevices[i] == 'Open' or timedifference(otherdevices_lastupdate[i]) < 30)) then
 			commandArray['SendNotification']='ALARM#'..i..' is OPEN!#1#siren'
 		end
 	end
