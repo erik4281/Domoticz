@@ -111,7 +111,7 @@ end
 if (ts:sub(1,6) == 'Motion' and presence == 'Off' and (devicechanged[dc] == 'On' or devicechanged[dc] == 'Open')) then
 	sc = ts:sub(7)
 	if (sc == 'FrontDoor' or sc == 'Hallway') then
-		os.execute (/home/pi/domoticz/scripts/bash/Hallway/1.sh)
+		os.execute ('/home/pi/domoticz/scripts/bash/Hallway/1.sh')
 	else
 		commandArray['SendNotification']='MOTION#Motion'..sc..' was active#0#bike'
 		commandArray['ALARM'] = 'On'
