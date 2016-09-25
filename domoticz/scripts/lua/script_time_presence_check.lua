@@ -36,6 +36,7 @@ print ('Motion'..sc..' = 2, motionsensor ON or updated in the last 30 seconds. O
 print ('Motion'..sc..' = 2, motionsensor ON or updated in the last 30 seconds. Only valid with ALARM ON, but out of first 60 seconds of ALARM being switched.')
 			end
 		end
+print ('PeopleTimer: '..tostring(uservariables['PeopleTimer']))
 		if (motion == 0) then
 			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
 			if (uservariables['PeopleTimer'] > 15) then
