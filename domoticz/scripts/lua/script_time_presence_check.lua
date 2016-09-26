@@ -22,13 +22,13 @@ if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == '
 		motion = 0
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
-			if (v == 'Motion' and timedifference(otherdevices_lastupdate[i]) < 60) then
+			if (v == 'Motion' and motion < 2 and timedifference(otherdevices_lastupdate[i]) < 60) then
 				motion = 1
 			end
 			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and difference < timewait and difference > 60) then
 				motion = 2
 			end
-			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and otherdevices['ALARM'] == 'On' and timedifference(otherdevices_lastupdate['ALARM']) > 60) then
+			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and otherdevices['ALARM'] == 'On' and timedifference(otherdevices_lastupdate['ALARM']) > 60 and difference > 60) then
 				motion = 2
 			end
 		end
