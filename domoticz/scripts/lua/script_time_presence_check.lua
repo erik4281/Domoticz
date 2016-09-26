@@ -18,6 +18,7 @@ difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 timewait = 900
 
 if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == 'On'))) then
+	print ('Difference = '..difference)
 	if (otherdevices['People'] == 'On') then
 		motion = 0
 		for i, v in pairs(otherdevices) do
@@ -32,7 +33,7 @@ if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == '
 				motion = 2
 			end
 		end
-		print ('Time Presence Check: PeopleTimer: '..tostring(uservariables['PeopleTimer'])..', Motion: '..motion..', Difference: '..difference)
+		print ('Time Presence Check: PeopleTimer: '..tostring(uservariables['PeopleTimer'])..', Motion: '..motion)
 		if (motion == 0) then
 			commandArray['Variable:PeopleTimer'] = tostring(uservariables['PeopleTimer'] + 1)
 			if (uservariables['PeopleTimer'] > 15) then
