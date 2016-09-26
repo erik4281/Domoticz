@@ -14,7 +14,7 @@ end
 commandArray = {}
 
 door = otherdevices['MotionFrontDoor']
-timewait = 9000
+timewait = 900
 
 if (door == 'Closed' and ((timedifference(otherdevices_lastupdate['MotionFrontDoor']) < timewait) or (otherdevices['ALARM'] == 'On'))) then
 	if (otherdevices['People'] == 'On') then
@@ -23,15 +23,12 @@ if (door == 'Closed' and ((timedifference(otherdevices_lastupdate['MotionFrontDo
 			v = i:sub(1,6)
 			if (v == 'Motion' and motion < 2 and timedifference(otherdevices_lastupdate[i]) < 60) then
 				motion = 1
-				print (i..' was updated in the last minute!!!')
 			end
 			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and timedifference(otherdevices_lastupdate['MotionFrontDoor']) < timewait and timedifference(otherdevices_lastupdate['MotionFrontDoor']) > 60) then
 				motion = 2
-				print (i..' was ON in the last minute!!!')
 			end
 			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and otherdevices['ALARM'] == 'On' and timedifference(otherdevices_lastupdate['ALARM']) > 60 and timedifference(otherdevices_lastupdate['MotionFrontDoor']) > 60) then
 				motion = 2
-				print (i..' was ON in the last minute!!! This was triggered because an alarm was active!')
 			end
 		end
 		print ('Time Presence Check: PeopleTimer: '..tostring(uservariables['PeopleTimer'])..', Motion: '..motion)
