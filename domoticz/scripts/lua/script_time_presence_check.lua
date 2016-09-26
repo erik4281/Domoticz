@@ -28,9 +28,11 @@ if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == '
 			end
 			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and difference < timewait and difference > 60) then
 				motion = 2
+				print ('Motion was found in the last minute!!!')
 			end
 			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and otherdevices['ALARM'] == 'On' and timedifference(otherdevices_lastupdate['ALARM']) > 60 and difference > 60) then
 				motion = 2
+				print ('Motion was found in the last minute!!! This was triggered because an alarm was active!')
 			end
 		end
 		print ('Time Presence Check: PeopleTimer: '..tostring(uservariables['PeopleTimer'])..', Motion: '..motion)
