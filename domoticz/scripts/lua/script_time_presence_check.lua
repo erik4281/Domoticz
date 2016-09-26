@@ -23,7 +23,8 @@ if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == '
 		motion = 0
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
-			if (v == 'Motion' and timedifference(otherdevices_lastupdate[i]) < 60) then
+	print ('Difference 2 = '..difference)
+			if (v == 'Motion' and motion < 2 and timedifference(otherdevices_lastupdate[i]) < 60) then
 				motion = 1
 				print (i..' was updated in the last minute!!!')
 			end
