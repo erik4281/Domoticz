@@ -15,7 +15,7 @@ commandArray = {}
 
 door = otherdevices['MotionFrontDoor']
 difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
-timewait = 900
+timewait = 9000
 
 if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == 'On'))) then
 	print ('Difference = '..difference)
