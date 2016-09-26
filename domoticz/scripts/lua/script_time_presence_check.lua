@@ -23,16 +23,16 @@ if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == '
 		motion = 0
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
-	print ('Difference 2 = '..difference)
+	print ('Difference 2 = '..timedifference(otherdevices_lastupdate['MotionFrontDoor']))
 			if (v == 'Motion' and motion < 2 and timedifference(otherdevices_lastupdate[i]) < 60) then
 				motion = 1
 				print (i..' was updated in the last minute!!!')
 			end
-			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and difference < timewait and difference > 60) then
+			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and timedifference(otherdevices_lastupdate['MotionFrontDoor']) < timewait and timedifference(otherdevices_lastupdate['MotionFrontDoor']) > 60) then
 				motion = 2
 				print (i..' was ON in the last minute!!!')
 			end
-			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and otherdevices['ALARM'] == 'On' and timedifference(otherdevices_lastupdate['ALARM']) > 60 and difference > 60) then
+			if (v == 'Motion' and (otherdevices[i] == 'On' or timedifference(otherdevices_lastupdate[i]) < 30) and otherdevices['ALARM'] == 'On' and timedifference(otherdevices_lastupdate['ALARM']) > 60 and timedifference(otherdevices_lastupdate['MotionFrontDoor']) > 60) then
 				motion = 2
 				print (i..' was ON in the last minute!!! This was triggered because an alarm was active!')
 			end
