@@ -105,7 +105,6 @@ if (ts:sub(1,6) == 'Motion' and presence == 'On') then
 			print (ts..' saw motion. Now triggering switch Switch'..sm)
 			commandArray['Switch'..sm] = 'On'
 		end
-		commandArray['Variable:PeopleTimer'] = tostring(0)
 	end
 end
 
