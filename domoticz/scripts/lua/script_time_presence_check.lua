@@ -14,16 +14,13 @@ end
 commandArray = {}
 
 door = otherdevices['MotionFrontDoor']
-difference = timedifference(otherdevices_lastupdate['MotionFrontDoor'])
 timewait = 9000
 
-if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == 'On'))) then
-	print ('Difference = '..difference)
+if (door == 'Closed' and ((timedifference(otherdevices_lastupdate['MotionFrontDoor']) < timewait) or (otherdevices['ALARM'] == 'On'))) then
 	if (otherdevices['People'] == 'On') then
 		motion = 0
 		for i, v in pairs(otherdevices) do
 			v = i:sub(1,6)
-	print ('Difference 2 = '..timedifference(otherdevices_lastupdate['MotionFrontDoor']))
 			if (v == 'Motion' and motion < 2 and timedifference(otherdevices_lastupdate[i]) < 60) then
 				motion = 1
 				print (i..' was updated in the last minute!!!')
@@ -52,7 +49,7 @@ if (door == 'Closed' and ((difference < timewait) or (otherdevices['ALARM'] == '
 			end
 		end
 	end
-elseif (door == 'Closed' and difference > 900 and otherdevices['People'] == 'Off') then
+elseif (door == 'Closed' and timedifference(otherdevices_lastupdate['MotionFrontDoor']) > 900 and otherdevices['People'] == 'Off') then
 	if (otherdevices['FanSwitch2'] == 'On' or otherdevices['FanSwitch3'] == 'On') then
 		commandArray['FanSwitch2'] = 'Off'
 		commandArray['FanSwitch3'] = 'Off'
