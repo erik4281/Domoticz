@@ -1,5 +1,4 @@
 ## RASPBERRY PI DOMOTICZ
-@reboot sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 @reboot sudo /home/pi/domoticz/scripts/bash/git_update.sh
 @reboot sudo service homebridge start
 0 * * * * sudo /home/pi/domoticz/scripts/bash/git_update.sh
@@ -7,9 +6,6 @@
 0 4 * * * sudo service homebridge stop
 1 4 * * * sudo service homebridge start
 */1 * * * * sudo /home/pi/domoticz/scripts/bash/check_domoticz_online.sh 2>&1 >> /dev/null
-*/1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_bluetooth_triggered.py B8:53:AC:17:47:D4 113 20 120 194
-*/1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_bluetooth_triggered.py DC:9B:9C:BE:D5:08 113 20 120 194
-*/1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_bluetooth_triggered.py F0:24:75:D0:AF:C2 114 20 120 194
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.155 126 60 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.156 127 60 300
 */1 * * * * sudo python /home/pi/domoticz/scripts/python/check_device_online.py 10.0.1.135 130 10 120
