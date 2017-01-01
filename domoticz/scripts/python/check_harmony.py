@@ -105,8 +105,7 @@ if lastreported == 0 :
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- according to domoticz, " + device + " is offline")
  
 while 1==1:
-#  currentstate = subprocess.call('sudo HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw > /dev/null', shell=True)
-  currentstate = int(subprocess.check_output('sudo /home/pi/HarmonyHubControl/HarmonyHubControl erikvennink@gmail.com ecokey4281 '+ device + ' get_current_activity_id_raw', shell=True)) + 1
+  currentstate = int(subprocess.check_output('sudo /home/pi/HarmonyHubControl/HarmonyHubControl @gmail.com e4 '+ device + ' get_current_activity_id_raw', shell=True)) + 1
   logcurrentstate = str (currentstate - 1)
   log (datetime.datetime.now().strftime("%H:%M:%S") + "- Harmony activity running: " + logcurrentstate)
 
