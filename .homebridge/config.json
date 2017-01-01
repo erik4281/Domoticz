@@ -4,18 +4,18 @@
             "platform": "PhilipsHue",
             "name": "Philips Hue",
             "ip_address": "10.0.1.102",
-            "username": "erikvennink"
+            "username": ""
         },
         {
             "platform": "Nest",
             "name": "Nest",
-            "username" : "jinheeanderik@gmail.com",
-            "password" : "Tilburg5042!"
+            "username" : "@gmail.com",
+            "password" : ""
         },
         {
             "platform": "eDomoticz",
             "name": "eDomoticz",
-            "server": "erikvennink:Ev!3745!@10.0.1.101",
+            "server": "",
             "port": "8080",
             "ssl": 0,
             "roomid": 13
